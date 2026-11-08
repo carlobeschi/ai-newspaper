@@ -1,5 +1,7 @@
 # ai-newspaper
 
+Web view over PierG AI newsletter :-)
+
 I giornali dell'AI di Carlo, generati da Claude a partire dalla newsletter *Daily Brief* di PierG, pubblicati con GitHub Pages.
 
 | Percorso | Cosa contiene |

@@ -349,6 +349,14 @@
      "page": "https://commons.wikimedia.org/wiki/File:Developers_working_on_the_%E2%80%9CTalk._They_Hear_You.%E2%80%9D_mobile_app._(14442858918).jpg",
      "alt": "Sviluppatori al lavoro su un'app",
      "caption": "Immagine di repertorio: sviluppatori al lavoro."
+    },
+    "counter": {
+     "title": "il collo di bottiglia si sposta, non resta fermo",
+     "body": [
+      "Il ragionamento sulla legge di Amdahl tiene finché il resto del lavoro resta com'è. Ma gli stessi agenti che scrivono il codice cominciano a scrivere anche specifiche, test e prime revisioni: se accelerano anche una parte di quei passaggi «che non si delegano», il tetto di 1,4 volte si alza.",
+      "C'è poi una questione di tempi. Quando uno strumento rende economica una parte del lavoro, le organizzazioni impiegano anni a ridisegnare il resto intorno a lui: misurare oggi le squadre con i processi di ieri rischia di scambiare un ritardo di adattamento per un limite strutturale.",
+      "Anche le quattro corse di Uber dicono poco sul futuro: misurano l'uso di un canale appena nato, non quanto sarà utile quando gli agenti avranno accesso a più servizi. Il commento ha ragione a chiedere di misurare le decisioni, ma è presto per concludere che la squadra resterà lenta."
+     ]
     }
    },
    "society": [

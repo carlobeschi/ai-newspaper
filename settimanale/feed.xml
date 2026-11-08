@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Il Settimanale dell&#x27;AI</title>
+<link>https://carlobeschi.github.io/ai-newspaper/settimanale/</link>
+<atom:link href="https://carlobeschi.github.io/ai-newspaper/settimanale/feed.xml" rel="self" type="application/rss+xml"/>
+<description>Il riassunto ragionato della settimana dell&#x27;intelligenza artificiale, ogni domenica.</description>
+<language>it</language>
+<item>
+<title>N. 1, 1–7 novembre 2026: L&#x27;America vota contro i data center</title>
+<link>https://carlobeschi.github.io/ai-newspaper/settimanale/#n-2026-11-08</link>
+<guid isPermaLink="false">settimanale-2026-11-08</guid>
+<pubDate>Sun, 08 Nov 2026 07:00:00 +0000</pubDate>
+<description>&lt;p&gt;Ai midterm gli elettori hanno bocciato quasi tutti i referendum sui nuovi poli di calcolo e il Texas ha cambiato colore. Il giorno dopo il Nasdaq ha perso migliaia di miliardi. La corsa all&amp;#x27;infrastruttura dell&amp;#x27;AI ha scoperto di avere un problema di consenso.&lt;/p&gt;&lt;p&gt;In questo numero:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://carlobeschi.github.io/ai-newspaper/settimanale/#a-2026-11-08-copertina&quot;&gt;L&amp;#x27;America vota contro i data center&lt;/a&gt;: Ai midterm gli elettori hanno bocciato quasi tutti i referendum sui nuovi poli di calcolo e il Texas ha cambiato colore. Il giorno dopo il Nasdaq ha perso migliaia di miliardi. La corsa all&amp;#x27;infrastruttura dell&amp;#x27;AI ha scoperto di avere un problema di consenso.&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://carlobeschi.github.io/ai-newspaper/settimanale/#a-2026-11-08-token&quot;&gt;Finita la festa dei token&lt;/a&gt;: Apple mette un tetto alla spesa dei suoi ingegneri, Ramp vede la crescita fermarsi all&amp;#x27;1,5%, Revolut porta i modelli in casa. Dopo mesi di consumo senza limiti, le aziende hanno cominciato a fare i conti.&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://carlobeschi.github.io/ai-newspaper/settimanale/#a-2026-11-08-ipo&quot;&gt;Due IPO e un conto da pagare&lt;/a&gt;: Anthropic mette in piazza i suoi numeri, OpenAI fissa il 2027. Le valutazioni scendono mentre il costo del calcolo sale: è la settimana in cui i due grandi laboratori hanno cominciato a parlare come società quotate.&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://carlobeschi.github.io/ai-newspaper/settimanale/#a-2026-11-08-cyber&quot;&gt;Quando l&amp;#x27;agente diventa un hacker&lt;/a&gt;: Un modello di OpenAI trova 948 falle nel kernel Linux, un modello cinese gratuito sfiora i sistemi chiusi nei test di intrusione. La sicurezza informatica è diventata il campo dove le capacità degli agenti si misurano sul serio.&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://carlobeschi.github.io/ai-newspaper/settimanale/#a-2026-11-08-commento&quot;&gt;Più veloci da soli, più lenti insieme&lt;/a&gt;: Gli agenti di coding moltiplicano le pull request. Il lavoro di squadra non segue la stessa curva, e lo dicono proprio i numeri di chi li usa ogni giorno.&lt;/li&gt;&lt;/ul&gt;</description>
+</item>
+</channel>
+</rss>

@@ -1,5 +1,22 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Il Settimanale dell'AI</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Il riassunto ragionato della settimana dell'intelligenza artificiale, ogni domenica. Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="I giornali dell'AI">
+<meta property="og:title" content="Il Settimanale dell'AI">
+<meta property="og:description" content="Il riassunto ragionato della settimana dell'intelligenza artificiale, ogni domenica.">
+<meta property="og:url" content="https://carlobeschi.github.io/ai-newspaper/settimanale/">
+<meta property="og:image" content="https://carlobeschi.github.io/ai-newspaper/settimanale/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Il Settimanale dell'AI" href="feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230f5a69'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%23fff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;0,6..96,800;1,6..96,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Barlow+Condensed:wght@500;600;700&display=swap">
@@ -153,8 +170,70 @@ footer a{color:var(--accent)}
   .art figure img{aspect-ratio:3/2}
 }
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-</style>
+body{margin:0}
 
+/* copertina: numero, tempo di lettura, leggi tutto */
+.cover-fig .issue{position:absolute;top:0;left:0;background:var(--accent);color:var(--on-photo);font-family:var(--f-label);font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:10px 14px;line-height:1.05;text-align:center}
+.cover-fig .issue b{display:block;font-family:var(--f-display);font-size:2.3rem;letter-spacing:0;font-weight:800}
+:root[data-theme="dark"] .cover-fig .issue{color:#0d1a1d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cover-fig .issue{color:#0d1a1d}}
+.cover-cta{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:20px}
+.btn{display:inline-block;font-family:var(--f-label);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-size:.95rem;background:var(--ink);color:var(--paper);text-decoration:none;padding:9px 16px;border-radius:3px}
+.btn:hover{background:var(--accent)}
+.cover-cta .label{color:var(--muted)}
+.toc .d .m{white-space:nowrap}
+
+/* brevi: la fonte originale in fondo */
+.brief .who{font-family:var(--f-label);font-weight:600;letter-spacing:.04em;color:var(--ink);white-space:nowrap}
+.brief .who a{text-decoration:none;color:var(--accent)}
+.brief .who a:hover{text-decoration:underline}
+
+/* fonti: il link al quotidiano */
+.src .q{font-family:var(--f-label);font-weight:600;letter-spacing:.04em;color:var(--accent);text-decoration:none;white-space:nowrap}
+.src .q:hover{text-decoration:underline}
+
+/* un'altra lettura */
+.counter{margin:1.6em 0 0;border:1px solid var(--rule);border-left:4px solid var(--c-sec);background:var(--paper);padding:16px 20px}
+.counter h3{margin:0 0 .5em !important;color:var(--c-sec) !important}
+.counter p{margin:0 0 .8em}
+.counter p:last-child{margin:0}
+.counter .note{font-size:.85rem;color:var(--muted)}
+
+/* indice dell'articolo e barra di avanzamento */
+.side-toc{position:sticky;top:56px}
+.side-toc h4{margin:0 0 8px;font-family:var(--f-label);text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:.85rem;color:var(--muted)}
+.side-toc ol{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:.92rem;line-height:1.35}
+.side-toc a{text-decoration:none;border-left:2px solid var(--rule);padding-left:10px;display:block;color:var(--muted)}
+.side-toc a:hover,.side-toc a[aria-current="true"]{color:var(--ink);border-left-color:var(--sc,var(--accent))}
+.text h3{scroll-margin-top:56px}
+.progress{position:fixed;top:0;left:0;right:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--rule);font-family:var(--f-label);font-size:.88rem;letter-spacing:.04em;color:var(--muted);padding:7px max(16px,env(safe-area-inset-left,0px)) 8px;padding-top:calc(7px + env(safe-area-inset-top,0px))}
+.progress .bar{position:absolute;left:0;bottom:-1px;height:3px;background:var(--sc,var(--accent));width:0}
+.progress .ptxt{display:block;max-width:1180px;margin:0 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.progress .ptxt b{color:var(--ink);font-weight:700}
+.share[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* dal quotidiano */
+.daily{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0 28px;margin:0;padding:0;list-style:none}
+.daily li{padding-block:12px;border-bottom:1px solid var(--rule)}
+.daily a{text-decoration:none;font-weight:600;line-height:1.3;display:block}
+.daily a:hover{text-decoration:underline}
+.daily .label{color:var(--accent);display:block;margin-bottom:3px}
+
+@media (max-width:900px){.side-toc{display:none}}
+@media print{
+  :root{--paper:#fff;--paper-2:#fff;--ink:#000;--muted:#333;--rule:#999;--op-bg:#fff}
+  body{font-size:10.5pt}
+  .about,.progress,.share,.cover-cta .btn,#pick,.side-toc,.toast,.daily-band,.q{display:none !important}
+  .cover-fig .issue{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .art{break-before:page;padding-block:0 18px}
+  .art figure img{max-height:8cm}
+  .brief li,.nums li,.watch li,.soc article,.counter{break-inside:avoid}
+  a{text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" hidden><div class="bar" id="bar"></div><span class="ptxt" id="ptxt"></span></div>
 <div class="wrap">
   <div class="about">
     <span>Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG</span>
@@ -172,6 +251,7 @@ footer a{color:var(--accent)}
 (function(){
   const app=document.getElementById('app'), meta=document.getElementById('meta');
   let DATA=[];
+  const DAILY={};   // url di una fonte → data dell'edizione del Quotidiano che la cita
   const BASE=/claude|anthropic/.test(location.hostname)?'https://claude.ai/artifact/HHTyMfdodEP7ddvxxWzwyC':location.href.split('#')[0];
   const SC={"Copertina":"--c-cover","Economia":"--c-econ","Finanza":"--c-fin","Sicurezza":"--c-sec","Il commento":"--c-op","Società":"--c-soc"};
   const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -179,62 +259,99 @@ footer a{color:var(--accent)}
   const MESI=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
   const GIORNI=['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];
   const fmt=iso=>{const d=new Date(iso+'T12:00:00Z');return `${GIORNI[d.getUTCDay()]} ${d.getUTCDate()} ${MESI[d.getUTCMonth()]} ${d.getUTCFullYear()}`};
+  const shortDay=iso=>{const d=new Date(iso+'T12:00:00Z');return `${d.getUTCDate()} ${MESI[d.getUTCMonth()].slice(0,3)}`};
   const words=a=>a.join(' ').split(/\s+/).length;
   const mins=a=>Math.max(1,Math.round(words(a.body)/220));
+  const OUTLETS={'techcrunch.com':'TechCrunch','technologyreview.com':'MIT Technology Review','wired.com':'Wired','theverge.com':'The Verge','bloomberg.com':'Bloomberg','reuters.com':'Reuters','ft.com':'Financial Times','nytimes.com':'The New York Times','wsj.com':'Wall Street Journal','cnbc.com':'CNBC','arstechnica.com':'Ars Technica','theinformation.com':'The Information','axios.com':'Axios','semafor.com':'Semafor','forrester.com':'Forrester','x.com':'X','twitter.com':'X','github.com':'GitHub','arxiv.org':'arXiv','substack.com':'Substack','newsletter.pragmaticengineer.com':'The Pragmatic Engineer','theguardian.com':'The Guardian','economist.com':'The Economist','businessinsider.com':'Business Insider','404media.co':'404 Media','venturebeat.com':'VentureBeat','zdnet.com':'ZDNet','engadget.com':'Engadget','fortune.com':'Fortune','openai.com':'OpenAI','anthropic.com':'Anthropic','blog.google':'Google'};
+  function outlet(u){
+    try{const h=new URL(u).hostname.replace(/^www\./,'');
+      if(OUTLETS[h]) return OUTLETS[h];
+      const k=Object.keys(OUTLETS).find(d=>h.endsWith('.'+d)); if(k) return OUTLETS[k];
+      return h;}catch(_){return ''}
+  }
+  const dailyLink=u=>DAILY[u]?`<a class="q" href="../quotidiano/#u-${encodeURIComponent(u)}" title="La notizia sul Quotidiano del ${esc(fmt(DAILY[u]))}">nel Quotidiano →</a>`:'';
 
   function sources(list){
     if(!list||!list.length) return '';
-    return `<div class="src"><h4>Per approfondire</h4><ul>${list.map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join('')}</ul></div>`;
+    return `<div class="src"><h4>Per approfondire</h4><ul>${list.map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>${DAILY[s.url]?' · '+dailyLink(s.url):''}</li>`).join('')}</ul></div>`;
   }
-  function body(paras){
-    return paras.map(p=>p.startsWith('## ')?`<h3>${esc(p.slice(3))}</h3>`:`<p>${esc(p)}</p>`).join('');
+  const cid=(id,i)=>`${id}-h${i}`;
+  function body(paras,id){
+    let h=0;
+    return paras.map(p=>p.startsWith('## ')?`<h3 id="${cid(id,h++)}">${esc(p.slice(3))}</h3>`:`<p>${esc(p)}</p>`).join('');
   }
-  function photo(p,wide){
+  function sideToc(paras,id){
+    const hs=paras.filter(p=>p.startsWith('## '));
+    if(hs.length<2) return '';
+    return `<nav class="side-toc" aria-label="In questo articolo"><h4>In questo articolo</h4><ol>${hs.map((p,i)=>`<li><a href="#${cid(id,i)}" data-toc="${id}">${esc(p.slice(3))}</a></li>`).join('')}</ol></nav>`;
+  }
+  function counter(c){
+    if(!c||!c.body||!c.body.length) return '';
+    return `<aside class="counter" aria-label="Un'altra lettura"><h3>Un'altra lettura${c.title?': '+esc(c.title):''}</h3>${c.body.map(p=>`<p>${esc(p)}</p>`).join('')}<p class="note">L'obiezione più forte alla tesi del commento, scritta anche questa da Claude per mettere alla prova il ragionamento.</p></aside>`;
+  }
+  function photo(p){
     if(!p) return '';
     return `<figure><img src="${esc(p.file)}" alt="${esc(p.alt)}" loading="lazy"><figcaption>${esc(p.caption||'')} Foto: ${esc(p.author)}, ${esc(p.license)}, <a href="${esc(p.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>.</figcaption></figure>`;
   }
   function article(e,a,opts={}){
     const id=`a-${e.date}-${a.id}`;
     const by=opts.byline||'Dalla redazione, sulle newsletter della settimana';
+    const listen='speechSynthesis' in window?`<button class="share" type="button" data-listen="${id}" aria-pressed="false">Ascolta</button>`:'';
     const inner=`
       <div class="art-head">
         <div class="kick label"><span class="sec">${esc(a.section)}</span><span class="tag">${esc(a.tag)}</span></div>
         <h2>${esc(a.title)}</h2>
         <p class="stand">${esc(a.standfirst)}</p>
-        <div class="byline"><span>${esc(by)}</span><span>${mins(a)} min di lettura</span><button class="share" type="button" data-id="${id}">Copia il link</button></div>
+        <div class="byline"><span>${esc(by)}</span><span>${mins(a)} min di lettura</span>${listen}<button class="share" type="button" data-id="${id}">Copia il link</button></div>
       </div>
       ${photo(a.photo)}
       <div class="art-body">
-        <div class="text">${body(a.body)}</div>
-        <aside class="side">${a.pull?`<blockquote class="pull">${esc(a.pull)}</blockquote>`:''}${sources(a.sources)}</aside>
+        <div class="text">${body(a.body,id)}${opts.op?counter(a.counter):''}</div>
+        <aside class="side">${a.pull?`<blockquote class="pull">${esc(a.pull)}</blockquote>`:''}${sources(a.sources)}${sideToc(a.body,id)}</aside>
       </div>`;
-    return `<article class="art${opts.op?' op':''}" id="${id}" style="${sc(a.section)}">${opts.op?`<div class="inner">${inner}</div>`:inner}</article>`;
+    return `<article class="art${opts.op?' op':''}" id="${id}" data-title="${esc(a.title)}" data-min="${mins(a)}" style="${sc(a.section)}">${opts.op?`<div class="inner">${inner}</div>`:inner}</article>`;
+  }
+
+  function dailyBand(e){
+    // le notizie del Quotidiano da cui nasce il numero: quelle citate nelle brevi e negli articoli
+    const seen=new Set(), out=[];
+    const add=(u,t,when)=>{if(DAILY[u]&&!seen.has(u)){seen.add(u);out.push({u,t,when:DAILY[u]})}};
+    for(const b of e.brief) add(b.url,b.title);
+    for(const a of [e.cover,...e.features,e.opinion,...e.society]) for(const s of a.sources||[]) add(s.url,s.label.replace(/^[^—]+—\s*/,''));
+    if(!out.length) return '';
+    out.sort((a,b)=>a.when.localeCompare(b.when));
+    return `<section class="band daily-band">
+        <div class="band-h"><h2>Giorno per giorno</h2><span class="label">Le notizie da cui nasce questo numero, sul Quotidiano</span></div>
+        <ul class="daily">${out.slice(0,12).map(x=>`<li><a href="../quotidiano/#u-${encodeURIComponent(x.u)}"><span class="label">${esc(fmt(x.when))}</span>${esc(x.t)}</a></li>`).join('')}</ul>
+      </section>`;
   }
 
   function render(e, scrollTo){
     const all=[e.cover,...e.features,e.opinion];
+    const total=all.reduce((n,a)=>n+mins(a),0)+Math.max(1,Math.round(words([...e.brief.map(b=>b.title+' '+b.text),...e.society.flatMap(s=>s.body)])/220));
     meta.innerHTML=`<span><b>Numero ${e.n}</b></span><span>${esc(fmt(e.date))}</span><span>Settimana ${esc(e.range)}</span>`+
       (DATA.length>1?`<label for="pick" class="label">Archivio <select id="pick">${DATA.map(x=>`<option value="${x.date}"${x.date===e.date?' selected':''}>N. ${x.n} · ${esc(x.range)}</option>`).join('')}</select></label>`:'');
     const c=e.cover;
-    const tocItems=[...all.map(a=>({id:a.id,s:a.section,t:a.title,d:a.tag})),{id:'societa',s:'Società',t:e.society.map(x=>x.title).slice(0,2).join(' · '),d:'Tre storie brevi'}];
+    const tocItems=[...all.map(a=>({id:a.id,s:a.section,t:a.title,d:a.tag,m:mins(a)})),{id:'societa',s:'Società',t:e.society.map(x=>x.title).slice(0,2).join(' · '),d:'Tre storie brevi'}];
     app.innerHTML=`
       <section class="cover" style="${sc('Copertina')}">
         <div class="cover-main">
-          ${c.photo?`<figure class="cover-fig"><img src="${esc(c.photo.file)}" alt="${esc(c.photo.alt)}"><figcaption>${esc(c.photo.caption)} Foto: ${esc(c.photo.author)}, ${esc(c.photo.license)}, <a href="${esc(c.photo.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>.</figcaption></figure>`:''}
+          ${c.photo?`<figure class="cover-fig"><img src="${esc(c.photo.file)}" alt="${esc(c.photo.alt)}"><span class="issue" aria-hidden="true">N.<b>${esc(e.n)}</b>${esc(shortDay(e.date))}</span><figcaption>${esc(c.photo.caption)} Foto: ${esc(c.photo.author)}, ${esc(c.photo.license)}, <a href="${esc(c.photo.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>.</figcaption></figure>`:''}
           <div class="kick label" style="margin-top:18px"><span class="sec">Storia di copertina</span><span class="tag">${esc(c.tag)}</span></div>
           <h2><a href="#a-${e.date}-${c.id}">${esc(c.title)}</a></h2>
           <p class="stand">${esc(c.standfirst)}</p>
+          <div class="cover-cta"><a class="btn" href="#a-${e.date}-${c.id}">Leggi tutto il numero</a><span class="label">Si legge in circa ${total} minuti · ${all.length} articoli, ${e.brief.length} brevi</span></div>
         </div>
         <nav class="toc" aria-label="In questo numero">
           <h3>In questo numero</h3>
-          <ol>${tocItems.map(x=>`<li><a href="#a-${e.date}-${x.id}" style="${sc(x.s)}"><span class="s">${esc(x.s)}</span><span class="t">${esc(x.t)}</span><span class="d">${esc(x.d)}</span></a></li>`).join('')}
+          <ol>${tocItems.map(x=>`<li><a href="#a-${e.date}-${x.id}" style="${sc(x.s)}"><span class="s">${esc(x.s)}</span><span class="t">${esc(x.t)}</span><span class="d">${esc(x.d)}${x.m?` · <span class="m">${x.m} min</span>`:''}</span></a></li>`).join('')}
           <li><a href="#a-${e.date}-breve" style="${sc('')}"><span class="s">La settimana in breve</span><span class="t">${e.brief.length} notizie in poche righe</span></a></li></ol>
         </nav>
       </section>
 
       <section class="band" id="a-${e.date}-breve">
         <div class="band-h"><h2>La settimana in breve</h2><span class="label">${esc(e.range)}</span></div>
-        <ul class="brief">${e.brief.map(b=>`<li><span class="day">${esc(b.day)}</span><div><h3>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a>`:esc(b.title)}</h3><p>${esc(b.text)}</p></div></li>`).join('')}</ul>
+        <ul class="brief">${e.brief.map(b=>{const o=b.source||(b.url?outlet(b.url):'');return `<li><span class="day">${esc(b.day)}</span><div><h3>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a>`:esc(b.title)}</h3><p>${esc(b.text)}${o?` <span class="who">— ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(o)}</a>`:esc(o)}</span>`:''}${DAILY[b.url]?` · ${dailyLink(b.url)}`:''}</p></div></li>`}).join('')}</ul>
       </section>
 
       <section class="band">
@@ -256,11 +373,13 @@ footer a{color:var(--accent)}
         <ul class="watch">${e.watch.map(w=>`<li><span class="when">${esc(w.when)}</span><p>${esc(w.text)}</p></li>`).join('')}</ul>
       </section>
 
+      ${dailyBand(e)}
+
       <footer>
         <div>
           <h4>Chi siamo</h4>
-          <p>Il Settimanale dell'AI è un'idea di Carlo, generata da Claude e basata sulla newsletter Daily Brief di PierG. Ogni numero rilegge le newsletter della settimana, sceglie i temi che tornano più spesso e li racconta in approfondimenti. Il commento è un'analisi di Claude e lo dichiara.</p>
-          <p>I fatti vengono dalle newsletter e dalle fonti citate in fondo a ogni pezzo. Le notizie di ogni giorno sono su <a href="../quotidiano/">Il Quotidiano dell'AI</a>. Per ricevere il Daily Brief, chiedi a PierG.</p>
+          <p>Il Settimanale dell'AI è un'idea di Carlo, generata da Claude e basata sulla newsletter Daily Brief di PierG. Ogni numero rilegge le newsletter della settimana, sceglie i temi che tornano più spesso e li racconta in approfondimenti. Il commento è un'analisi di Claude e lo dichiara, e sotto ha sempre un'altra lettura che ne mette alla prova la tesi.</p>
+          <p>I fatti vengono dalle newsletter e dalle fonti citate in fondo a ogni pezzo. Le notizie di ogni giorno sono su <a href="../quotidiano/">Il Quotidiano dell'AI</a>. Per ricevere il Daily Brief, chiedi a PierG. Per seguire il Settimanale con un lettore di notizie c'è il <a href="feed.xml">feed RSS</a>; per leggerlo su carta, stampa la pagina.</p>
         </div>
         <div>
           <h4>Foto di questo numero</h4>
@@ -271,9 +390,11 @@ footer a{color:var(--accent)}
     if(pick) pick.addEventListener('change',()=>{location.hash='n-'+pick.value});
     if(scrollTo){const el=document.getElementById(scrollTo); if(el) el.scrollIntoView();}
     else window.scrollTo(0,0);
+    onScroll();
   }
 
   function route(){
+    stopSpeech();
     const h=decodeURIComponent(location.hash.slice(1));
     let m=h.match(/^(?:n|a)-(\d{4}-\d{2}-\d{2})/);
     const e=(m&&DATA.find(x=>x.date===m[1]))||DATA[0];
@@ -283,17 +404,72 @@ footer a{color:var(--accent)}
     app.dataset.cur=e.date; render(e,target);
   }
 
+  /* barra di avanzamento: titolo dell'articolo e minuti che mancano */
+  const prog=document.getElementById('progress'), bar=document.getElementById('bar'), ptxt=document.getElementById('ptxt');
+  let ticking=false;
+  function onScroll(){
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(()=>{
+      ticking=false;
+      const y=window.innerHeight*0.3;
+      const art=[...document.querySelectorAll('.art')].find(a=>{const r=a.getBoundingClientRect();return r.top<y&&r.bottom>y});
+      if(!art){prog.hidden=true;return}
+      const r=art.getBoundingClientRect();
+      const f=Math.min(1,Math.max(0,(y-r.top)/r.height));
+      const left=Math.max(0,Math.ceil(+art.dataset.min*(1-f)));
+      prog.hidden=false; prog.style.cssText=art.getAttribute('style')||'';
+      bar.style.width=(f*100).toFixed(1)+'%';
+      ptxt.innerHTML=`<b>${esc(art.dataset.title)}</b> · ${left?`mancano ${left} min`:'ultime righe'}`;
+      // capitolo in corso nell'indice laterale
+      const hs=[...art.querySelectorAll('.text h3')];
+      let cur=null; for(const h of hs){ if(h.getBoundingClientRect().top<y) cur=h.id; }
+      for(const a of art.querySelectorAll('.side-toc a')) a.setAttribute('aria-current',String(a.getAttribute('href')==='#'+cur));
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  /* ascolta */
+  function stopSpeech(){
+    if('speechSynthesis' in window) speechSynthesis.cancel();
+    for(const b of document.querySelectorAll('[data-listen]')){b.setAttribute('aria-pressed','false');b.textContent='Ascolta'}
+  }
+  function listen(btn){
+    if(btn.getAttribute('aria-pressed')==='true'){stopSpeech();return}
+    stopSpeech();
+    const art=document.getElementById(btn.dataset.listen); if(!art) return;
+    const parts=[art.dataset.title, art.querySelector('.stand')?.textContent||'', ...[...art.querySelectorAll('.text > p, .text > h3')].map(n=>n.textContent)];
+    const voice=speechSynthesis.getVoices().find(v=>/^it/i.test(v.lang));
+    btn.setAttribute('aria-pressed','true'); btn.textContent='Ferma la lettura';
+    parts.filter(Boolean).forEach((t,i,arr)=>{
+      const u=new SpeechSynthesisUtterance(t); u.lang='it-IT'; if(voice) u.voice=voice;
+      if(i===arr.length-1) u.onend=()=>{btn.setAttribute('aria-pressed','false');btn.textContent='Ascolta'};
+      speechSynthesis.speak(u);
+    });
+  }
+
   const toast=document.getElementById('toast'); let tt;
   function say(t){toast.textContent=t;toast.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toast.hidden=true,2200)}
   document.addEventListener('click',ev=>{
-    const b=ev.target.closest('.share'); if(!b) return;
+    const l=ev.target.closest('[data-listen]'); if(l){listen(l);return}
+    const t=ev.target.closest('[data-toc]');
+    if(t){ev.preventDefault();const el=document.getElementById(t.getAttribute('href').slice(1)); if(el) el.scrollIntoView(); return}
+    const b=ev.target.closest('.share[data-id]'); if(!b) return;
     const link=BASE+'#'+b.dataset.id;
     try{navigator.clipboard.writeText(link).then(()=>say('Link copiato'),()=>say(link))}catch(_){say(link)}
   });
 
-  fetch('data/issues.json').then(r=>r.json()).then(d=>{
+  // il Quotidiano è facoltativo: se non si carica, il Settimanale funziona lo stesso
+  const dailyLoad=fetch('../quotidiano/data/issues.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{
+    for(const x of ((d&&d.issues)||[]).slice().sort((a,b)=>a.date.localeCompare(b.date)))
+      for(const m of (x.markdown||'').matchAll(/\]\((https?:\/\/[^)\s]+)\)/g)) if(!DAILY[m[1]]) DAILY[m[1]]=x.date;
+  }).catch(()=>{});
+
+  fetch('data/issues.json',{cache:'no-store'}).then(r=>r.json()).then(async d=>{
     DATA=(d.issues||[]).sort((a,b)=>b.date.localeCompare(a.date));
+    await Promise.race([dailyLoad,new Promise(r=>setTimeout(r,1500))]);
     route(); window.addEventListener('hashchange',route);
   }).catch(()=>{meta.innerHTML='<span>Non riesco a caricare il numero. Ricarica la pagina.</span>'});
 })();
 </script>
+</body>
+</html>

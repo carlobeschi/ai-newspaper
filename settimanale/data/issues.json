@@ -1,0 +1,456 @@
+{
+ "issues": [
+  {
+   "date": "2026-11-08",
+   "n": 1,
+   "range": "1–7 novembre 2026",
+   "from": "2026-11-01",
+   "to": "2026-11-07",
+   "cover": {
+    "id": "copertina",
+    "section": "Copertina",
+    "tag": "Politica e infrastrutture",
+    "title": "L'America vota contro i data center",
+    "standfirst": "Ai midterm gli elettori hanno bocciato quasi tutti i referendum sui nuovi poli di calcolo e il Texas ha cambiato colore. Il giorno dopo il Nasdaq ha perso migliaia di miliardi. La corsa all'infrastruttura dell'AI ha scoperto di avere un problema di consenso.",
+    "photo": {
+     "file": "img/2026-11-08-copertina.jpg",
+     "author": "Lambtron",
+     "license": "CC BY-SA 4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Google_data_center.jpg",
+     "alt": "Il data center di Google a The Dalles, in Oregon",
+     "caption": "Immagine di repertorio: il data center di Google a The Dalles, in Oregon."
+    },
+    "pull": "Su oltre quaranta referendum locali sui data center, gli elettori americani ne hanno approvato uno solo.",
+    "body": [
+     "Per due anni la domanda sull'infrastruttura dell'intelligenza artificiale è stata una sola: quanto in fretta si riesce a costruire. Questa settimana gli elettori americani ne hanno posta un'altra, più scomoda: chi li vuole, questi impianti? Su oltre quaranta quesiti referendari locali legati ai data center, uno solo è stato approvato. Gli altri hanno bocciato nuove concessioni energetiche e nuovi campus.",
+     "## Il Texas cambia colore",
+     "Il risultato più pesante arriva dal Texas, che negli ultimi mesi era diventato l'epicentro dei cantieri dell'AI americana. La democratica Gina Hinojosa ha vinto la corsa a governatrice e James Talarico quella al Senato, e ora si parla apertamente di una moratoria sui nuovi permessi. Sul tavolo ci sono progetti enormi: lo Stargate Frontier da 1.820 megawatt e il Nexus Hubbard da 6.400 megawatt destinato ad Anthropic.",
+     "Anche il denaro del settore non ha funzionato. La rete di super PAC Leading the Future, sostenuta da Andreessen Horowitz e Greg Brockman con un fondo da 100 milioni di dollari, ha visto perdere diversi candidati di punta. In South Carolina la repubblicana Darline Graham è stata attaccata proprio sui sussidi ai data center. In molti collegi l'appoggio dell'industria tech è diventato un argomento contro chi lo riceveva.",
+     "## La reazione dei mercati",
+     "Wall Street ha letto il voto come un rischio concreto per i piani di spesa. Nella seduta successiva il Nasdaq ha perso circa il 5%, con stime delle perdite tra 2.500 e 3.800 miliardi di dollari a seconda del perimetro considerato. I produttori di chip hanno pagato più di tutti: Nvidia ha ceduto l'8,5%, pari a 447 miliardi di capitalizzazione, AMD il 15%. Gli operatori temono che un Congresso a guida democratica acceleri restrizioni e moratorie locali.",
+     "Il voto è caduto su un settore che già mostrava segni di affaticamento finanziario. Il nuovo indicatore di Forrester misura la pressione dell'offerta di infrastruttura a 4,95 su 5, contro una domanda ferma a 3,44. Amazon nel trimestre ha speso 77,3 miliardi a fronte di 42,4 miliardi di cassa operativa e ha raccolto 48,1 miliardi in prestiti; Microsoft ha emesso obbligazioni per 25 miliardi. Su X circolano conti secondo cui i ricavi coprono meno del 20% dei mille miliardi di investimenti previsti per il 2026.",
+     "## Le aziende cambiano linguaggio",
+     "OpenAI aveva preparato il terreno prima del voto. Chris Lehane, responsabile degli affari globali, aveva anticipato ad Axios una campagna di relazioni pubbliche per orientare il dibattito verso le presidenziali del 2028, compresa l'idea di chiamare i data center «campus di calcolo AI». Dopo il voto l'azienda è andata oltre: nella sua nuova policy per i campus non chiederà più accordi di riservatezza agli amministratori locali e pubblicherà i piani delle strutture.",
+     "Il consenso non è l'unico collo di bottiglia. L'attesa per allacciarsi alla rete elettrica dura anni, e alcuni costruttori comprano motori d'aereo dismessi, riconvertiti a gas da ProEnergy, per avere energia in 24 mesi: li usano xAI per Colossus 2 e Crusoe per Stargate in Texas, nonostante l'efficienza minore e le emissioni più alte. Al Senato arriva il BAAJA, una legge di 417 pagine per accorciare le autorizzazioni di reti e impianti: le associazioni delle rinnovabili contano su 350 gigawatt puliti, gli ambientalisti temono un boom di centrali a gas.",
+     "Intanto chi costruisce si concentra. Crusoe ha venduto a Google il cantiere in Wyoming, pensato per arrivare a 10 gigawatt, e Google ha annunciato 17 miliardi di investimenti per completarlo. Gli operatori indipendenti faticano a finanziare impianti di questa scala e i grandi gruppi ne prendono il controllo. Dopo questa settimana è chiaro che il permesso di costruire non dipende più solo da capitali e turbine: passa dai consigli comunali e dalle urne."
+    ],
+    "sources": [
+     {
+      "label": "MIT Technology Review — Il Texas e i data center",
+      "url": "https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/"
+     },
+     {
+      "label": "TechCrunch — I super PAC dell'AI ai midterm",
+      "url": "https://techcrunch.com/2026/11/04/ai-pacs-spent-millions-trying-to-shape-congress-heres-how-they-fared/"
+     },
+     {
+      "label": "Forrester — Il modello sulla bolla AI",
+      "url": "https://www.forrester.com/blogs/the-ai-bubble-isnt-bursting-yet-heres-what-to-watch-using-our-model/"
+     },
+     {
+      "label": "TechCrunch — Il rebranding dei data center di OpenAI",
+      "url": "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/"
+     },
+     {
+      "label": "TechCrunch — Dopo i midterm, data center in salita",
+      "url": "https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers/"
+     },
+     {
+      "label": "TechCrunch — I motori d'aereo per i data center",
+      "url": "https://techcrunch.com/2026/11/03/data-centers-are-turning-to-old-jet-engines-as-the-wait-for-power-grows/"
+     },
+     {
+      "label": "MIT Technology Review — La riforma dei permessi",
+      "url": "https://www.technologyreview.com/2026/11/05/1148062/permitting-reform/"
+     },
+     {
+      "label": "TechCrunch — Crusoe vende a Google il Wyoming",
+      "url": "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/"
+     }
+    ]
+   },
+   "brief": [
+    {
+     "day": "2 nov",
+     "title": "Squarespace taglia il 19% del personale",
+     "text": "Circa 300 licenziamenti mentre il settore dei siti web subisce la concorrenza degli strumenti di vibe-coding come Lovable. L'azienda punta sulla nuova piattaforma Forma.",
+     "url": "https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/"
+    },
+    {
+     "day": "3 nov",
+     "title": "Anthropic presenta FlashProve",
+     "text": "Un protocollo open source basato su prove a conoscenza zero che certifica quale modello ha prodotto una risposta, senza rivelarne i pesi. Serve a impedire sostituzioni silenziose con modelli più economici.",
+     "url": "https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/"
+    },
+    {
+     "day": "3 nov",
+     "title": "Un modello AI in orbita",
+     "text": "Google Research e Planet hanno fatto girare Gemma 4 su una TPU a bordo di un satellite prototipo da 1 kW: è il test del Project Suncatcher."
+    },
+    {
+     "day": "4 nov",
+     "title": "Meta compra Conductor",
+     "text": "La startup che fa lavorare in parallelo squadre di agenti di coding entra nei Superintelligence Labs. Il suo servizio cloud chiude il 20 novembre.",
+     "url": "https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/"
+    },
+    {
+     "day": "4 nov",
+     "title": "Uber: quattro corse prenotate da agenti",
+     "text": "Nella settimana di Halloween, su 320 milioni di viaggi e ordini, solo quattro corse e circa 500 ordini Uber Eats sono passati da agenti autonomi.",
+     "url": "https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/"
+    },
+    {
+     "day": "5 nov",
+     "title": "La geometria algebrica tradotta in Lean",
+     "text": "Gli agenti di Axiom Math hanno verificato l'intero Stacks Project: 7.654 pagine diventate circa 16 milioni di righe controllate dal compilatore.",
+     "url": "https://techcrunch.com/2026/11/05/axiom-math-wants-to-keep-ai-slop-out-of-mathematics/"
+    },
+    {
+     "day": "5 nov",
+     "title": "Il primo umanoide in Borsa",
+     "text": "Agility Robotics si quota al Nasdaq tramite SPAC: 465 milioni raccolti a una valutazione di 2,5 miliardi, con 174.000 dollari di ricavi nel semestre.",
+     "url": "https://techcrunch.com/2026/11/05/agility-is-the-first-pure-humanoid-robot-company-on-the-stock-market-are-you-buying/"
+    },
+    {
+     "day": "6 nov",
+     "title": "Robot che puliscono casa a San Francisco",
+     "text": "Tau Robotics prova le pulizie domestiche con umanoidi teleoperati a 30-60 dollari l'ora, per raccogliere dati sui movimenti.",
+     "url": "https://www.technologyreview.com/2026/11/06/1148090/i-watched-a-humanoid-robot-clean-my-apartment-it-felt-like-a-taste-of-the-future/"
+    },
+    {
+     "day": "6 nov",
+     "title": "In Delaware le società guidate da un agente",
+     "text": "Una proposta di legge crea la Artificial Intelligence Company, una società che un agente AI potrebbe gestire, firmando contratti e stando in giudizio."
+    },
+    {
+     "day": "7 nov",
+     "title": "Spionaggio cinese attorno a Jensen Huang",
+     "text": "Un memo dell'intelligence USA sostiene che una dirigente di Megaspeed sia stata reclutata da Pechino per influenzare il CEO di Nvidia sull'export di GPU. Nvidia nega fughe di dati.",
+     "url": "https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/"
+    }
+   ],
+   "features": [
+    {
+     "id": "token",
+     "section": "Economia",
+     "tag": "Il costo dell'AI",
+     "title": "Finita la festa dei token",
+     "standfirst": "Apple mette un tetto alla spesa dei suoi ingegneri, Ramp vede la crescita fermarsi all'1,5%, Revolut porta i modelli in casa. Dopo mesi di consumo senza limiti, le aziende hanno cominciato a fare i conti.",
+     "photo": {
+      "file": "img/2026-11-08-a1.jpg",
+      "author": "NOIRLab/NSF/AURA/T. Slovinský",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:NOIRLab_HQ_Server_Racks_(6V6A0395-CC).jpg",
+      "alt": "File di server in una sala macchine",
+      "caption": "Immagine di repertorio: rack di server nella sala macchine di NOIRLab a Tucson."
+     },
+     "pull": "Tra agosto e settembre la spesa aziendale in token è cresciuta dell'1,5%. A luglio era cresciuta del 42%.",
+     "body": [
+      "I dati di spesa aggregati da Ramp, la piattaforma di carte aziendali, raccontano una frenata netta. Tra agosto e settembre la spesa delle imprese in token AI è cresciuta solo dell'1,5%, dopo il +42% di luglio, anche se i volumi di utilizzo continuano a salire. L'1% di aziende che usa di più l'AI ha fermato i budget sotto i 10.000 dollari al mese per dipendente. I tagli di prezzo di OpenAI e Anthropic e l'uso di router tra modelli hanno fatto il resto.",
+      "La notizia che ha fatto più rumore viene da Apple. Secondo le indiscrezioni riprese da TechCrunch, l'azienda ha abbassato il tetto giornaliero di spesa AI dei suoi ingegneri da 300 a 200 dollari e vuole arrivare a 100; per gli altri reparti il limite potrebbe scendere a 25 dollari. È la fine del «tokenmaxxing», l'invito a usare l'AI il più possibile che molte aziende avevano lanciato nei mesi scorsi.",
+      "Il sondaggio annuale di McKinsey dà la misura del problema. Il 40% delle imprese sopra il miliardo di fatturato sta mettendo in produzione agenti e quasi un terzo sviluppa internamente software che prima avrebbe comprato. Ma solo il 37% vede un effetto positivo sull'EBIT, e il 20% segnala vincoli dovuti alla crescita dei costi dei token.",
+      "## Le strategie per spendere meno",
+      "La prima risposta è il routing: mandare ogni richiesta al modello più piccolo che basta. Alla conferenza Harness Unscripted i responsabili FinOps di gruppi come Absa hanno raccontato risparmi mensili tra il 30% e il 50% con router come Cursor Router, spostando il controllo della spesa dai singoli utenti ai team.",
+      "La seconda è portare i carichi pesanti su modelli propri. Thomson Reuters ha spostato le funzioni più voraci di CoCounsel Legal, come la revisione massiva di documenti, dai modelli di frontiera a modelli verticali proprietari, e così ha potuto mantenere il canone fisso per gli studi legali. Revolut è andata più lontano: circa 2.000 ingegneri lavorano su un cluster di 56 GPU Nvidia B200 con modelli GLM ospitati in casa, mentre Claude Code e Codex restano per i casi eccezionali. Il costo dichiarato è di 30 centesimi per milione di token, il 90% in meno delle API di frontiera.",
+      "La terza è usare l'AI per costruire, non per eseguire. Brennan Industries, un produttore manifatturiero, fa scrivere agli agenti codice SuiteScript che poi gira dentro il suo ERP NetSuite: l'AI costruisce la logica una volta, e in produzione non si consumano token. Sul fronte tecnico, un paper di NVIDIA mostra che comprimere aggressivamente la cronologia degli agenti riduce il contesto di picco da 32.000 a 8.000 token senza perdere accuratezza.",
+      "## Anche chi vende sente il limite",
+      "La pressione non riguarda solo i clienti. Elon Musk ha confermato che i limiti d'uso improvvisi di Grok Bot sono voluti, perché il servizio costa troppo rispetto a quanto incassa. OpenAI, unificando le schede Chat e Work della sua app desktop, fa attingere assistente e Codex allo stesso contingente di token, e gli utenti intensivi arriveranno prima al limite. Anthropic, nel suo prospetto, dichiara che il calcolo assorbe il 58% dei ricavi.",
+      "Il risultato è che l'efficienza è tornata a contare. Questa settimana sono comparsi modelli che fanno una cosa sola e la fanno in fretta: i Foundation Decision Model che danno una risposta strutturata in 180 millisecondi, il modello vocale Woof da 32 MB che gira nel browser, DeepSeek Flash che su quattro workstation DGX Spark elabora 6.000 token al secondo. Per un anno ha vinto chi usava più AI. Ora conta quanto lavoro si ottiene da ogni token."
+     ],
+     "sources": [
+      {
+       "label": "TechCrunch — I dati di Ramp sulla spesa AI",
+       "url": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/"
+      },
+      {
+       "label": "TechCrunch — Apple taglia i budget AI interni",
+       "url": "https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/"
+      },
+      {
+       "label": "diginomica — Il verdetto di McKinsey sul 2026",
+       "url": "https://diginomica.com/were-road-roi-mckinseys-verdict-ai-2026"
+      },
+      {
+       "label": "diginomica — Tokenomics e FinOps",
+       "url": "https://diginomica.com/tokenomics-how-drive-ai-value-help-finops"
+      },
+      {
+       "label": "diginomica — Thomson Reuters contro il caro-token",
+       "url": "https://diginomica.com/putting-tokenomics-trial-how-thomson-reuters-claims-prosecute-against-rising-costs-its-legal-ai"
+      },
+      {
+       "label": "diginomica — Brennan Industries e NetSuite",
+       "url": "https://diginomica.com/suiteworld-26-brennan-industries-rebuilding-erp-ux-claude-codex"
+      },
+      {
+       "label": "TechCrunch — OpenAI unisce Chat e Work",
+       "url": "https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/"
+      },
+      {
+       "label": "TechCrunch — Il modello vocale Woof",
+       "url": "https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/"
+      }
+     ]
+    },
+    {
+     "id": "ipo",
+     "section": "Finanza",
+     "tag": "Verso la Borsa",
+     "title": "Due IPO e un conto da pagare",
+     "standfirst": "Anthropic mette in piazza i suoi numeri, OpenAI fissa il 2027. Le valutazioni scendono mentre il costo del calcolo sale: è la settimana in cui i due grandi laboratori hanno cominciato a parlare come società quotate.",
+     "photo": {
+      "file": "img/2026-11-08-a2.jpg",
+      "author": "Vanja Savic",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Yoni_Assia_at_the_eToro_IPO_launch_event_at_Nasdaq_on_May_15,_2025_01.jpg",
+      "alt": "Una cerimonia di quotazione al Nasdaq MarketSite",
+      "caption": "Immagine di repertorio: una cerimonia di quotazione al Nasdaq MarketSite di New York, nel 2025."
+     },
+     "pull": "Il conto delle infrastrutture di Anthropic ha raggiunto 10 miliardi di dollari: il 58% del fatturato.",
+     "body": [
+      "Un prospetto di quotazione obbliga a dire cose che un'azienda privata può tacere. Nell'aggiornamento del suo S-1, Anthropic ha comunicato ricavi per 17 miliardi di dollari al 30 settembre, contro gli 11,5 del trimestre precedente. La crescita c'è, ma le perdite operative si sono allargate: il calcolo è costato 10 miliardi, il 58% del fatturato, contro il 48% di tre mesi prima. Per far fronte alla domanda l'azienda ha dovuto comprare altri 5 miliardi di capacità con impegni a breve termine e tariffe alte.",
+      "Nella sezione sui fattori di rischio, Anthropic ha scritto una frase che ha fatto il giro del settore: i suoi modelli futuri potrebbero presto raggiungere la soglia dell'auto-miglioramento ricorsivo, cioè un progresso rapido e autonomo attribuibile all'AI stessa. L'azienda ammette di aver riconosciuto alcune accelerazioni passate solo a posteriori e promette di aggiornare la sua Responsible Scaling Policy per mantenere il controllo umano.",
+      "La trasparenza ha però un limite che ha scatenato polemiche. Un cofondatore ha ammesso che il rapporto di valutazione dei rischi redatto da METR è stato pubblicato con ampie parti oscurate, giustificando i tagli con ragioni di sicurezza. Parte della comunità accusa l'azienda di usare la sicurezza per sottrarsi a verifiche indipendenti proprio prima dell'IPO. Nel frattempo gli investitori istituzionali hanno rivisto le stime sulla valutazione di quotazione, da circa 2.000 a circa 1.100 miliardi di dollari.",
+      "## OpenAI e la svolta aziendale",
+      "Il presidente di OpenAI Greg Brockman ha detto che la società sarà pronta per l'IPO nel 2027. La sua tesi poggia sul mercato aziendale: nel terzo trimestre i ricavi annualizzati sono cresciuti del 70% rispetto al trimestre precedente e il segmento enterprise è raddoppiato, fino a superare la metà del fatturato, dal 30% di prima. Tra i contratti citati c'è quello con J.P. Morgan Chase.",
+      "La raccolta di capitali racconta una storia meno brillante. OpenAI ha incassato 11 miliardi in una tranche che la valuta 1.250 miliardi, dentro un round che potrebbe chiudersi a 20 miliardi nelle prossime settimane. A settembre l'obiettivo era 30.",
+      "## Dove si guadagna davvero",
+      "Mentre i laboratori di frontiera bruciano cassa, chi vende l'infrastruttura per far girare i modelli guadagna. Fal, piattaforma di inferenza, ha chiuso un round da 1,3 miliardi guidato da Bessemer con Nvidia e T. Rowe Price e ha raddoppiato la valutazione a 16 miliardi, con oltre 800 milioni di fatturato annuo trainato da modelli aperti di video, audio e immagini. Palo Alto Networks tratta l'acquisto di Clutch Security, che protegge gli accessi degli agenti, per 500 milioni: circa 50 volte i ricavi ricorrenti.",
+      "I segnali dai clienti sono più ambigui. Palantir ha superato per la prima volta i 2 miliardi di ricavi trimestrali, con il commerciale USA a 984 milioni, sopra il governativo. Ma il valore totale dei nuovi contratti commerciali è sceso da 2,13 a 1,46 miliardi: le aziende firmano accordi di sperimentazione sempre più brevi. Agility Robotics arriva in Borsa con 174.000 dollari di ricavi semestrali e 362 milioni di perdite, forte di 300 milioni di ordini.",
+      "Forrester sintetizza così: la bolla non sta scoppiando, ma i bilanci dei costruttori di calcolo iniziano a risentirne, con il loro indice di salute finanziaria sceso da 82,3 a 79,1. Per Anthropic e OpenAI la sfida dei prossimi mesi sarà convincere il mercato che i ricavi possono crescere più in fretta della bolletta del calcolo."
+     ],
+     "sources": [
+      {
+       "label": "TechCrunch — Anthropic e l'economia del calcolo",
+       "url": "https://techcrunch.com/2026/11/03/anthropic-is-still-grappling-with-the-economics-of-compute/"
+      },
+      {
+       "label": "TechCrunch — Anthropic e l'auto-miglioramento ricorsivo",
+       "url": "https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/"
+      },
+      {
+       "label": "TechCrunch — OpenAI pronta all'IPO nel 2027",
+       "url": "https://techcrunch.com/2026/11/05/openai-president-greg-brockman-says-company-could-be-ipo-ready-in-2027/"
+      },
+      {
+       "label": "TechCrunch — OpenAI raccoglie altri 11 miliardi",
+       "url": "https://techcrunch.com/2026/11/06/openai-reportedly-raises-an-additional-11-billion-at-a-1-25-trillion-valuation/"
+      },
+      {
+       "label": "TechCrunch — Fal raddoppia la valutazione",
+       "url": "https://techcrunch.com/2026/11/03/ai-inference-startup-fal-doubles-its-valuation-to-16b-as-demand-surges/"
+      },
+      {
+       "label": "TechCrunch — Palo Alto Networks e Clutch",
+       "url": "https://techcrunch.com/2026/11/05/palo-alto-networks-in-talks-to-buy-ai-agent-security-startup-clutch-for-500m/"
+      },
+      {
+       "label": "TechCrunch — Il segnale nascosto nei conti di Palantir",
+       "url": "https://techcrunch.com/2026/11/03/hiding-inside-palantirs-skyrocketing-quarter-is-a-foreboding-signal/"
+      },
+      {
+       "label": "Forrester — La bolla AI non scoppia ancora",
+       "url": "https://www.forrester.com/blogs/the-ai-bubble-isnt-bursting-yet-heres-what-to-watch-using-our-model/"
+      }
+     ]
+    },
+    {
+     "id": "cyber",
+     "section": "Sicurezza",
+     "tag": "Agenti e attacchi",
+     "title": "Quando l'agente diventa un hacker",
+     "standfirst": "Un modello di OpenAI trova 948 falle nel kernel Linux, un modello cinese gratuito sfiora i sistemi chiusi nei test di intrusione. La sicurezza informatica è diventata il campo dove le capacità degli agenti si misurano sul serio.",
+     "photo": {
+      "file": "img/2026-11-08-a3.jpg",
+      "author": "Autore sconosciuto",
+      "license": "CC BY-SA 3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Computersicherheit.jpg",
+      "alt": "Illustrazione sulla sicurezza informatica",
+      "caption": "Immagine di repertorio sulla sicurezza informatica."
+     },
+     "pull": "948 vulnerabilità nel kernel Linux, trovate e corrette da un modello per circa 1.270 dollari l'una.",
+     "body": [
+      "Per misurare quanto sono diventati capaci gli agenti, la sicurezza informatica offre un banco di prova senza sconti: una falla c'è o non c'è. Questa settimana OpenAI ha presentato ChatGPT Cyber, un modello specializzato accessibile tramite il programma Daybreak Red. Messo da solo davanti al kernel Linux, oltre 40 milioni di righe di codice, ha individuato, verificato e corretto 948 vulnerabilità di privilege escalation, con una spesa API complessiva di 1,2 milioni di dollari. Ha trovato anche 81 falle inedite in Firefox. I manutentori del kernel ne hanno già chiuse 61.",
+      "Lo stesso giorno uno studio di Vals ha mostrato quanto si sia ridotto il vantaggio dei modelli chiusi. Su reti aziendali simulate, il modello open-weight DeepSeek ha completato il 73% dei compiti di intrusione in più passaggi, contro l'81% di Daybreak, il modello di cybersecurity non pubblico di OpenAI. La differenza di costo è enorme: 2-3 dollari di token per test per DeepSeek, 17-46 dollari per GPT-6-Sol. Capacità d'attacco serie sono ormai disponibili gratis a chiunque.",
+      "## L'agente come insider",
+      "Le aziende stanno cambiando il modo in cui pensano agli agenti che fanno lavorare al proprio interno: li trattano come dipendenti con privilegi molto alti, e quindi come potenziali minacce interne. Alla conferenza Fal.Con è stato proposto un interruttore d'emergenza per revocare all'istante le sessioni di un agente. Trustpilot fa girare le sue automazioni in microVM isolate, perché un processo che va fuori controllo non possa restare attivo.",
+      "Forrester propone di passare dal principio del privilegio minimo a quello della «agenzia minima»: limitare le risorse a cui un agente accede non basta, bisogna calibrare quanta autonomia decisionale ha in ogni momento. I ricercatori IBM hanno mostrato quanto può valere un controllo deterministico prima di ogni azione: il loro gate JevAct, che traduce le policy in verifiche formali, ha portato il tasso di successo di Claude su un benchmark dal 39,5% all'80,7%. Il mercato ha preso nota: Palo Alto Networks è pronta a pagare 500 milioni per Clutch Security, che fa proprio questo.",
+      "## Quando l'attacco esce dallo schermo",
+      "In Europa si è visto cosa succede quando l'automazione connessa non è protetta. Un attacco coordinato ha alzato fino a 70 gradi la temperatura dei banchi frigo di catene di supermercati in Belgio, Svezia e Lussemburgo, con milioni di euro di cibo perso. Pochi giorni dopo l'attacco si è esteso a tre depositi di sangue in Francia, dove gli allarmi hanno salvato le scorte.",
+      "Il software scritto in fretta aggiunge altro rischio. La società di sicurezza Crissy Field ha analizzato 159.041 progetti creati con Lovable e ne ha trovati 7.403 con database esposti pubblicamente, tra cui passaporti e oltre 200.000 log di chat. E un'inchiesta di Wired con AI Forensics ha scoperto più di 400 app negli store di Apple e Google che si presentavano come editor o guide fitness e, sbloccate da remoto, diventavano strumenti per creare deepfake espliciti.",
+      "La settimana lascia una lezione doppia. Gli stessi modelli che trovano falle a centinaia possono sfruttarle, e i più capaci sono già scaricabili da chiunque. Difendersi richiede di trattare gli agenti come qualsiasi altro sistema con le chiavi di casa: permessi stretti, controlli prima di ogni azione e la possibilità di spegnerli subito."
+     ],
+     "sources": [
+      {
+       "label": "TechCrunch — Il modello di cybersecurity di OpenAI",
+       "url": "https://techcrunch.com/2026/11/05/openai-released-a-new-cybersecurity-model-is-that-enough/"
+      },
+      {
+       "label": "WIRED — I modelli cinesi gratuiti e l'hacking",
+       "url": "https://www.wired.com/story/free-chinese-ai-models-are-getting-scary-good-at-hacking/"
+      },
+      {
+       "label": "diginomica — Trustpilot e gli agenti come insider",
+       "url": "https://diginomica.com/why-trustpilot-treats-ai-agents-ultimate-insider-threat-and-what-looks-practice"
+      },
+      {
+       "label": "Forrester — Least Agency",
+       "url": "https://www.forrester.com/blogs/ai-agents-need-more-than-least-privilege-they-need-least-agency/"
+      },
+      {
+       "label": "MIT Technology Review — Data lineage e impresa agentica",
+       "url": "https://www.technologyreview.com/2026/11/04/1147596/securing-the-agentic-enterprise-with-data-lineage/"
+      },
+      {
+       "label": "MIT Technology Review — Attacchi alla catena del freddo",
+       "url": "https://www.technologyreview.com/2026/11/02/1147889/the-download-agentic-web-arrives-eliminating-traffic-deaths/"
+      },
+      {
+       "label": "WIRED — Le app che nascondono deepfake",
+       "url": "https://www.wired.com/story/hundreds-of-mundane-ai-apps-are-hiding-abusive-deepfake-features/"
+      }
+     ]
+    }
+   ],
+   "opinion": {
+    "id": "commento",
+    "section": "Il commento",
+    "tag": "Lavoro e agenti",
+    "title": "Più veloci da soli, più lenti insieme",
+    "standfirst": "Gli agenti di coding moltiplicano le pull request. Il lavoro di squadra non segue la stessa curva, e lo dicono proprio i numeri di chi li usa ogni giorno.",
+    "byline": "Analisi di Claude sulle notizie della settimana",
+    "pull": "Velocizzare di dieci volte un terzo del lavoro rende la settimana più corta di un terzo, non di dieci volte.",
+    "body": [
+     "Neil Kakkar ha fatto quello che pochi fanno: ha contato. Nelle aziende in cui lavorava prima dell'AI produceva tra 8 e 20 pull request al mese. Nella startup Tano, con Claude Code, ne produce più di 200. Il suo resoconto su The Pragmatic Engineer è onesto anche su cosa è andato perso: le revisioni manuali del codice sono sparite, insieme a una parte del contesto condiviso tra colleghi. Al loro posto è arrivato un continuo saltare da un compito all'altro, e il collo di bottiglia si è spostato sulla verifica delle specifiche.",
+     "Questa settimana in molti hanno tirato fuori la legge di Amdahl, formulata nel 1967. Se scrivere codice occupa un terzo di una settimana da quaranta ore, renderlo dieci volte più veloce porta la settimana a 28 ore. L'accelerazione reale è di 1,4 volte, perché il resto del lavoro è fatto di passaggi sequenziali che non si delegano: capire cosa serve, decidere, mettersi d'accordo.",
+     "John Cutler aggiunge un pezzo che i grafici di produttività non vedono. Molti attriti che l'AI elimina, come le riunioni di revisione o il confronto prima di una scelta, servivano a qualcosa: costringevano a pensare a costi, alternative e tenuta dell'architettura. Chi lavora da solo con i propri agenti va più veloce, ma l'azienda perde il giudizio collettivo prima di andare in produzione.",
+     "C'è poi una questione di gusto. Diversi ingegneri notano che gli agenti producono commit formalmente corretti ma senza l'intento progettuale della squadra, perché tendono verso la media statistica del codice che hanno visto. I file di vincoli e le «skill» servono sempre meno a istruire il modello e sempre più a conservare le decisioni prese dalle persone. Sullo stesso tema si è acceso il dibattito sulle «software factory»: c'è chi le considera marketing e chi sostiene che il loro valore sta nel percorso, cioè nel far passare ogni richiesta da controlli e revisioni prima del rilascio.",
+     "Anche fuori dagli uffici tecnici i numeri invitano alla calma. Uber ha raccontato che nella settimana di Halloween, su 320 milioni di viaggi e ordini, quattro corse sono state prenotate da agenti: quando l'app tradizionale chiude una corsa in meno di 50 secondi, l'assistente non serve. L'agente conviene dove c'è molto lavoro da fare, non dove il lavoro è già facile.",
+     "La conclusione che propongo è semplice. Le pull request al mese misurano quanto produce una persona. Un'azienda dovrebbe misurare quante buone decisioni arrivano in produzione, e quanto spesso le persone si fermano a discuterle prima. Gli agenti hanno reso economico scrivere codice. Il tempo che liberano andrebbe speso nelle parti del lavoro che non accelerano: capire il problema e decidere insieme."
+    ],
+    "sources": [
+     {
+      "label": "The Pragmatic Engineer — Come cambia l'ingegneria del software",
+      "url": "https://newsletter.pragmaticengineer.com/p/how-software-engineering-is-changing"
+     },
+     {
+      "label": "John Cutler — La perdita della frizione positiva",
+      "url": "https://cutlefish.substack.com/p/tbm-450-the-loss-of-positive-friction"
+     },
+     {
+      "label": "TechCrunch — Quasi nessuno prenota Uber con un agente",
+      "url": "https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/"
+     }
+    ],
+    "photo": {
+     "file": "img/2026-11-08-a4.jpg",
+     "author": "SAMHSA from Rockville",
+     "license": "Public domain",
+     "page": "https://commons.wikimedia.org/wiki/File:Developers_working_on_the_%E2%80%9CTalk._They_Hear_You.%E2%80%9D_mobile_app._(14442858918).jpg",
+     "alt": "Sviluppatori al lavoro su un'app",
+     "caption": "Immagine di repertorio: sviluppatori al lavoro."
+    }
+   },
+   "society": [
+    {
+     "id": "parole",
+     "tag": "Diritti",
+     "title": "La corsa a comprare le parole degli altri",
+     "body": [
+      "Il New York Times, il Chicago Tribune e il Daily News hanno fatto causa a Brave a Manhattan. Il browser avrebbe indicizzato 30 miliardi di pagine con crawler non identificabili, aggirato i paywall e rivenduto i dati a laboratori come Anthropic, Perplexity, xAI e Mistral. L'accusa lo definisce un ricettatore di contenuti protetti.",
+      "Wired racconta l'altra faccia del mercato: broker come Mercor e Micro1 offrono fino a 2 milioni di dollari alle aziende per archivi completi di email, canali Slack e ticket interni. L'asta fallimentare di 500 milioni di messaggi interni di Spirit Airlines è stata congelata dopo la protesta dei sindacati, che chiedono chi abbia dato il consenso."
+     ],
+     "sources": [
+      {
+       "label": "TechCrunch — La causa contro Brave",
+       "url": "https://techcrunch.com/2026/11/02/new-york-times-and-other-outlets-sue-web-browser-brave-over-alleged-content-scraping/"
+      },
+      {
+       "label": "WIRED — Gli archivi aziendali in vendita",
+       "url": "https://www.wired.com/story/ai-companies-really-really-want-to-buy-your-work-files-and-emails/"
+      }
+     ]
+    },
+    {
+     "id": "scuole",
+     "tag": "Scuola",
+     "title": "Google e le scuole: o tutto o niente",
+     "body": [
+      "Dal prossimo anno le funzioni AI di Google saranno spente di default per gli studenti fino alle superiori. Ma la scuola che vuole bloccarle del tutto perde l'intero Google Search, perché le sintesi AI non si possono disattivare separatamente.",
+      "La scelta ha provocato accuse di condotta monopolistica, anche dall'ex presidente della FTC Lina Khan. DuckDuckGo ha lanciato una campagna per convincere le scuole a cambiare motore predefinito sulle centinaia di migliaia di Chromebook in uso."
+     ],
+     "sources": [
+      {
+       "label": "TechCrunch — Google, le scuole e la ricerca",
+       "url": "https://techcrunch.com/2026/11/04/google-faces-backlash-for-plan-that-would-turn-off-search-for-schools-that-restrict-ai/"
+      }
+     ]
+    },
+    {
+     "id": "sentieri",
+     "tag": "Vita quotidiana",
+     "title": "Persi in montagna seguendo il chatbot",
+     "body": [
+      "Ricercatori della Clemson University e i dati dei parchi nazionali americani descrivono una «resa cognitiva»: escursionisti che affidano itinerari difficili a Gemini o Claude e smettono di verificare. Al Grand Teton la quota di chi pianifica le escursioni con l'AI è passata da zero al 26%.",
+      "Con loro sono aumentati gli interventi di soccorso causati da indicazioni inventate o da sentieri che non esistono."
+     ],
+     "sources": [
+      {
+       "label": "WIRED — I chatbot che portano fuori strada",
+       "url": "https://www.wired.com/story/chatbots-are-leading-hikers-astray-with-dangerous-consequences/"
+      }
+     ]
+    }
+   ],
+   "numbers": [
+    {
+     "n": "1",
+     "of": "su oltre 40",
+     "label": "referendum locali sui data center approvati dagli elettori USA"
+    },
+    {
+     "n": "1,5%",
+     "label": "crescita della spesa aziendale in token tra agosto e settembre (era +42% a luglio)"
+    },
+    {
+     "n": "58%",
+     "label": "dei ricavi di Anthropic assorbiti dal costo del calcolo"
+    },
+    {
+     "n": "948",
+     "label": "vulnerabilità del kernel Linux trovate e corrette da ChatGPT Cyber"
+    },
+    {
+     "n": "4",
+     "label": "corse Uber prenotate da agenti nella settimana di Halloween, su 320 milioni di viaggi e ordini"
+    },
+    {
+     "n": "200 $",
+     "label": "il nuovo tetto giornaliero alla spesa AI degli ingegneri Apple, prima 300"
+    }
+   ],
+   "watch": [
+    {
+     "when": "Nei prossimi giorni",
+     "text": "Il Senato USA vota il BAAJA, la legge per accelerare i permessi di reti e impianti energetici."
+    },
+    {
+     "when": "20 novembre",
+     "text": "Chiude il servizio cloud di Conductor, dopo l'acquisizione da parte di Meta."
+    },
+    {
+     "when": "Prossime settimane",
+     "text": "OpenAI potrebbe chiudere il round a 20 miliardi, lontano dai 30 previsti a settembre."
+    },
+    {
+     "when": "In corso",
+     "text": "Le nuove valutazioni dell'IPO di Anthropic e le polemiche sul rapporto METR oscurato."
+    },
+    {
+     "when": "Texas",
+     "text": "La moratoria sui permessi per i data center promessa dalla nuova amministrazione."
+    }
+   ]
+  }
+ ]
+}

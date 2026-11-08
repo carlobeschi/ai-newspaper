@@ -6,7 +6,7 @@ I giornali dell'AI di Carlo, generati da Claude a partire dalla newsletter *Dail
 |---|---|
 | `index.html` | Pagina d'ingresso con i link ai giornali |
 | `quotidiano/` | **Il Quotidiano dell'AI**: `index.html`, `data/issues.json` (edizioni, la più recente per prima), `img/<data>.jpg` (foto di apertura) |
-| `settimanale/` | **Il Settimanale dell'AI** (in preparazione), stessa struttura |
+| `settimanale/` | **Il Settimanale dell'AI**: `index.html`, `data/issues.json` (numeri, il più recente per primo), `img/<data>-<pezzo>.jpg` |
 | `scripts/foto.py` | Cerca e scarica da Wikimedia Commons una foto con licenza libera per l'apertura |
 
 ## Aggiornamento

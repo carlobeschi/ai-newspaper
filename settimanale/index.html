@@ -1,0 +1,299 @@
+<title>Il Settimanale dell'AI</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;0,6..96,800;1,6..96,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<style>
+/* Layout: rivista settimanale. Copertina con foto e sommario, rassegna breve a due colonne,
+   approfondimenti in colonna di lettura da ~65 caratteri, commento su fondo tinto. */
+:root{
+  --paper:#f4f5f2; --paper-2:#e9ebe6; --ink:#16181c; --muted:#5a6068; --rule:#d3d7d0;
+  --accent:#0f5a69; --gold:#b9770b; --op-bg:#ece8dc;
+  --c-cover:#0f5a69; --c-econ:#b9770b; --c-fin:#2d5d9a; --c-sec:#a8392f; --c-op:#7a5a12; --c-soc:#4f6b3a;
+  --on-photo:#ffffff;
+  --f-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-body:"Source Serif 4","Iowan Old Style",Georgia,serif;
+  --f-label:"Barlow Condensed","Arial Narrow","Roboto Condensed",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#121417; --paper-2:#1a1d21; --ink:#e8e9e5; --muted:#9ba2a9; --rule:#2c3035;
+  --accent:#5fb4c4; --gold:#e3a63c; --op-bg:#1d1b16;
+  --c-cover:#5fb4c4; --c-econ:#e3a63c; --c-fin:#7fa8e0; --c-sec:#e57a6e; --c-op:#d8b65a; --c-soc:#9cc47e;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#121417; --paper-2:#1a1d21; --ink:#e8e9e5; --muted:#9ba2a9; --rule:#2c3035;
+  --accent:#5fb4c4; --gold:#e3a63c; --op-bg:#1d1b16;
+  --c-cover:#5fb4c4; --c-econ:#e3a63c; --c-fin:#7fa8e0; --c-sec:#e57a6e; --c-op:#d8b65a; --c-soc:#9cc47e;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto}
+.label{font-family:var(--f-label);text-transform:uppercase;letter-spacing:.08em;font-weight:600;font-size:.82rem}
+h1,h2,h3{text-wrap:balance}
+
+/* banda superiore */
+.about{border-bottom:1px solid var(--rule);padding-block:10px;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;align-items:baseline;color:var(--muted);font-size:.9rem}
+.about a{color:var(--accent);text-decoration:none;font-family:var(--f-label);font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:.85rem}
+.about a:hover{text-decoration:underline}
+
+/* testata */
+.mast{padding-block:28px 14px;border-bottom:3px double var(--ink);display:grid;gap:10px}
+.mast h1{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(2.6rem,8.5vw,6.2rem);line-height:.92;letter-spacing:-.02em}
+.mast h1 em{font-style:italic;font-weight:500;color:var(--accent)}
+.mast .meta{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;color:var(--muted)}
+.mast .meta b{color:var(--ink)}
+.mast select{font:inherit;font-family:var(--f-label);font-size:.95rem;background:var(--paper-2);color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:4px 8px}
+
+/* copertina */
+.cover{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:36px;padding-block:28px 36px;border-bottom:1px solid var(--rule)}
+.cover-main{min-width:0}
+.cover-fig{margin:0;position:relative}
+.cover-fig img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--paper-2)}
+.cover-fig figcaption{font-size:.8rem;color:var(--muted);margin-top:6px}
+.kick{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.kick .sec{color:var(--sc,var(--accent));font-weight:700}
+.kick .tag{color:var(--muted)}
+.cover h2{font-family:var(--f-display);font-weight:800;font-size:clamp(2.2rem,6vw,4.4rem);line-height:.98;letter-spacing:-.015em;margin:14px 0 14px}
+.cover h2 a{text-decoration:none}
+.cover h2 a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+.cover .stand{font-size:1.2rem;line-height:1.5;max-width:60ch;margin:0;color:var(--ink)}
+.toc{min-width:0;border-left:1px solid var(--rule);padding-left:28px}
+.toc h3{margin:0 0 12px;font-family:var(--f-label);font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.95rem;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.toc li a{display:grid;gap:2px;padding-block:12px;border-bottom:1px solid var(--rule);text-decoration:none}
+.toc li a:hover .t{text-decoration:underline}
+.toc .s{color:var(--sc);font-family:var(--f-label);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem}
+.toc .t{font-family:var(--f-display);font-weight:700;font-size:1.22rem;line-height:1.15}
+.toc .d{color:var(--muted);font-size:.92rem;line-height:1.4}
+
+/* sezioni */
+.band{padding-block:34px;border-bottom:1px solid var(--rule)}
+.band-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-top:3px solid var(--ink);padding-top:8px;margin-bottom:20px}
+.band-h h2{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.01em}
+.band-h span{color:var(--muted)}
+
+.brief{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;margin:0;padding:0;list-style:none}
+.brief li{display:grid;grid-template-columns:4.2rem minmax(0,1fr);gap:14px;padding-block:14px;border-bottom:1px solid var(--rule)}
+.brief .day{font-family:var(--f-label);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-size:.95rem;padding-top:2px;font-variant-numeric:tabular-nums}
+.brief h3{margin:0 0 4px;font-family:var(--f-body);font-weight:600;font-size:1.04rem;line-height:1.3}
+.brief p{margin:0;font-size:.95rem;line-height:1.5;color:var(--muted)}
+.brief a{text-decoration-color:var(--rule);text-underline-offset:3px}
+.brief a:hover{text-decoration-color:currentColor}
+
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0;padding:0;list-style:none}
+.nums li{padding:18px 22px 20px 0;border-bottom:1px solid var(--rule)}
+.nums .n{font-family:var(--f-display);font-weight:800;font-size:clamp(2.4rem,5vw,3.4rem);line-height:1;color:var(--gold);font-variant-numeric:lining-nums tabular-nums}
+.nums .n small{font-family:var(--f-label);font-size:1rem;font-weight:600;color:var(--muted);letter-spacing:.04em;margin-left:6px;text-transform:uppercase}
+.nums p{margin:8px 0 0;font-size:.95rem;line-height:1.45;max-width:32ch}
+
+/* articoli */
+.art{padding-block:46px;border-bottom:1px solid var(--rule);scroll-margin-top:12px}
+.art-head{max-width:880px}
+.art h2{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,5vw,3.5rem);line-height:1;letter-spacing:-.015em;margin:12px 0 14px}
+.art .stand{font-size:1.18rem;line-height:1.5;margin:0 0 14px;max-width:62ch}
+.byline{color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+.share{font:inherit;font-family:var(--f-label);text-transform:uppercase;letter-spacing:.06em;font-weight:600;font-size:.82rem;background:none;border:1px solid var(--rule);color:var(--ink);border-radius:3px;padding:3px 9px;cursor:pointer}
+.share:hover{border-color:var(--ink)}
+.art figure{margin:24px 0 0}
+.art figure img{display:block;width:100%;aspect-ratio:21/9;object-fit:cover;background:var(--paper-2)}
+.art figcaption{font-size:.8rem;color:var(--muted);margin-top:6px}
+.art-body{display:grid;grid-template-columns:minmax(0,65ch) minmax(0,1fr);gap:48px;margin-top:28px}
+.text{min-width:0}
+.text p{margin:0 0 1.05em}
+.text > p:first-of-type::first-letter{font-family:var(--f-display);font-weight:800;float:left;font-size:4.1em;line-height:.82;padding:.06em .1em 0 0;color:var(--sc,var(--accent))}
+.text h3{font-family:var(--f-label);text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:1.02rem;margin:1.7em 0 .5em;color:var(--sc,var(--accent))}
+.side{min-width:0;display:grid;align-content:start;gap:28px}
+.pull{margin:0;padding-top:14px;border-top:3px solid var(--sc,var(--accent));font-family:var(--f-display);font-style:italic;font-weight:500;font-size:1.5rem;line-height:1.25}
+.src h4{margin:0 0 8px;font-family:var(--f-label);text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:.85rem;color:var(--muted)}
+.src ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:.88rem;line-height:1.35}
+.src a{text-decoration-color:var(--rule);text-underline-offset:3px}
+.src a:hover{text-decoration-color:currentColor}
+
+.art.op{background:var(--op-bg);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));border-bottom:none}
+.art.op .inner{max-width:1180px;margin:0 auto}
+.art.op h2{font-style:italic;font-weight:700}
+
+.soc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.soc article{min-width:0;border-top:1px solid var(--rule);padding-top:12px;scroll-margin-top:12px}
+.soc .label{color:var(--c-soc)}
+.soc h3{font-family:var(--f-display);font-weight:700;font-size:1.45rem;line-height:1.12;margin:6px 0 10px}
+.soc p{margin:0 0 .8em;font-size:.97rem}
+.soc .src{margin-top:10px}
+
+.watch{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:0 28px}
+.watch li{padding-block:12px;border-bottom:1px solid var(--rule)}
+.watch .when{font-family:var(--f-label);font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);font-size:.9rem}
+.watch p{margin:4px 0 0;font-size:.97rem;line-height:1.45}
+
+footer{padding-block:34px 48px;color:var(--muted);font-size:.88rem;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px}
+footer h4{margin:0 0 8px;font-family:var(--f-label);text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:.85rem;color:var(--ink)}
+footer p{margin:0 0 .7em}
+footer ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+footer a{color:var(--accent)}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:4px;font-family:var(--f-label);letter-spacing:.05em;font-size:.95rem}
+
+@media (max-width:900px){
+  .cover{grid-template-columns:minmax(0,1fr)}
+  .toc{border-left:none;padding-left:0}
+  .art-body{grid-template-columns:minmax(0,1fr);gap:8px}
+  .side{order:-1;margin-bottom:12px}
+  .side .src{order:2}
+  .soc{grid-template-columns:minmax(0,1fr)}
+  footer{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  body{font-size:16.5px}
+  .brief{grid-template-columns:minmax(0,1fr)}
+  .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .art figure img{aspect-ratio:3/2}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="wrap">
+  <div class="about">
+    <span>Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG</span>
+    <a href="../quotidiano/">Leggi Il Quotidiano dell'AI</a>
+  </div>
+  <header class="mast">
+    <h1>Il Settimanale <em>dell'AI</em></h1>
+    <div class="meta label" id="meta"><span>Caricamento del numero…</span></div>
+  </header>
+  <main id="app"></main>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+  const app=document.getElementById('app'), meta=document.getElementById('meta');
+  let DATA=[];
+  const BASE=/claude|anthropic/.test(location.hostname)?'https://claude.ai/artifact/HHTyMfdodEP7ddvxxWzwyC':location.href.split('#')[0];
+  const SC={"Copertina":"--c-cover","Economia":"--c-econ","Finanza":"--c-fin","Sicurezza":"--c-sec","Il commento":"--c-op","Società":"--c-soc"};
+  const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const sc=sec=>`--sc:var(${SC[sec]||'--accent'})`;
+  const MESI=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+  const GIORNI=['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];
+  const fmt=iso=>{const d=new Date(iso+'T12:00:00Z');return `${GIORNI[d.getUTCDay()]} ${d.getUTCDate()} ${MESI[d.getUTCMonth()]} ${d.getUTCFullYear()}`};
+  const words=a=>a.join(' ').split(/\s+/).length;
+  const mins=a=>Math.max(1,Math.round(words(a.body)/220));
+
+  function sources(list){
+    if(!list||!list.length) return '';
+    return `<div class="src"><h4>Per approfondire</h4><ul>${list.map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join('')}</ul></div>`;
+  }
+  function body(paras){
+    return paras.map(p=>p.startsWith('## ')?`<h3>${esc(p.slice(3))}</h3>`:`<p>${esc(p)}</p>`).join('');
+  }
+  function photo(p,wide){
+    if(!p) return '';
+    return `<figure><img src="${esc(p.file)}" alt="${esc(p.alt)}" loading="lazy"><figcaption>${esc(p.caption||'')} Foto: ${esc(p.author)}, ${esc(p.license)}, <a href="${esc(p.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>.</figcaption></figure>`;
+  }
+  function article(e,a,opts={}){
+    const id=`a-${e.date}-${a.id}`;
+    const by=opts.byline||'Dalla redazione, sulle newsletter della settimana';
+    const inner=`
+      <div class="art-head">
+        <div class="kick label"><span class="sec">${esc(a.section)}</span><span class="tag">${esc(a.tag)}</span></div>
+        <h2>${esc(a.title)}</h2>
+        <p class="stand">${esc(a.standfirst)}</p>
+        <div class="byline"><span>${esc(by)}</span><span>${mins(a)} min di lettura</span><button class="share" type="button" data-id="${id}">Copia il link</button></div>
+      </div>
+      ${photo(a.photo)}
+      <div class="art-body">
+        <div class="text">${body(a.body)}</div>
+        <aside class="side">${a.pull?`<blockquote class="pull">${esc(a.pull)}</blockquote>`:''}${sources(a.sources)}</aside>
+      </div>`;
+    return `<article class="art${opts.op?' op':''}" id="${id}" style="${sc(a.section)}">${opts.op?`<div class="inner">${inner}</div>`:inner}</article>`;
+  }
+
+  function render(e, scrollTo){
+    const all=[e.cover,...e.features,e.opinion];
+    meta.innerHTML=`<span><b>Numero ${e.n}</b></span><span>${esc(fmt(e.date))}</span><span>Settimana ${esc(e.range)}</span>`+
+      (DATA.length>1?`<label for="pick" class="label">Archivio <select id="pick">${DATA.map(x=>`<option value="${x.date}"${x.date===e.date?' selected':''}>N. ${x.n} · ${esc(x.range)}</option>`).join('')}</select></label>`:'');
+    const c=e.cover;
+    const tocItems=[...all.map(a=>({id:a.id,s:a.section,t:a.title,d:a.tag})),{id:'societa',s:'Società',t:e.society.map(x=>x.title).slice(0,2).join(' · '),d:'Tre storie brevi'}];
+    app.innerHTML=`
+      <section class="cover" style="${sc('Copertina')}">
+        <div class="cover-main">
+          ${c.photo?`<figure class="cover-fig"><img src="${esc(c.photo.file)}" alt="${esc(c.photo.alt)}"><figcaption>${esc(c.photo.caption)} Foto: ${esc(c.photo.author)}, ${esc(c.photo.license)}, <a href="${esc(c.photo.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>.</figcaption></figure>`:''}
+          <div class="kick label" style="margin-top:18px"><span class="sec">Storia di copertina</span><span class="tag">${esc(c.tag)}</span></div>
+          <h2><a href="#a-${e.date}-${c.id}">${esc(c.title)}</a></h2>
+          <p class="stand">${esc(c.standfirst)}</p>
+        </div>
+        <nav class="toc" aria-label="In questo numero">
+          <h3>In questo numero</h3>
+          <ol>${tocItems.map(x=>`<li><a href="#a-${e.date}-${x.id}" style="${sc(x.s)}"><span class="s">${esc(x.s)}</span><span class="t">${esc(x.t)}</span><span class="d">${esc(x.d)}</span></a></li>`).join('')}
+          <li><a href="#a-${e.date}-breve" style="${sc('')}"><span class="s">La settimana in breve</span><span class="t">${e.brief.length} notizie in poche righe</span></a></li></ol>
+        </nav>
+      </section>
+
+      <section class="band" id="a-${e.date}-breve">
+        <div class="band-h"><h2>La settimana in breve</h2><span class="label">${esc(e.range)}</span></div>
+        <ul class="brief">${e.brief.map(b=>`<li><span class="day">${esc(b.day)}</span><div><h3>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a>`:esc(b.title)}</h3><p>${esc(b.text)}</p></div></li>`).join('')}</ul>
+      </section>
+
+      <section class="band">
+        <div class="band-h"><h2>I numeri della settimana</h2></div>
+        <ul class="nums">${e.numbers.map(x=>`<li><div class="n">${esc(x.n)}${x.of?`<small>${esc(x.of)}</small>`:''}</div><p>${esc(x.label)}</p></li>`).join('')}</ul>
+      </section>
+
+      ${article(e,c)}
+      ${e.features.map(a=>article(e,a)).join('')}
+      ${article(e,e.opinion,{op:true,byline:e.opinion.byline})}
+
+      <section class="band" id="a-${e.date}-societa">
+        <div class="band-h"><h2>Società</h2><span class="label">L'AI fuori dagli uffici</span></div>
+        <div class="soc">${e.society.map(s=>`<article id="a-${e.date}-${s.id}"><span class="label">${esc(s.tag)}</span><h3>${esc(s.title)}</h3>${s.body.map(p=>`<p>${esc(p)}</p>`).join('')}${sources(s.sources)}</article>`).join('')}</div>
+      </section>
+
+      <section class="band">
+        <div class="band-h"><h2>Da tenere d'occhio</h2><span class="label">La prossima settimana</span></div>
+        <ul class="watch">${e.watch.map(w=>`<li><span class="when">${esc(w.when)}</span><p>${esc(w.text)}</p></li>`).join('')}</ul>
+      </section>
+
+      <footer>
+        <div>
+          <h4>Chi siamo</h4>
+          <p>Il Settimanale dell'AI è un'idea di Carlo, generata da Claude e basata sulla newsletter Daily Brief di PierG. Ogni numero rilegge le newsletter della settimana, sceglie i temi che tornano più spesso e li racconta in approfondimenti. Il commento è un'analisi di Claude e lo dichiara.</p>
+          <p>I fatti vengono dalle newsletter e dalle fonti citate in fondo a ogni pezzo. Le notizie di ogni giorno sono su <a href="../quotidiano/">Il Quotidiano dell'AI</a>. Per ricevere il Daily Brief, chiedi a PierG.</p>
+        </div>
+        <div>
+          <h4>Foto di questo numero</h4>
+          <ul>${all.filter(a=>a.photo).map(a=>`<li>${esc(a.title)}: ${esc(a.photo.author)}, ${esc(a.photo.license)}, <a href="${esc(a.photo.page)}" target="_blank" rel="noopener">Wikimedia Commons</a></li>`).join('')}</ul>
+        </div>
+      </footer>`;
+    const pick=document.getElementById('pick');
+    if(pick) pick.addEventListener('change',()=>{location.hash='n-'+pick.value});
+    if(scrollTo){const el=document.getElementById(scrollTo); if(el) el.scrollIntoView();}
+    else window.scrollTo(0,0);
+  }
+
+  function route(){
+    const h=decodeURIComponent(location.hash.slice(1));
+    let m=h.match(/^(?:n|a)-(\d{4}-\d{2}-\d{2})/);
+    const e=(m&&DATA.find(x=>x.date===m[1]))||DATA[0];
+    if(!e) return;
+    const target=h.startsWith('a-')?h:null;
+    if(app.dataset.cur===e.date && target){const el=document.getElementById(target); if(el) el.scrollIntoView(); return;}
+    app.dataset.cur=e.date; render(e,target);
+  }
+
+  const toast=document.getElementById('toast'); let tt;
+  function say(t){toast.textContent=t;toast.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toast.hidden=true,2200)}
+  document.addEventListener('click',ev=>{
+    const b=ev.target.closest('.share'); if(!b) return;
+    const link=BASE+'#'+b.dataset.id;
+    try{navigator.clipboard.writeText(link).then(()=>say('Link copiato'),()=>say(link))}catch(_){say(link)}
+  });
+
+  fetch('data/issues.json').then(r=>r.json()).then(d=>{
+    DATA=(d.issues||[]).sort((a,b)=>b.date.localeCompare(a.date));
+    route(); window.addEventListener('hashchange',route);
+  }).catch(()=>{meta.innerHTML='<span>Non riesco a caricare il numero. Ricarica la pagina.</span>'});
+})();
+</script>

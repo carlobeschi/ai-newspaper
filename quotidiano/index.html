@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Il Quotidiano dell'AI</title>
+<meta name="description" content="Le notizie sull'intelligenza artificiale, ogni mattina, impaginate come un quotidiano. Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="I giornali dell'AI">
+<meta property="og:title" content="Il Quotidiano dell'AI">
+<meta property="og:description" content="Le notizie sull'intelligenza artificiale, ogni mattina. Basato sulla newsletter Daily Brief di PierG.">
+<meta property="og:url" content="https://carlobeschi.github.io/ai-newspaper/quotidiano/">
+<meta property="og:image" content="https://carlobeschi.github.io/ai-newspaper/quotidiano/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Il Quotidiano dell'AI" href="feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2312355e'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%23fff' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Roboto+Condensed:wght@400;700&display=swap">
@@ -189,6 +202,81 @@ footer button { font: inherit; color: var(--link); background: none; border: 0; 
 footer button:hover { text-decoration: underline; }
 .colophon { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; font-size: 13px; }
 .empty { padding: 60px 0; text-align: center; color: var(--ink-soft); font-family: var(--f-label); }
+
+/* perché conta: etichetta fissa a fine notizia */
+.why { margin: 8px 0 0; font-size: 15.5px; }
+.lead .why { font-size: 18px; max-width: 68ch; margin-top: 12px; }
+.why b, .single .lbl { font-family: var(--f-label); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.78em; color: var(--sc, var(--kicker)); margin-right: 4px; }
+
+/* bentornato */
+.since { border: 1px solid var(--rule); border-left: 4px solid var(--kicker); background: var(--tint); padding: 10px 14px; margin-bottom: 20px; font-family: var(--f-label); font-size: 14.5px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+.since b { text-transform: uppercase; letter-spacing: 0.08em; font-size: 12.5px; color: var(--kicker); }
+.since a { color: var(--link); font-weight: 700; text-decoration: none; }
+.since a:hover { text-decoration: underline; }
+.since button { margin-left: auto; font: inherit; font-size: 13px; color: var(--ink-soft); background: none; border: 0; cursor: pointer; padding: 0; }
+.days a.unread::after { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--kicker); margin-left: 5px; vertical-align: middle; }
+.read-mark { font-family: var(--f-label); font-size: 12px; color: var(--ink-soft); font-weight: 400; letter-spacing: 0.04em; text-transform: none; margin-left: 6px; }
+
+/* il numero del giorno */
+.box.fact .num { font-family: var(--f-mast); font-weight: 900; font-size: 46px; line-height: 1; color: var(--sc, var(--kicker)); margin: 2px 0 8px; font-variant-numeric: lining-nums; }
+.box.fact p { margin: 0; font-size: 15.5px; line-height: 1.4; }
+.box.fact a.more { display: inline-block; margin-top: 8px; font-family: var(--f-label); font-size: 13.5px; color: var(--link); font-weight: 700; text-decoration: none; }
+.box.fact a.more:hover { text-decoration: underline; }
+
+/* intanto: le altre notizie in una riga */
+.box.meanwhile ul { gap: 0; }
+.box.meanwhile li { display: grid; grid-template-columns: 8px 1fr; gap: 10px; align-items: baseline; padding: 8px 0; font-size: 15px; line-height: 1.3; }
+.box.meanwhile li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sc); transform: translateY(-1px); }
+.box.meanwhile small { display: block; font-family: var(--f-label); font-size: 12px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+
+/* dal settimanale */
+.box.weekly a.card { display: block; text-decoration: none; border: 1px solid var(--rule); padding: 12px 14px; }
+.box.weekly a.card:hover { border-color: var(--ink-soft); }
+.box.weekly .n { font-family: var(--f-label); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.box.weekly h5 { font-family: var(--f-mast); font-size: 21px; line-height: 1.15; margin: 4px 0 6px; }
+.box.weekly p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+.wk { color: var(--link); font-weight: 700; text-decoration: none; }
+
+/* pagina della singola notizia */
+.single { max-width: 720px; }
+.single h2 { font-family: var(--f-text); font-weight: 700; font-size: clamp(30px, 4.6vw, 46px); line-height: 1.1; margin: 0 0 14px; text-wrap: balance; }
+.single figure { margin: 0 0 18px; }
+.single figure img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--tint); }
+.single figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; font-family: var(--f-label); font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+.single figcaption a { color: inherit; }
+.single .part { font-size: 19px; line-height: 1.55; margin: 0 0 14px; }
+.single .part.fact { font-size: 21px; }
+.single .meta { margin: 6px 0 22px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+.single .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 0; font-family: var(--f-label); font-size: 13.5px; }
+.single .chips a { border: 1px solid var(--rule); padding: 2px 9px; border-radius: 2px; text-decoration: none; color: var(--link); font-weight: 700; }
+.single .chips a:hover { border-color: var(--ink-soft); }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 30px 0 0; padding-top: 16px; border-top: 3px double var(--rule); }
+.pager a { text-decoration: none; display: block; }
+.pager a:hover b { text-decoration: underline; }
+.pager span { display: block; font-family: var(--f-label); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 4px; }
+.pager b { font-size: 17px; line-height: 1.25; }
+.pager .next { text-align: right; grid-column: 2; }
+.related { margin-top: 30px; }
+.related h3 { font-family: var(--f-label); text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px; margin: 0 0 12px; color: var(--ink-soft); }
+.related ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.related li { border-top: 3px solid var(--sc); padding-top: 8px; }
+.related li a { text-decoration: none; font-weight: 700; font-size: 17px; line-height: 1.25; }
+.related li a:hover { text-decoration: underline; }
+.related li small { display: block; font-family: var(--f-label); font-size: 12.5px; color: var(--ink-soft); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.meta .listen[aria-pressed="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+
+/* stampa */
+@media print {
+  :root { --paper: #fff; --ink: #000; --ink-soft: #333; --rule: #999; --tint: #fff; --link: #000; }
+  body { font-size: 11pt; }
+  body::before, .credit, .strip, nav.sections, .topics, aside, footer .wrap > section, .meta .copy, .meta .listen, .since, .pager, .back, .related { display: none !important; }
+  .page { display: block; padding: 0; }
+  .mast { padding-block: 0 8px; }
+  .cols { columns: 2; }
+  a { text-decoration: none; }
+  .lead figure img, .single figure img { max-height: 9cm; }
+  .story, .wing, .five li { break-inside: avoid; }
+}
 </style>
 </head>
 <body>
@@ -224,7 +312,8 @@ footer button:hover { text-decoration: underline; }
     <h4>Come è fatto</h4>
     <p>Ogni mattina Claude legge la newsletter <em>Daily Brief</em> di Piergiorgio Grossi (PierG), che raccoglie e riassume in italiano le notizie sull'intelligenza artificiale del giorno prima, e la impagina come un quotidiano. I testi sono quelli della newsletter; ogni notizia rimanda alle sue fonti originali.</p>
     <p>Le foto d'apertura vengono da Wikimedia Commons, con licenze libere: sono immagini di repertorio scelte sul tema della notizia, non foto dell'evento. Autore e licenza sono indicati sotto ogni foto.</p>
-    <p>Per ricevere il <em>Daily Brief</em> direttamente nella posta, chiedi a PierG.</p>
+    <p>Per ricevere il <em>Daily Brief</em> direttamente nella posta, chiedi a PierG. Per seguire il Quotidiano con un lettore di notizie c'è il <a href="feed.xml">feed RSS</a>; la domenica esce <a href="../settimanale/">Il Settimanale dell'AI</a>.</p>
+    <p>Il sito ricorda solo nel tuo browser l'ultima edizione che hai visto e le notizie che hai aperto, per segnalarti le novità. Non lo invia a nessuno.</p>
   </section>
   <section>
     <h4>Sezioni</h4>
@@ -267,6 +356,10 @@ const TOPICS = [
   { id: "soldi",      it: "Soldi e investimenti", re: /miliard|investiment|\bround\b|valutazion|\bIPO\b|bolla|ricavi|finanzi|debito/i },
   { id: "lavoro",     it: "Lavoro e imprese",     re: /lavorator|dipendent|licenzi|occupazion|produttivit|assunzion|\bteam\b/i }
 ];
+// l'ultima frase diventa "Perché conta" quando spiega una conseguenza
+const WHY = /\b(dimostr|segnal[ai]|conferm|signific|potrebb|rischi|indica\b|indicano|evidenzi|suggerisc|mostra|spinge|costring|rappresent|sottoline|implic|obblig|testimon|apre (la strada|le porte|a)|rende |rendono|permett|consente|consentono|alimenta|priva|trasform|ridefinisc|mette in|accelera|cambia\b)/i;
+// il numero del giorno: una cifra con la sua unità
+const NUM = /(?:\$\s?)?\b\d+(?:[.,]\d+)?(?:\s?(?:miliardi|milioni|mila|%|per cento|GW|MW|gigawatt|token al secondo|dollari|euro|volte))+/i;
 const sec = (s) => SECTIONS[s] || { it: s, c: "--c-side" };
 const esc = (s) => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const safeUrl = (u) => /^https?:\/\//.test(u) ? u : "#";
@@ -274,6 +367,10 @@ const inline = (s) => esc(s).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, u) => 
 const plain = (s) => s.replace(/\[([^\]]+)\]\([^)\s]+\)/g, "$1");
 const slug = (s) => "s-" + s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const $ = (id) => document.getElementById(id);
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("qai." + k); return v == null ? d : JSON.parse(v); } catch (_) { return d; } },
+  set(k, v) { try { localStorage.setItem("qai." + k, JSON.stringify(v)); } catch (_) {} }
+};
 
 function parse(md) {
   const out = { newsDate: "", sections: [] };
@@ -300,8 +397,17 @@ function parse(md) {
     const cut = i.text.search(/[.!?]\s+(?=[A-ZÀ-Ý"'«“])/);
     if (cut > 40 && cut < i.text.length - 40) { i.stand = i.text.slice(0, cut + 1); i.rest = i.text.slice(cut + 2).trim(); }
     else { i.stand = ""; i.rest = i.text; }
+    // perché conta: l'ultima frase del resto, se ce ne sono almeno due e spiega una conseguenza
+    i.why = "";
+    if (i.stand) {
+      const sents = i.rest.split(/(?<=[.!?])\s+(?=[A-ZÀ-Ý"'«“])/);
+      const last = sents[sents.length - 1];
+      if (sents.length >= 2 && WHY.test(last)) { i.why = last; i.detail = sents.slice(0, -1).join(" "); }
+    }
+    if (!i.why) i.detail = i.rest;
     i.words = (i.title + " " + plain(i.text)).split(/\s+/).length;
     i.nsrc = (i.source.match(/\]\(/g) || []).length;
+    i.urls = [...i.source.matchAll(/\]\(([^)\s]+)\)/g)].map(m => m[1]);
     i.hay = i.title + " " + plain(i.text);
     i.topics = TOPICS.filter(t => t.re.test(i.hay)).map(t => t.id);
   }
@@ -328,63 +434,85 @@ function licUrl(l) {
 
 let ISSUES = [];
 let CUR = 0;
+let WEEKLY = null;        // ultimo numero del Settimanale
+const WEEKLY_URLS = {};   // url di una fonte → dove ne parla il Settimanale
+const PREV_SEEN = store.get("lastSeen", null);   // ultima edizione vista alla visita precedente
+const READ = new Set(store.get("read", []));
+let LAST_ARTICLE = null;
 
 /* ---------- pezzi riutilizzabili ---------- */
 const sid = (date, k) => `n-${date}-${k}`;
+function weeklyLink(i) {
+  const w = i.urls && i.urls.map(u => WEEKLY_URLS[u]).find(Boolean);
+  return w ? `<a class="wk" href="../settimanale/#${w.anchor}">Ne parla il Settimanale n. ${w.n} →</a>` : "";
+}
 function meta(i, date, opts = {}) {
   const min = Math.max(1, Math.round(i.words / 200));
   const parts = [];
   if (opts.date) parts.push(`<span>${esc(cap(short(date)))}</span>`);
   parts.push(`<span>${min} min di lettura</span>`);
   if (i.source) parts.push(`<span>${i.nsrc > 1 ? i.nsrc + " fonti" : "Fonte"}: ${inline(i.source)}</span>`);
+  const wk = weeklyLink(i); if (wk) parts.push(`<span>${wk}</span>`);
+  if (opts.listen && "speechSynthesis" in window) parts.push(`<button class="copy listen" type="button" aria-pressed="false" data-listen="${sid(date, i.k)}">Ascolta</button>`);
   parts.push(`<button class="copy" type="button" data-link="${sid(date, i.k)}">Copia link</button>`);
   return `<div class="meta">${parts.join("")}</div>`;
 }
+const readMark = (date, i) => READ.has(sid(date, i.k)) ? `<span class="read-mark" title="L'hai già aperta">✓ letta</span>` : "";
 const head = (i, date, tag) => `<${tag}><a href="#${sid(date, i.k)}">${esc(i.title)}</a></${tag}>`;
-const kicker = (i, extra = "") => `<p class="kicker">${esc(sec(i.section).it)}${extra}</p>`;
+const kicker = (i, extra = "", date) => `<p class="kicker">${esc(sec(i.section).it)}${extra}${date ? readMark(date, i) : ""}</p>`;
 const scStyle = (i) => `style="--sc: var(${sec(i.section).c})"`;
+const whyP = (i, q) => i.why ? `<p class="why"><b>Perché conta</b>${hl(inline(i.why), q)}</p>` : "";
 
 function storyCard(i, date, cls = "story", opts = {}) {
-  return `<article class="${cls}" id="${sid(date, i.k)}" ${scStyle(i)}>${kicker(i)}${head(i, date, "h3")}
-    ${i.stand ? `<p class="stand">${inline(i.stand)}</p>` : ""}<p class="text">${hl(inline(i.rest), opts.q)}</p>${meta(i, date, opts)}</article>`;
+  return `<article class="${cls}" id="${sid(date, i.k)}" ${scStyle(i)}>${kicker(i, "", date)}${head(i, date, "h3")}
+    ${i.stand ? `<p class="stand">${inline(i.stand)}</p>` : ""}<p class="text">${hl(inline(i.detail), opts.q)}</p>${whyP(i, opts.q)}${meta(i, date, opts)}</article>`;
 }
 function hl(html, q) {
   if (!q) return html;
   const re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")(?![^<]*>)", "gi");
   return html.replace(re, "<mark>$1</mark>");
 }
+function photoFig(ph) {
+  if (!ph || !ph.file) return "";
+  return `<figure><img src="${esc(ph.file)}" alt="${esc(ph.alt || "")}" width="1280" height="720" loading="eager">
+      <figcaption><span>${esc(ph.caption || "")}</span><span>Foto: <a href="${esc(safeUrl(ph.page || ""))}" target="_blank" rel="noopener">${esc(ph.author || "")} / ${esc(ph.source || "Wikimedia Commons")}</a>${ph.license ? ` · ${licUrl(ph.license) ? `<a href="${licUrl(ph.license)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)}` : ""}</span></figcaption></figure>`;
+}
+
+/* ---------- ordine di un'edizione ---------- */
+function layout(issue) {
+  const p = issue.parsed;
+  const news = p.sections.filter(s => !SIDE.includes(s.name) && s.items.length);
+  const side = p.sections.filter(s => SIDE.includes(s.name));
+  // prima notizia di ogni sezione, poi le altre (le sezioni del brief sono già in ordine di importanza)
+  const all = news.flatMap(s => s.items);
+  const firsts = news.map(s => s.items[0]);
+  const ordered = [...firsts, ...all.filter(i => !firsts.includes(i))];
+  const sideItems = side.flatMap(s => s.items);
+  return { news, side, all, ordered, sideItems, reading: [...ordered, ...sideItems] };
+}
 
 /* ---------- vista edizione ---------- */
 function renderEdition(idx) {
   CUR = idx;
-  const issue = ISSUES[idx], p = issue.parsed, date = issue.date;
+  const issue = ISSUES[idx], date = issue.date;
   setHeader(issue);
-  const news = p.sections.filter(s => !SIDE.includes(s.name) && s.items.length);
-  const side = p.sections.filter(s => SIDE.includes(s.name));
+  const { news, side, all, ordered, sideItems } = layout(issue);
 
   $("nav").innerHTML = [...news, ...side].map(s =>
     `<button type="button" data-go="${slug(s.name)}" style="--sc: var(${sec(s.name).c})"><i></i>${esc(sec(s.name).it)}</button>`).join("");
 
-  // ordine: prima notizia di ogni sezione, poi le altre (le sezioni del brief sono già in ordine di importanza)
-  const all = news.flatMap(s => s.items);
-  const firsts = news.map(s => s.items[0]);
-  const ordered = [...firsts, ...all.filter(i => !firsts.includes(i))];
   const lead = ordered[0];
   const wings = ordered.slice(1, 4);
   const rest = all.filter(i => i !== lead && !wings.includes(i));
-  const sideItems = side.flatMap(s => s.items);
   const five = [...ordered, ...sideItems].slice(0, 5);
 
-  let html = "";
+  let html = idx === 0 ? sinceBox() : "";
   if (five.length >= 3) html += `<section class="five"><h2>Le ${five.length} cose da sapere${idx === 0 ? " oggi" : ""}</h2><ol>${five.map(i =>
-    `<li ${scStyle(i)}><a href="#${sid(date, i.k)}">${esc(i.title)}</a></li>`).join("")}</ol></section>`;
+    `<li ${scStyle(i)}><a href="#${sid(date, i.k)}" data-jump="${sid(date, i.k)}">${esc(i.title)}</a></li>`).join("")}</ol></section>`;
 
   if (lead) {
-    const ph = issue.photo;
-    const fig = ph && ph.file ? `<figure><img src="${esc(ph.file)}" alt="${esc(ph.alt || "")}" width="1280" height="720" loading="eager">
-      <figcaption><span>${esc(ph.caption || "")}</span><span>Foto: <a href="${esc(safeUrl(ph.page || ""))}" target="_blank" rel="noopener">${esc(ph.author || "")} / ${esc(ph.source || "Wikimedia Commons")}</a>${ph.license ? ` · ${licUrl(ph.license) ? `<a href="${licUrl(ph.license)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)}` : ""}</span></figcaption></figure>` : "";
-    html += `<article class="lead" id="${sid(date, lead.k)}" ${scStyle(lead)}>${fig}${kicker(lead, " · Apertura")}${head(lead, date, "h2")}
-      ${lead.stand ? `<p class="stand">${inline(lead.stand)}</p>` : ""}<p class="body">${inline(lead.rest)}</p>${meta(lead, date)}</article>`;
+    html += `<article class="lead" id="${sid(date, lead.k)}" ${scStyle(lead)}>${photoFig(issue.photo)}${kicker(lead, " · Apertura", date)}${head(lead, date, "h2")}
+      ${lead.stand ? `<p class="stand">${inline(lead.stand)}</p>` : ""}<p class="body">${inline(lead.detail)}</p>${whyP(lead)}${meta(lead, date)}</article>`;
   }
   if (wings.length) html += `<div class="wings">${wings.map(i => storyCard(i, date, "wing")).join("")}</div>`;
   if (rest.length) html += `<h2 class="more-h">Le altre notizie</h2><div class="cols">${rest.map(i => storyCard(i, date)).join("")}</div>`;
@@ -393,13 +521,54 @@ function renderEdition(idx) {
   // ancore delle sezioni: la prima notizia di ciascuna
   news.forEach(s => { const el = $(sid(date, s.items[0].k)); if (el) el.dataset.sec = slug(s.name); });
 
-  $("side").innerHTML = weekBox() + side.map(s => {
+  const inFive = new Set(five);
+  const meanwhile = [...rest, ...sideItems].filter(i => !inFive.has(i)).slice(0, 8);
+  $("side").innerHTML = factBox(issue) + meanwhileBox(meanwhile, date) + weekBox() + weeklyBox() + side.map(s => {
     const cls = s.name === "Weak signals" ? "box signals" : "box";
     const lis = s.bullets.map(b => `<li>${inline(b)}</li>`).join("") +
       s.items.map(i => `<li class="item" id="${sid(date, i.k)}">${head(i, date, "h5")}<p>${inline(i.text)}</p>${i.source ? `<div class="meta"><span>${s.name === "What's hot on Twitter" ? "" : "Fonti: "}${inline(i.source)}</span><button class="copy" type="button" data-link="${sid(date, i.k)}">Copia link</button></div>` : ""}</li>`).join("");
     return `<section class="${cls}" data-sec="${slug(s.name)}"><h4>${esc(sec(s.name).it)}</h4><ul>${lis}</ul></section>`;
   }).join("");
   markTopic(null);
+}
+
+/* ---------- bentornato: le edizioni uscite dall'ultima visita ---------- */
+function sinceBox() {
+  if (!PREV_SEEN || PREV_SEEN >= ISSUES[0].date || store.get("sinceClosed", "") === ISSUES[0].date) return "";
+  const fresh = ISSUES.filter(x => x.date > PREV_SEEN);
+  if (!fresh.length) return "";
+  const links = fresh.map(x => `<a href="${x === ISSUES[0] ? "#" : "#e-" + x.date}">${esc(relDay(x.date))}</a>`).join(" · ");
+  return `<div class="since" role="status"><b>Bentornato</b><span>Dalla tua ultima visita (${esc(short(PREV_SEEN))}) ${fresh.length === 1 ? "è uscita 1 edizione nuova" : `sono uscite ${fresh.length} edizioni nuove`}: ${links}</span><button type="button" data-close-since>Chiudi ✕</button></div>`;
+}
+
+/* ---------- il numero del giorno ---------- */
+function factBox(issue) {
+  const { reading } = layout(issue);
+  for (const i of reading) {
+    const sents = plain(i.text).split(/(?<=[.!?])\s+(?=[A-ZÀ-Ý"'«“])/);
+    for (const s of sents) {
+      const m = s.match(NUM);
+      if (!m || /^\d{4}$/.test(m[0].trim())) continue;
+      return `<section class="box fact" ${scStyle(i)}><h4>Il numero del giorno</h4><div class="num">${esc(m[0].trim())}</div><p>${esc(s)}</p>
+        <a class="more" href="#${sid(issue.date, i.k)}">${esc(i.title)} →</a></section>`;
+    }
+  }
+  return "";
+}
+
+/* ---------- intanto: le altre notizie in una riga ---------- */
+function meanwhileBox(items, date) {
+  if (items.length < 2) return "";
+  return `<section class="box meanwhile"><h4>Intanto</h4><ul>${items.map(i =>
+    `<li ${scStyle(i)}><a href="#${sid(date, i.k)}">${esc(i.title)}<small>${esc(sec(i.section).it)}</small></a></li>`).join("")}</ul></section>`;
+}
+
+/* ---------- dal settimanale ---------- */
+function weeklyBox() {
+  if (!WEEKLY) return "";
+  const w = WEEKLY, c = w.cover || {};
+  return `<section class="box weekly"><h4>Dal Settimanale</h4><a class="card" href="../settimanale/#n-${esc(w.date)}">
+    <span class="n">N. ${esc(w.n)} · ${esc(w.range || "")}</span><h5>${esc(c.title || "Il Settimanale dell'AI")}</h5><p>${esc(c.standfirst || "")}</p></a></section>`;
 }
 
 /* ---------- tema della settimana ---------- */
@@ -413,6 +582,52 @@ function weekBox() {
   return `<section class="box week"><h4>I temi della settimana</h4><ol>${counts.map(({ t, n }) =>
     `<li><a href="#t-${t.id}">${esc(t.it)}</a><span>${n} notizie</span></li>`).join("")}</ol>
     <p>Gli argomenti più presenti nelle ${recent.length === 1 ? "notizie di oggi" : "ultime " + recent.length + " edizioni"}.</p></section>`;
+}
+
+/* ---------- pagina della singola notizia ---------- */
+function renderArticle(idx, k) {
+  CUR = idx;
+  const issue = ISSUES[idx], date = issue.date;
+  const { reading, ordered } = layout(issue);
+  const i = reading.find(x => x.k === k) || issue.items.find(x => x.k === k);
+  if (!i) return renderEdition(idx);
+  setHeader(issue);
+  LAST_ARTICLE = sid(date, k);
+  if (!READ.has(LAST_ARTICLE)) { READ.add(LAST_ARTICLE); store.set("read", [...READ].slice(-400)); }
+
+  const pos = reading.indexOf(i);
+  const prev = pos > 0 ? reading[pos - 1] : null, next = pos >= 0 && pos < reading.length - 1 ? reading[pos + 1] : null;
+  const pager = (prev || next) ? `<nav class="pager" aria-label="Nella stessa edizione">${prev ? `<a class="prev" href="#${sid(date, prev.k)}"><span>← Precedente</span><b>${esc(prev.title)}</b></a>` : ""}${next ? `<a class="next" href="#${sid(date, next.k)}"><span>Successiva →</span><b>${esc(next.title)}</b></a>` : ""}</nav>` : "";
+
+  // correlate: le notizie che condividono più argomenti, prima le più recenti
+  const related = [];
+  if (i.topics.length) {
+    for (const x of ISSUES) for (const j of x.items) {
+      if (j === i) continue;
+      const n = j.topics.filter(t => i.topics.includes(t)).length;
+      if (n) related.push({ x, j, n });
+    }
+    related.sort((a, b) => b.n - a.n || b.x.date.localeCompare(a.x.date));
+  }
+  const rel = related.slice(0, 3);
+  const relHtml = rel.length ? `<section class="related"><h3>Sullo stesso argomento</h3><ul>${rel.map(({ x, j }) =>
+    `<li ${scStyle(j)}><small>${esc(cap(short(x.date)))} · ${esc(sec(j.section).it)}</small><a href="#${sid(x.date, j.k)}">${esc(j.title)}</a></li>`).join("")}</ul></section>` : "";
+
+  const isLead = i === ordered[0];
+  const parts = i.stand
+    ? `<p class="part fact"><b class="lbl">Il fatto</b>${inline(i.stand)}</p><p class="part"><b class="lbl">Nel dettaglio</b>${inline(i.detail)}</p>${i.why ? `<p class="part"><b class="lbl">Perché conta</b>${inline(i.why)}</p>` : ""}`
+    : `<p class="part">${inline(i.text)}</p>`;
+  const chips = i.topics.length ? `<div class="chips">${i.topics.map(t => `<a href="#t-${t}">${esc(TOPICS.find(x => x.id === t).it)}</a>`).join("")}</div>` : "";
+
+  $("main").innerHTML = `<article class="single" id="${sid(date, k)}" ${scStyle(i)}>
+    <a class="back" href="${idx === 0 ? "#" : "#e-" + date}" data-back>← Torna all'edizione di ${esc(cap(fmtDay(date)))}</a>
+    ${isLead ? `<div class="lead-photo">${photoFig(issue.photo)}</div>` : ""}
+    ${kicker(i, isLead ? " · Apertura" : "")}<h2>${esc(i.title)}</h2>${meta(i, date, { listen: true })}
+    ${parts}${chips}${pager}${relHtml}</article>`;
+  $("side").innerHTML = factBox(issue) + weekBox() + weeklyBox();
+  $("nav").innerHTML = "";
+  markTopic(null);
+  document.title = i.title + " · Il Quotidiano dell'AI";
 }
 
 /* ---------- vista argomento ---------- */
@@ -429,7 +644,7 @@ function renderTopic(id) {
   }
   $("main").innerHTML = `<section class="listing"><a class="back" href="#">← Torna all'edizione di oggi</a><p class="kicker">Argomento</p><h2>${esc(t.it)}</h2>
     <p class="sub">${n} ${n === 1 ? "notizia" : "notizie"} in ${ISSUES.length} edizioni in archivio</p>${html || `<p class="empty">Nessuna notizia su questo argomento.</p>`}</section>`;
-  $("side").innerHTML = weekBox();
+  $("side").innerHTML = weekBox() + weeklyBox();
   $("nav").innerHTML = "";
   markTopic(id);
 }
@@ -447,18 +662,21 @@ function renderSearch(q) {
   }
   $("main").innerHTML = `<section class="listing"><a class="back" href="#" data-clear>← Torna all'edizione di oggi</a><p class="kicker">Ricerca</p><h2>«${esc(q)}»</h2>
     <p class="sub">${n ? `${n} ${n === 1 ? "notizia trovata" : "notizie trovate"} in ${ISSUES.length} edizioni` : "Nessuna notizia trovata. Prova con un nome di azienda o una parola più corta."}</p>${html}</section>`;
-  $("side").innerHTML = weekBox();
+  $("side").innerHTML = weekBox() + weeklyBox();
   $("nav").innerHTML = "";
   markTopic(null);
 }
 
 /* ---------- testata, archivio, argomenti ---------- */
 function setHeader(issue) {
+  document.title = "Il Quotidiano dell'AI";
   $("today").textContent = "Edizione di " + cap(fmtDay(issue.date));
   $("newsday").textContent = issue.parsed.newsDate ? "· le notizie del " + issue.parsed.newsDate : "";
   const shown = ISSUES.slice(0, 6);
-  let html = `<span class="lab">Edizioni</span>` + shown.map((x, i) =>
-    `<a href="${i === 0 ? "#" : "#e-" + x.date}" aria-current="${x.date === issue.date}">${esc(relDay(x.date))}</a>`).join("");
+  let html = `<span class="lab">Edizioni</span>` + shown.map((x, i) => {
+    const unread = PREV_SEEN && x.date > PREV_SEEN && !x.items.some(j => READ.has(sid(x.date, j.k)));
+    return `<a href="${i === 0 ? "#" : "#e-" + x.date}" aria-current="${x.date === issue.date}"${unread ? ` class="unread" title="Uscita dopo la tua ultima visita"` : ""}>${esc(relDay(x.date))}</a>`;
+  }).join("");
   if (ISSUES.length > shown.length) {
     html += `<label for="older" class="label" hidden>Edizioni precedenti</label><select id="older"><option value="">Precedenti…</option>${ISSUES.slice(shown.length).map(x =>
       `<option value="${x.date}"${x.date === issue.date ? " selected" : ""}>${esc(cap(short(x.date)))}</option>`).join("")}</select>`;
@@ -478,40 +696,78 @@ function buildTopicLists() {
   $("foot-sections").innerHTML = names.map(n => `<li><button type="button" data-foot="${slug(n)}">${esc(SECTIONS[n].it)}</button></li>`).join("");
 }
 
+/* ---------- ascolta ---------- */
+function stopSpeech() {
+  if ("speechSynthesis" in window) speechSynthesis.cancel();
+  for (const b of document.querySelectorAll("[data-listen]")) { b.setAttribute("aria-pressed", "false"); b.textContent = "Ascolta"; }
+}
+function listen(btn) {
+  if (btn.getAttribute("aria-pressed") === "true") { stopSpeech(); return; }
+  stopSpeech();
+  const m = btn.dataset.listen.match(/^n-(\d{4}-\d{2}-\d{2})-(\d+)$/);
+  const x = ISSUES.find(y => y.date === m[1]), i = x && x.items.find(j => j.k === +m[2]);
+  if (!i) return;
+  const u = new SpeechSynthesisUtterance(i.title + ". " + plain(i.text));
+  u.lang = "it-IT";
+  const v = speechSynthesis.getVoices().find(v => /^it/i.test(v.lang));
+  if (v) u.voice = v;
+  u.onend = u.onerror = () => { btn.setAttribute("aria-pressed", "false"); btn.textContent = "Ascolta"; };
+  btn.setAttribute("aria-pressed", "true"); btn.textContent = "Ferma la lettura";
+  speechSynthesis.speak(u);
+}
+
 /* ---------- navigazione ---------- */
+const smooth = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 function scrollToSection(s) {
   const el = document.querySelector(`[data-sec="${s}"]`);
-  if (el) el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  if (el) el.scrollIntoView({ behavior: smooth(), block: "start" });
+}
+function flashTo(id) {
+  const el = $(id);
+  if (el) { el.classList.remove("target"); void el.offsetWidth; el.classList.add("target"); requestAnimationFrame(() => el.scrollIntoView({ block: "start" })); }
 }
 function route() {
+  stopSpeech();
   const h = decodeURIComponent(location.hash.slice(1));
+  const back = LAST_ARTICLE; LAST_ARTICLE = null;
   let m;
   if ((m = h.match(/^t-([a-z]+)$/))) { renderTopic(m[1]); window.scrollTo(0, 0); return; }
   if ((m = h.match(/^n-(\d{4}-\d{2}-\d{2})-(\d+)$/))) {
     const i = ISSUES.findIndex(x => x.date === m[1]);
-    renderEdition(i >= 0 ? i : 0);
-    const el = $(h);
-    if (el) { el.classList.add("target"); requestAnimationFrame(() => el.scrollIntoView({ block: "start" })); }
-    return;
+    if (i < 0) { renderEdition(0); window.scrollTo(0, 0); return; }
+    renderArticle(i, +m[2]); window.scrollTo(0, 0); return;
   }
-  if ((m = h.match(/^e-(\d{4}-\d{2}-\d{2})$/))) {
-    const i = ISSUES.findIndex(x => x.date === m[1]);
-    renderEdition(i >= 0 ? i : 0); window.scrollTo(0, 0); return;
+  if ((m = h.match(/^u-(https?:\/\/.+)$/))) {
+    // dal Settimanale: la notizia del Quotidiano che cita questa fonte
+    for (let x = 0; x < ISSUES.length; x++) {
+      const j = ISSUES[x].items.find(i => i.urls.includes(m[1]));
+      if (j) { history.replaceState(null, "", "#" + sid(ISSUES[x].date, j.k)); renderArticle(x, j.k); window.scrollTo(0, 0); return; }
+    }
   }
-  renderEdition(0); window.scrollTo(0, 0);
+  let idx = 0;
+  if ((m = h.match(/^e-(\d{4}-\d{2}-\d{2})$/))) { const i = ISSUES.findIndex(x => x.date === m[1]); idx = i >= 0 ? i : 0; }
+  renderEdition(idx);
+  // tornando da una notizia, riprendi da dove eri
+  if (back && $(back)) flashTo(back); else window.scrollTo(0, 0);
 }
 
 document.addEventListener("click", (e) => {
   const go = e.target.closest("[data-go]");
   if (go) { scrollToSection(go.dataset.go); return; }
+  const jump = e.target.closest("[data-jump]");
+  if (jump && $(jump.dataset.jump)) { e.preventDefault(); flashTo(jump.dataset.jump); return; }
   const foot = e.target.closest("[data-foot]");
   if (foot) {
     if (location.hash.match(/^#(t-|n-)/) || $("q").value) { $("q").value = ""; location.hash = "e-" + ISSUES[CUR].date; setTimeout(() => scrollToSection(foot.dataset.foot), 60); }
     else scrollToSection(foot.dataset.foot);
     return;
   }
+  if (e.target.closest("[data-close-since]")) { store.set("sinceClosed", ISSUES[0].date); e.target.closest(".since").remove(); return; }
   if (e.target.closest("[data-clear]")) { $("q").value = ""; if (!location.hash || location.hash === "#") { e.preventDefault(); route(); } return; }
-  const cp = e.target.closest("button.copy");
+  if (e.target.closest("[data-back]") && (!location.hash || location.hash === "#") ) { e.preventDefault(); route(); return; }
+  const ls = e.target.closest("[data-listen]");
+  if (ls) { listen(ls); return; }
+  const cp = e.target.closest("button.copy[data-link]");
   if (cp) {
     const url = SITE + "#" + cp.dataset.link;
     const done = () => { cp.textContent = "Link copiato"; setTimeout(() => cp.textContent = "Copia link", 1800); };
@@ -532,13 +788,27 @@ $("q").addEventListener("input", () => {
 });
 window.addEventListener("hashchange", () => { $("q").value = ""; route(); });
 
-fetch("data/issues.json", { cache: "no-store" }).then(r => r.json()).then(data => {
+// il Settimanale è facoltativo: se non si carica, il Quotidiano funziona lo stesso
+const weeklyLoad = fetch("../settimanale/data/issues.json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(d => {
+  const list = ((d && d.issues) || []).sort((a, b) => b.date.localeCompare(a.date));
+  WEEKLY = list[0] || null;
+  for (const w of list.slice().reverse()) {
+    const put = (u, anchor) => { if (u) WEEKLY_URLS[u] = { n: w.n, anchor }; };
+    for (const b of w.brief || []) put(b.url, `a-${w.date}-breve`);
+    for (const a of [w.cover, ...(w.features || []), w.opinion, ...(w.society || [])].filter(Boolean))
+      for (const s of a.sources || []) put(s.url, `a-${w.date}-${a.id}`);
+  }
+}).catch(() => {});
+
+fetch("data/issues.json", { cache: "no-store" }).then(r => r.json()).then(async data => {
   ISSUES = (data.issues || []).sort((a, b) => b.date.localeCompare(a.date));
   if (!ISSUES.length) { $("main").innerHTML = `<div class="empty">Nessuna edizione disponibile.</div>`; return; }
   for (const x of ISSUES) { x.parsed = parse(x.markdown); x.items = x.parsed.sections.flatMap(s => s.items); }
   $("count").textContent = ISSUES.length + (ISSUES.length === 1 ? " edizione in archivio" : " edizioni in archivio");
+  await Promise.race([weeklyLoad, new Promise(r => setTimeout(r, 1500))]);
   buildTopicLists();
   route();
+  store.set("lastSeen", ISSUES[0].date);
 }).catch(() => {
   $("main").innerHTML = `<div class="empty">Non è stato possibile caricare le notizie. Ricarica la pagina.</div>`;
 });

@@ -10,6 +10,8 @@ I giornali dell'AI di Carlo, generati da Claude a partire dalla newsletter *Dail
 | `quotidiano/` | **Il Quotidiano dell'AI**: `index.html`, `data/issues.json` (edizioni, la più recente per prima), `img/<data>.jpg` (foto di apertura) |
 | `settimanale/` | **Il Settimanale dell'AI**: `index.html`, `data/issues.json` (numeri, il più recente per primo), `img/<data>-<pezzo>.jpg` |
 | `scripts/foto.py` | Cerca e scarica da Wikimedia Commons una foto con licenza libera per l'apertura |
+| `scripts/feeds.py` | Genera `quotidiano/feed.xml` e `settimanale/feed.xml` (lo lancia la GitHub Action `feeds.yml` a ogni nuova edizione) |
+| `*/img/og.png`, `og.png` | Immagini di anteprima per i link condivisi (WhatsApp, social) |
 
 ## Aggiornamento
 
@@ -20,6 +22,10 @@ Formato di un'edizione:
 ```json
 {"date": "YYYY-MM-DD", "markdown": "...", "photo": {"file": "img/YYYY-MM-DD.jpg", "author": "...", "license": "...", "source": "Wikimedia Commons", "page": "...", "alt": "...", "caption": "Immagine di repertorio: ..."}}
 ```
+
+Il Settimanale ha lo stesso schema (`settimanale/data/issues.json`). Sotto il commento, il campo facoltativo `opinion.counter` = `{"title": "...", "body": ["paragrafo", ...]}` diventa il riquadro «Un'altra lettura»: l'obiezione più forte alla tesi del commento. Nelle brevi la testata viene ricavata dall'url; per forzarla, aggiungere `"source": "Nome testata"`.
+
+I due giornali si leggono a vicenda: il Quotidiano segnala le notizie riprese dal Settimanale, il Settimanale rimanda alle notizie del Quotidiano da cui nasce (confrontando gli url delle fonti).
 
 ## Anteprima locale
 

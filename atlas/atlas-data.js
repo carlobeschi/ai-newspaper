@@ -5951,5 +5951,172 @@ window.ATLAS = {
     "education.assessment"
    ]
   }
+ ],
+ "weekly": [
+  {
+   "date": "2026-11-08",
+   "n": 1,
+   "range": "1–7 novembre 2026",
+   "title": "L'America vota contro i data center",
+   "items": [
+    {
+     "title": "L'America vota contro i data center",
+     "kind": "Politica e infrastrutture",
+     "url": "../settimanale/#a-2026-11-08-copertina",
+     "regions": [
+      "geo.energy",
+      "geo.info",
+      "geo.compute"
+     ]
+    },
+    {
+     "title": "Finita la festa dei token",
+     "kind": "Il costo dell'AI",
+     "url": "../settimanale/#a-2026-11-08-token",
+     "regions": [
+      "enterprise.roi",
+      "research.efficiency"
+     ]
+    },
+    {
+     "title": "Due IPO e un conto da pagare",
+     "kind": "Verso la Borsa",
+     "url": "../settimanale/#a-2026-11-08-ipo",
+     "regions": [
+      "research.scaling",
+      "enterprise.roi"
+     ]
+    },
+    {
+     "title": "Quando l'agente diventa un hacker",
+     "kind": "Agenti e attacchi",
+     "url": "../settimanale/#a-2026-11-08-cyber",
+     "regions": [
+      "software.security",
+      "enterprise.governance",
+      "geo.open-weights"
+     ]
+    },
+    {
+     "title": "Più veloci da soli, più lenti insieme",
+     "kind": "Il commento",
+     "url": "../settimanale/#a-2026-11-08-commento",
+     "regions": [
+      "software.coding-agents",
+      "software.code-review",
+      "mind.labor"
+     ]
+    },
+    {
+     "title": "La corsa a comprare le parole degli altri",
+     "kind": "Diritti",
+     "url": "../settimanale/#a-2026-11-08-parole",
+     "regions": [
+      "legal.copyright",
+      "creative.labour"
+     ]
+    },
+    {
+     "title": "Google e le scuole: o tutto o niente",
+     "kind": "Scuola",
+     "url": "../settimanale/#a-2026-11-08-scuole",
+     "regions": [
+      "education.policy"
+     ]
+    },
+    {
+     "title": "Persi in montagna seguendo il chatbot",
+     "kind": "Vita quotidiana",
+     "url": "../settimanale/#a-2026-11-08-sentieri",
+     "regions": [
+      "mind.meaning",
+      "mind.epistemics"
+     ]
+    },
+    {
+     "title": "Squarespace taglia il 19% del personale",
+     "kind": "In breve",
+     "url": "../settimanale/#a-2026-11-08-breve",
+     "regions": [
+      "software.spec-design",
+      "mind.labor"
+     ]
+    },
+    {
+     "title": "Anthropic presenta FlashProve",
+     "kind": "In breve",
+     "url": "../settimanale/#a-2026-11-08-breve",
+     "regions": [
+      "enterprise.governance"
+     ]
+    },
+    {
+     "title": "Un modello AI in orbita",
+     "kind": "In breve",
+     "url": "../settimanale/#a-2026-11-08-breve",
+     "regions": [
+      "research.efficiency"
+     ]
+    },
+    {
+     "title": "Meta compra Conductor",
+     "kind": "In breve",
+     "url": "../settimanale/#a-2026-11-08-breve",
+     "regions": [
+      "software.coding-agents"
+     ]
+    },
+    {
+     "title": "Uber: quattro corse prenotate da agenti",
+     "kind": "In breve",
+     "url": "../settimanale/#a-2026-11-08-breve",
+     "regions": [
+      "enterprise.browser",
+      "enterprise.roi"
+     ]
+    },
+    {
+     "title": "La geometria algebrica tradotta in Lean",
+     "kind": "In breve",
+     "url": "../settimanale/#a-2026-11-08-breve",
+     "regions": [
+      "science.math"
+     ]
+    },
+    {
+     "title": "Il primo umanoide in Borsa",
+     "kind": "In breve",
+     "url": "../settimanale/#a-2026-11-08-breve",
+     "regions": [
+      "research.robotics"
+     ]
+    },
+    {
+     "title": "Robot che puliscono casa a San Francisco",
+     "kind": "In breve",
+     "url": "../settimanale/#a-2026-11-08-breve",
+     "regions": [
+      "research.robotics"
+     ]
+    },
+    {
+     "title": "In Delaware le società guidate da un agente",
+     "kind": "In breve",
+     "url": "../settimanale/#a-2026-11-08-breve",
+     "regions": [
+      "legal.ai-law"
+     ]
+    },
+    {
+     "title": "Spionaggio cinese attorno a Jensen Huang",
+     "kind": "In breve",
+     "url": "../settimanale/#a-2026-11-08-breve",
+     "regions": [
+      "geo.us-china",
+      "geo.compute"
+     ]
+    }
+   ]
+  }
  ]
 };

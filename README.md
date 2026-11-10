@@ -26,6 +26,8 @@ Formato di un'edizione:
 
 Il Settimanale ha lo stesso schema (`settimanale/data/issues.json`). Sotto il commento, il campo facoltativo `opinion.counter` = `{"title": "...", "body": ["paragrafo", ...]}` diventa il riquadro «Un'altra lettura»: l'obiezione più forte alla tesi del commento. Nelle brevi la testata viene ricavata dall'url; per forzarla, aggiungere `"source": "Nome testata"`.
 
+Ogni pezzo del Settimanale (copertina, approfondimenti, commento, Società e brevi) può avere il campo facoltativo `"atlas": ["geo.energy", "mind.labor"]`: gli argomenti dell'AI Atlas di cui parla. Gli id sono le chiavi di `atlas/topics.json`. Con questi campi il Settimanale mostra «Sulla mappa dell'AI» sotto le fonti e un link «Questo numero sulla mappa» in copertina, e la mappa accende gli argomenti del numero (`atlas/#weekly-AAAA-MM-GG`) ed elenca in ogni argomento i pezzi che lo trattano. Dopo aver aggiunto un numero, lanciare `node atlas/build.js`: rigenera i dati della mappa e segnala gli id che non esistono.
+
 I due giornali si leggono a vicenda: il Quotidiano segnala le notizie riprese dal Settimanale, il Settimanale rimanda alle notizie del Quotidiano da cui nasce (confrontando gli url delle fonti).
 
 ## Anteprima locale

@@ -191,6 +191,12 @@ body{margin:0}
 /* fonti: il link al quotidiano */
 .src .q{font-family:var(--f-label);font-weight:600;letter-spacing:.04em;color:var(--accent);text-decoration:none;white-space:nowrap}
 .src .q:hover{text-decoration:underline}
+.brief .q{font-family:var(--f-label);font-weight:600;letter-spacing:.04em;color:var(--accent);text-decoration:none;white-space:nowrap}
+.brief .q:hover{text-decoration:underline}
+.src.atlas{margin-top:14px}
+.src.atlas .fld{color:var(--muted);font-size:.8rem}
+.maplink{font-family:var(--f-label);font-weight:600;letter-spacing:.04em;color:var(--accent);text-decoration:none}
+.maplink:hover{text-decoration:underline}
 
 /* un'altra lettura */
 .counter{margin:1.6em 0 0;border:1px solid var(--rule);border-left:4px solid var(--c-sec);background:var(--paper);padding:16px 20px}
@@ -223,7 +229,7 @@ body{margin:0}
 @media print{
   :root{--paper:#fff;--paper-2:#fff;--ink:#000;--muted:#333;--rule:#999;--op-bg:#fff}
   body{font-size:10.5pt}
-  .about,.progress,.share,.cover-cta .btn,#pick,.side-toc,.toast,.daily-band,.q{display:none !important}
+  .about,.progress,.share,.cover-cta .btn,#pick,.side-toc,.toast,.daily-band,.q,.src.atlas,.maplink{display:none !important}
   .cover-fig .issue{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .art{break-before:page;padding-block:0 18px}
   .art figure img{max-height:8cm}
@@ -251,7 +257,8 @@ body{margin:0}
 (function(){
   const app=document.getElementById('app'), meta=document.getElementById('meta');
   let DATA=[];
-  const DAILY={};   // url di una fonte → data dell'edizione del Quotidiano che la cita
+  const DAILY={};
+  let TOPICS={};    // id di un argomento dell'AI Atlas → {name, field, hash}   // url di una fonte → data dell'edizione del Quotidiano che la cita
   const BASE=/claude|anthropic/.test(location.hostname)?'https://claude.ai/artifact/HHTyMfdodEP7ddvxxWzwyC':location.href.split('#')[0];
   const SC={"Copertina":"--c-cover","Economia":"--c-econ","Finanza":"--c-fin","Sicurezza":"--c-sec","Il commento":"--c-op","Società":"--c-soc"};
   const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -271,6 +278,13 @@ body{margin:0}
   }
   const dailyLink=u=>DAILY[u]?`<a class="q" href="../quotidiano/#u-${encodeURIComponent(u)}" title="La notizia sul Quotidiano del ${esc(fmt(DAILY[u]))}">nel Quotidiano →</a>`:'';
 
+  // l'AI Atlas è facoltativo: senza topics.json i link alla mappa non compaiono
+  const onMap=a=>(a.atlas||[]).filter(id=>TOPICS[id]);
+  function mapLinks(a){
+    const ids=onMap(a); if(!ids.length) return '';
+    return `<div class="src atlas"><h4>Sulla mappa dell'AI</h4><ul>${ids.map(id=>`<li><a href="../atlas/#${esc(TOPICS[id].hash)}" title="${esc(TOPICS[id].field)}">${esc(TOPICS[id].name)}</a> <span class="fld">${esc(TOPICS[id].field)}</span></li>`).join('')}</ul></div>`;
+  }
+  const mapQ=b=>onMap(b).length?` · <a class="q" href="../atlas/#${esc(TOPICS[onMap(b)[0]].hash)}" title="${esc(onMap(b).map(id=>TOPICS[id].name).join(', '))}">sulla mappa →</a>`:'';
   function sources(list){
     if(!list||!list.length) return '';
     return `<div class="src"><h4>Per approfondire</h4><ul>${list.map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>${DAILY[s.url]?' · '+dailyLink(s.url):''}</li>`).join('')}</ul></div>`;
@@ -307,7 +321,7 @@ body{margin:0}
       ${photo(a.photo)}
       <div class="art-body">
         <div class="text">${body(a.body,id)}${opts.op?counter(a.counter):''}</div>
-        <aside class="side">${a.pull?`<blockquote class="pull">${esc(a.pull)}</blockquote>`:''}${sources(a.sources)}${sideToc(a.body,id)}</aside>
+        <aside class="side">${a.pull?`<blockquote class="pull">${esc(a.pull)}</blockquote>`:''}${sources(a.sources)}${mapLinks(a)}${sideToc(a.body,id)}</aside>
       </div>`;
     return `<article class="art${opts.op?' op':''}" id="${id}" data-title="${esc(a.title)}" data-min="${mins(a)}" style="${sc(a.section)}">${opts.op?`<div class="inner">${inner}</div>`:inner}</article>`;
   }
@@ -340,7 +354,7 @@ body{margin:0}
           <div class="kick label" style="margin-top:18px"><span class="sec">Storia di copertina</span><span class="tag">${esc(c.tag)}</span></div>
           <h2><a href="#a-${e.date}-${c.id}">${esc(c.title)}</a></h2>
           <p class="stand">${esc(c.standfirst)}</p>
-          <div class="cover-cta"><a class="btn" href="#a-${e.date}-${c.id}">Leggi tutto il numero</a><span class="label">Si legge in circa ${total} minuti · ${all.length} articoli, ${e.brief.length} brevi</span></div>
+          <div class="cover-cta"><a class="btn" href="#a-${e.date}-${c.id}">Leggi tutto il numero</a><span class="label">Si legge in circa ${total} minuti · ${all.length} articoli, ${e.brief.length} brevi</span>${Object.keys(TOPICS).length&&[...all,...e.society,...e.brief].some(x=>onMap(x).length)?`<a class="maplink" href="../atlas/#weekly-${esc(e.date)}">Questo numero sulla mappa dell'AI →</a>`:''}</div>
         </div>
         <nav class="toc" aria-label="In questo numero">
           <h3>In questo numero</h3>
@@ -351,7 +365,7 @@ body{margin:0}
 
       <section class="band" id="a-${e.date}-breve">
         <div class="band-h"><h2>La settimana in breve</h2><span class="label">${esc(e.range)}</span></div>
-        <ul class="brief">${e.brief.map(b=>{const o=b.source||(b.url?outlet(b.url):'');return `<li><span class="day">${esc(b.day)}</span><div><h3>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a>`:esc(b.title)}</h3><p>${esc(b.text)}${o?` <span class="who">— ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(o)}</a>`:esc(o)}</span>`:''}${DAILY[b.url]?` · ${dailyLink(b.url)}`:''}</p></div></li>`}).join('')}</ul>
+        <ul class="brief">${e.brief.map(b=>{const o=b.source||(b.url?outlet(b.url):'');return `<li><span class="day">${esc(b.day)}</span><div><h3>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a>`:esc(b.title)}</h3><p>${esc(b.text)}${o?` <span class="who">— ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(o)}</a>`:esc(o)}</span>`:''}${DAILY[b.url]?` · ${dailyLink(b.url)}`:''}${mapQ(b)}</p></div></li>`}).join('')}</ul>
       </section>
 
       <section class="band">
@@ -365,7 +379,7 @@ body{margin:0}
 
       <section class="band" id="a-${e.date}-societa">
         <div class="band-h"><h2>Società</h2><span class="label">L'AI fuori dagli uffici</span></div>
-        <div class="soc">${e.society.map(s=>`<article id="a-${e.date}-${s.id}"><span class="label">${esc(s.tag)}</span><h3>${esc(s.title)}</h3>${s.body.map(p=>`<p>${esc(p)}</p>`).join('')}${sources(s.sources)}</article>`).join('')}</div>
+        <div class="soc">${e.society.map(s=>`<article id="a-${e.date}-${s.id}"><span class="label">${esc(s.tag)}</span><h3>${esc(s.title)}</h3>${s.body.map(p=>`<p>${esc(p)}</p>`).join('')}${sources(s.sources)}${mapLinks(s)}</article>`).join('')}</div>
       </section>
 
       <section class="band">
@@ -464,9 +478,11 @@ body{margin:0}
       for(const m of (x.markdown||'').matchAll(/\]\((https?:\/\/[^)\s]+)\)/g)) if(!DAILY[m[1]]) DAILY[m[1]]=x.date;
   }).catch(()=>{});
 
+  const atlasLoad=fetch('../atlas/topics.json').then(r=>r.ok?r.json():{}).then(t=>{TOPICS=t||{}}).catch(()=>{});
+
   fetch('data/issues.json',{cache:'no-store'}).then(r=>r.json()).then(async d=>{
     DATA=(d.issues||[]).sort((a,b)=>b.date.localeCompare(a.date));
-    await Promise.race([dailyLoad,new Promise(r=>setTimeout(r,1500))]);
+    await Promise.race([Promise.all([dailyLoad,atlasLoad]),new Promise(r=>setTimeout(r,1500))]);
     route(); window.addEventListener('hashchange',route);
   }).catch(()=>{meta.innerHTML='<span>Non riesco a caricare il numero. Ricarica la pagina.</span>'});
 })();

@@ -1,0 +1,362 @@
+{
+ "research.scaling": {
+  "name": "Pretraining & scaling",
+  "field": "AI Research",
+  "hash": "research-scaling"
+ },
+ "research.reasoning": {
+  "name": "Reasoning & reinforcement learning",
+  "field": "AI Research",
+  "hash": "research-reasoning"
+ },
+ "research.interpretability": {
+  "name": "Interpretability",
+  "field": "AI Research",
+  "hash": "research-interpretability"
+ },
+ "research.alignment": {
+  "name": "Alignment & safety",
+  "field": "AI Research",
+  "hash": "research-alignment"
+ },
+ "research.evals": {
+  "name": "Evals & benchmarks",
+  "field": "AI Research",
+  "hash": "research-evals"
+ },
+ "research.efficiency": {
+  "name": "Efficiency, chips & inference",
+  "field": "AI Research",
+  "hash": "research-efficiency"
+ },
+ "research.multimodal": {
+  "name": "Multimodal & world models",
+  "field": "AI Research",
+  "hash": "research-multimodal"
+ },
+ "research.agents": {
+  "name": "Agent architectures, memory & tool use",
+  "field": "AI Research",
+  "hash": "research-agents"
+ },
+ "research.robotics": {
+  "name": "Embodied AI & robotics",
+  "field": "AI Research",
+  "hash": "research-robotics"
+ },
+ "software.coding-agents": {
+  "name": "Coding agents",
+  "field": "Software Development",
+  "hash": "software-coding-agents"
+ },
+ "software.code-review": {
+  "name": "Code review",
+  "field": "Software Development",
+  "hash": "software-code-review"
+ },
+ "software.testing": {
+  "name": "Testing & QA",
+  "field": "Software Development",
+  "hash": "software-testing"
+ },
+ "software.observability": {
+  "name": "Observability & SRE",
+  "field": "Software Development",
+  "hash": "software-observability"
+ },
+ "software.security": {
+  "name": "AppSec & vulnerability finding",
+  "field": "Software Development",
+  "hash": "software-security"
+ },
+ "software.devops": {
+  "name": "CI/CD & platform engineering",
+  "field": "Software Development",
+  "hash": "software-devops"
+ },
+ "software.modernization": {
+  "name": "Legacy migration & modernization",
+  "field": "Software Development",
+  "hash": "software-modernization"
+ },
+ "software.spec-design": {
+  "name": "Specs, design-to-code & prototyping",
+  "field": "Software Development",
+  "hash": "software-spec-design"
+ },
+ "software.docs": {
+  "name": "Docs & codebase understanding",
+  "field": "Software Development",
+  "hash": "software-docs"
+ },
+ "enterprise.support": {
+  "name": "Customer support agents",
+  "field": "Agentic Enterprise",
+  "hash": "enterprise-support"
+ },
+ "enterprise.sales-marketing": {
+  "name": "Sales & marketing",
+  "field": "Agentic Enterprise",
+  "hash": "enterprise-sales-marketing"
+ },
+ "enterprise.finance-ops": {
+  "name": "Finance & back office",
+  "field": "Agentic Enterprise",
+  "hash": "enterprise-finance-ops"
+ },
+ "enterprise.hr": {
+  "name": "HR & recruiting",
+  "field": "Agentic Enterprise",
+  "hash": "enterprise-hr"
+ },
+ "enterprise.knowledge": {
+  "name": "Enterprise search & knowledge work",
+  "field": "Agentic Enterprise",
+  "hash": "enterprise-knowledge"
+ },
+ "enterprise.protocols": {
+  "name": "Agent platforms & protocols (MCP, A2A)",
+  "field": "Agentic Enterprise",
+  "hash": "enterprise-protocols"
+ },
+ "enterprise.governance": {
+  "name": "Agent governance, identity & security",
+  "field": "Agentic Enterprise",
+  "hash": "enterprise-governance"
+ },
+ "enterprise.browser": {
+  "name": "Computer-use & browser agents",
+  "field": "Agentic Enterprise",
+  "hash": "enterprise-browser"
+ },
+ "enterprise.roi": {
+  "name": "Adoption, ROI & failure rates",
+  "field": "Agentic Enterprise",
+  "hash": "enterprise-roi"
+ },
+ "legal.contracts": {
+  "name": "Contract review & drafting",
+  "field": "Legal",
+  "hash": "legal-contracts"
+ },
+ "legal.research": {
+  "name": "Legal research & hallucinated citations",
+  "field": "Legal",
+  "hash": "legal-research"
+ },
+ "legal.ediscovery": {
+  "name": "E-discovery & litigation support",
+  "field": "Legal",
+  "hash": "legal-ediscovery"
+ },
+ "legal.compliance": {
+  "name": "Regulatory compliance",
+  "field": "Legal",
+  "hash": "legal-compliance"
+ },
+ "legal.ai-law": {
+  "name": "Law of AI (EU AI Act, liability)",
+  "field": "Legal",
+  "hash": "legal-ai-law"
+ },
+ "legal.copyright": {
+  "name": "Copyright & training data",
+  "field": "Legal",
+  "hash": "legal-copyright"
+ },
+ "legal.access": {
+  "name": "Access to justice",
+  "field": "Legal",
+  "hash": "legal-access"
+ },
+ "science.biology": {
+  "name": "Protein design & biology",
+  "field": "Science & Discovery",
+  "hash": "science-biology"
+ },
+ "science.materials": {
+  "name": "Materials & chemistry",
+  "field": "Science & Discovery",
+  "hash": "science-materials"
+ },
+ "science.math": {
+  "name": "Mathematics & formal proof",
+  "field": "Science & Discovery",
+  "hash": "science-math"
+ },
+ "science.weather": {
+  "name": "Weather & climate",
+  "field": "Science & Discovery",
+  "hash": "science-weather"
+ },
+ "science.physics": {
+  "name": "Physics & fusion",
+  "field": "Science & Discovery",
+  "hash": "science-physics"
+ },
+ "science.ai-scientist": {
+  "name": "Autonomous labs & AI scientists",
+  "field": "Science & Discovery",
+  "hash": "science-ai-scientist"
+ },
+ "mind.consciousness": {
+  "name": "Consciousness & model welfare",
+  "field": "Mind & Theory",
+  "hash": "mind-consciousness"
+ },
+ "mind.cognition": {
+  "name": "Cognitive science & LLMs as models of mind",
+  "field": "Mind & Theory",
+  "hash": "mind-cognition"
+ },
+ "mind.epistemics": {
+  "name": "Epistemics, truth & sycophancy",
+  "field": "Mind & Theory",
+  "hash": "mind-epistemics"
+ },
+ "mind.ethics": {
+  "name": "Ethics & values",
+  "field": "Mind & Theory",
+  "hash": "mind-ethics"
+ },
+ "mind.labor": {
+  "name": "Economics of work & automation",
+  "field": "Mind & Theory",
+  "hash": "mind-labor"
+ },
+ "mind.meaning": {
+  "name": "Human agency, meaning & dependence",
+  "field": "Mind & Theory",
+  "hash": "mind-meaning"
+ },
+ "mind.agi": {
+  "name": "What intelligence is & AGI debates",
+  "field": "Mind & Theory",
+  "hash": "mind-agi"
+ },
+ "geo.compute": {
+  "name": "Compute, chips & export controls",
+  "field": "Strategy & Geopolitics",
+  "hash": "geo-compute"
+ },
+ "geo.us-china": {
+  "name": "US-China competition",
+  "field": "Strategy & Geopolitics",
+  "hash": "geo-us-china"
+ },
+ "geo.national": {
+  "name": "National AI strategies & sovereign AI",
+  "field": "Strategy & Geopolitics",
+  "hash": "geo-national"
+ },
+ "geo.governance": {
+  "name": "International governance & safety institutes",
+  "field": "Strategy & Geopolitics",
+  "hash": "geo-governance"
+ },
+ "geo.defense": {
+  "name": "Defense & military AI",
+  "field": "Strategy & Geopolitics",
+  "hash": "geo-defense"
+ },
+ "geo.energy": {
+  "name": "Energy & data centres",
+  "field": "Strategy & Geopolitics",
+  "hash": "geo-energy"
+ },
+ "geo.info": {
+  "name": "Elections & information integrity",
+  "field": "Strategy & Geopolitics",
+  "hash": "geo-info"
+ },
+ "geo.open-weights": {
+  "name": "Open vs closed models",
+  "field": "Strategy & Geopolitics",
+  "hash": "geo-open-weights"
+ },
+ "geo.regulation": {
+  "name": "Domestic AI regulation",
+  "field": "Strategy & Geopolitics",
+  "hash": "geo-regulation"
+ },
+ "health.diagnostics": {
+  "name": "Imaging & diagnostics",
+  "field": "Health & Medicine",
+  "hash": "health-diagnostics"
+ },
+ "health.scribes": {
+  "name": "Clinical documentation & scribes",
+  "field": "Health & Medicine",
+  "hash": "health-scribes"
+ },
+ "health.drug-dev": {
+  "name": "Drug development & trials",
+  "field": "Health & Medicine",
+  "hash": "health-drug-dev"
+ },
+ "health.patient": {
+  "name": "Patient-facing assistants & mental health",
+  "field": "Health & Medicine",
+  "hash": "health-patient"
+ },
+ "health.regulation": {
+  "name": "Medical AI regulation & validation",
+  "field": "Health & Medicine",
+  "hash": "health-regulation"
+ },
+ "education.tutoring": {
+  "name": "AI tutors",
+  "field": "Education",
+  "hash": "education-tutoring"
+ },
+ "education.assessment": {
+  "name": "Assessment & cheating",
+  "field": "Education",
+  "hash": "education-assessment"
+ },
+ "education.policy": {
+  "name": "School & university policy",
+  "field": "Education",
+  "hash": "education-policy"
+ },
+ "education.skills": {
+  "name": "Upskilling & workforce learning",
+  "field": "Education",
+  "hash": "education-skills"
+ },
+ "education.evidence": {
+  "name": "Evidence on learning outcomes",
+  "field": "Education",
+  "hash": "education-evidence"
+ },
+ "creative.image": {
+  "name": "Image & design",
+  "field": "Creative & Media",
+  "hash": "creative-image"
+ },
+ "creative.video": {
+  "name": "Video & film",
+  "field": "Creative & Media",
+  "hash": "creative-video"
+ },
+ "creative.music": {
+  "name": "Music & audio",
+  "field": "Creative & Media",
+  "hash": "creative-music"
+ },
+ "creative.writing": {
+  "name": "Writing & publishing",
+  "field": "Creative & Media",
+  "hash": "creative-writing"
+ },
+ "creative.games": {
+  "name": "Games & interactive",
+  "field": "Creative & Media",
+  "hash": "creative-games"
+ },
+ "creative.labour": {
+  "name": "Creators, licensing & provenance",
+  "field": "Creative & Media",
+  "hash": "creative-labour"
+ }
+}

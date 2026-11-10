@@ -175,6 +175,12 @@ button { font: inherit; color: inherit; }
 .star { background: none; border: 0; cursor: pointer; font-size: 17px; line-height: 1; padding: 7px 6px; color: var(--ink-soft); border-radius: 4px; }
 .star:hover { background: var(--hl); }
 .star[aria-pressed="true"] { color: var(--pin); }
+.list li.wk a { display: grid; gap: 2px; padding: 7px 8px; border-radius: 4px; color: inherit; text-decoration: none; }
+.list li.wk a:hover { background: var(--hl); }
+.list li.wk a .n { color: var(--lane); }
+.list li.wk .picks { margin: 0 8px 6px; }
+.list .picks .pick { width: auto; display: inline-block; grid-template-columns: none; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sea-shallow); }
+.list .picks .pick:hover { border-color: var(--lane); background: var(--sea-shallow); }
 .list .date { font: 400 11px var(--f-mono); color: var(--ink-soft); white-space: nowrap; }
 .note { border-left: 2px solid var(--rule); padding: 2px 0 2px 10px; margin: 10px 0; font-size: 13px; }
 .note b { display: block; font: 600 10.5px var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
@@ -543,9 +549,16 @@ try { JSON.parse(localStorage.getItem(STORE) || '[]').forEach(id => { if (region
 const savePins = () => { try { localStorage.setItem(STORE, JSON.stringify([...pins])); } catch (e) {} };
 const mkColl = (type, c) => ({ type, id: c.id, name: c.name, blurb: c.blurb, regions: c.regions.map(id => regionById[id]).filter(Boolean) });
 const themes = (D.themes || []).map(c => mkColl('thread', c)), lenses = (D.lenses || []).map(c => mkColl('lens', c));
+// Links to the weekly are relative on the site itself; elsewhere (a published copy) they point at the live site.
+const SITE = 'https://carlobeschi.github.io/ai-newspaper/';
+const onSite = location.protocol === 'file:' || /github\.io$|^localhost$|^127\./.test(location.hostname);
+const siteUrl = u => onSite || !u.startsWith('../') ? u : SITE + u.slice(3);
+const weeklies = (D.weekly || []).filter(w => w.items.length).map(w => ({ type: 'weekly', id: w.date, name: `Il Settimanale N. ${w.n}`, blurb: `${w.range}: where this issue's stories sit on the map.`, issue: w, items: w.items,
+  regions: [...new Set(w.items.flatMap(it => it.regions))].map(id => regionById[id]).filter(Boolean) }));
+const weeklyFor = r => weeklies.flatMap(c => c.items.filter(it => it.regions.includes(r.id)).map(it => ({ it, c })));
 const focusColl = { type: 'focus', id: 'focus', name: 'My focus', blurb: '', regions: [] };
 const syncFocus = () => { focusColl.regions = [...pins].map(id => regionById[id]); $('#focus-n').textContent = pins.size; };
-const COLLKIND = { thread: 'Thread', lens: 'Viewpoint', focus: 'My focus' };
+const COLLKIND = { thread: 'Thread', lens: 'Viewpoint', focus: 'My focus', weekly: 'Il Settimanale' };
 
 const pips = a => '<span class="pips" aria-hidden="true">' + [1, 2, 3, 4, 5].map(i => `<i style="${i <= a ? 'background:var(--h' + (a + 1) + ')' : ''}"></i>`).join('') + '</span>';
 const activityChip = a => `<span class="chip">${pips(a)} Activity ${a}/5</span>`;
@@ -553,6 +566,7 @@ const maturityChip = m => `<span class="chip ${m}">${esc(MATURITY[m] || m)}</spa
 const star = r => { const on = pins.has(r.id); return `<button type="button" class="star" data-pin="${r.id}" aria-pressed="${on}" aria-label="${on ? 'Remove ' + esc(r.name) + ' from my focus' : 'Add ' + esc(r.name) + ' to my focus'}" title="${on ? 'In my focus' : 'Add to my focus'}">${on ? '★' : '☆'}</button>`; };
 const regionRow = (r, sub) => `<li class="row"><button type="button" data-region="${r.id}"><span class="n">${esc(r.name)}</span>${pips(r.activity)}<span class="m">${esc(sub)}</span></button>${star(r)}</li>`;
 const lmRow = l => `<li><button type="button" data-lm="${esc(l.id)}"><span class="n">${esc(l.name)}</span><span class="date">${esc(fmtDate(l.date))}</span><span class="m">${esc(l.region.field.name)} › ${esc(l.region.name)}</span></button></li>`;
+const weeklyRow = (it, c, showIssue) => `<li class="wk"><a href="${esc(siteUrl(it.url))}"><span class="n">${esc(it.title)}</span><span class="m">${esc(it.kind)}${showIssue ? ' · ' + esc(c.name) + ', ' + esc(c.issue.range) : ''}</span></a></li>`;
 const newest = (list, n) => list.filter(l => l.verified).sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, n);
 const collPicks = list => `<div class="picks">${list.map(c => `<button type="button" class="pick" data-coll="${c.type}-${c.id}">${esc(c.name)}</button>`).join('')}</div>`;
 const checkTag = l => !l.verified ? '<span class="unv-tag">Not confirmed</span>' : l.check === 'page' ? '<span class="ok-tag" title="The claim was compared with the linked source page">Checked on source</span>' : '<span title="Supported by a search result; the page itself was not read">Matched in search</span>';
@@ -580,6 +594,9 @@ function panelWorld() {
   <h3>See it from where you stand</h3>
   <p class="fine">Pick the role closest to yours to light up the topics that matter most to it.</p>
   ${collPicks(lenses)}
+  ${weeklies.length ? `<h3>From Il Settimanale dell'AI</h3>
+  <p class="fine">The weekly magazine's stories, placed on the map. Pick an issue to light up the topics it covered.</p>
+  <div class="picks">${weeklies.map(c => `<button type="button" class="pick" data-coll="weekly-${c.id}">${esc(c.name)} · ${esc(c.issue.range)}</button>`).join('')}</div>` : ''}
   <h3>My focus</h3>
   ${pins.size ? `<p class="fine">You follow ${pins.size} topic${pins.size > 1 ? 's' : ''}.</p><div class="picks"><button type="button" class="pick strong" data-coll="focus">★ Open my focus</button></div>`
     : `<p class="fine">Star (☆) the topics you work on or care about. The map then shows where they sit, what they connect to and what is happening next door. Your stars are kept in this browser only.</p>`}
@@ -630,6 +647,7 @@ function panelRegion(r) {
     ${!l.verified && l.note ? `<p class="fine">${esc(l.note)}</p>` : ''}
     ${/^https?:\/\//.test(l.source || '') ? `<a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">Source: ${esc(host(l.source))}</a>` : '<span class="fine">No source link</span>'}
   </article>`).join('')}
+  ${(() => { const w = weeklyFor(r); return w.length ? `<h3>In Il Settimanale dell'AI</h3><ul class="list">${w.map(x => weeklyRow(x.it, x.c, true)).join('')}</ul>` : ''; })()}
   ${deepDives(r.deepDives, 'Go deeper')}
   ${links.length ? `<h3>Lanes to other fields</h3><ul class="list">${links.map(rt => { const o = rt.a === r ? rt.b : rt.a; return regionRow(o, o.field.name + ' · ' + rt.label); }).join('')}</ul>` : ''}
   <h3>Next door in ${esc(f.name)}</h3>
@@ -644,6 +662,8 @@ function panelColl(c) {
   <p class="lede">${esc(c.blurb)}</p>
   <div class="stats"><div><b>${regs.length}</b><span>topics</span></div><div><b>${nf}</b><span>fields</span></div><div><b>${avg.toFixed(1)}</b><span>avg activity</span></div></div>
   <div class="picks">${missing ? `<button type="button" class="pick" data-act="pin-all">☆ Add all ${regs.length} to my focus</button>` : '<span class="fine">All of these are in your focus.</span>'}<button type="button" class="pick" data-act="clear-coll">Show the whole map</button></div>
+  ${c.type === 'weekly' ? `<h3>The stories</h3><p class="fine">Each piece in the issue, with the topics it touches. Articles are in Italian.</p><ul class="list">${c.items.map(it => `<li class="wk"><a href="${esc(siteUrl(it.url))}"><span class="n">${esc(it.title)}</span><span class="m">${esc(it.kind)}</span></a><div class="picks">${it.regions.map(id => regionById[id]).filter(Boolean).map(r => `<button type="button" class="pick" data-region="${r.id}">${esc(r.name)}</button>`).join('')}</div></li>`).join('')}</ul>
+  <h3>Topics this issue covered</h3>` : ''}
   ${groupByField(regs)}
   <h3>Latest on this ${c.type === 'thread' ? 'thread' : 'part of the map'}</h3>
   <ul class="list">${newest(regs.flatMap(r => r.landmarks), 6).map(lmRow).join('')}</ul>`;
@@ -675,7 +695,7 @@ function updatePanel(keepScroll) {
   body.scrollTop = keepScroll ? top : 0;
   $('#sheet-title').textContent = selRegion ? selRegion.name : selField ? selField.name : coll && showColl ? coll.name : 'Where AI work is happening';
   if (selLm && !keepScroll) { const n = document.getElementById('lm-' + selLm.id.replace(/[^\w-]/g, '_')); if (n) n.scrollIntoView({ block: 'nearest' }); }
-  $('#banner').hidden = !coll; if (coll) $('#banner-text').textContent = COLLKIND[coll.type] === coll.name ? coll.name : COLLKIND[coll.type] + ': ' + coll.name;
+  $('#banner').hidden = !coll; if (coll) $('#banner-text').textContent = coll.name.startsWith(COLLKIND[coll.type]) ? coll.name : COLLKIND[coll.type] + ': ' + coll.name;
   $('#focus-btn').setAttribute('aria-pressed', String(!!coll && coll.type === 'focus'));
 }
 function highlight() {
@@ -710,7 +730,7 @@ function go(target, fly) {
   updatePanel(); highlight();
   if (isPhone() && target) openSheet(true);
 }
-function collById(key) { if (key === 'focus') return focusColl; const i = key.indexOf('-'), type = key.slice(0, i), id = key.slice(i + 1); return (type === 'thread' ? themes : type === 'lens' ? lenses : []).find(c => c.id === id) || null; }
+function collById(key) { if (key === 'focus') return focusColl; const i = key.indexOf('-'), type = key.slice(0, i), id = key.slice(i + 1); return (type === 'thread' ? themes : type === 'lens' ? lenses : type === 'weekly' ? weeklies : []).find(c => c.id === id) || null; }
 function fromHash() {
   const h = decodeURIComponent(location.hash.slice(1)); if (!h) return null;
   const c = collById(h); if (c) return c;
@@ -802,7 +822,7 @@ document.addEventListener('keydown', e => {
 
 /* ---------- search ---------- */
 const index = [].concat(
-  themes.concat(lenses).map(c => ({ t: c.name, s: COLLKIND[c.type], target: c, hay: (c.name + ' ' + c.blurb).toLowerCase() })),
+  themes.concat(lenses, weeklies).map(c => ({ t: c.name, s: COLLKIND[c.type], target: c, hay: (c.name + ' ' + c.blurb).toLowerCase() })),
   D.fields.map(f => ({ t: f.name, s: 'Field', target: f, hay: (f.name + ' ' + f.summary).toLowerCase() })),
   Object.values(regionById).map(r => ({ t: r.name, s: r.field.name, target: r, hay: (r.name + ' ' + r.summary + ' ' + (r.whyItMatters || '') + ' ' + (r.openQuestion || '')).toLowerCase() })),
   landmarks.map(l => ({ t: l.name, s: l.region.field.name + ' › ' + l.region.name + ' · ' + fmtDate(l.date), target: l, hay: (l.name + ' ' + l.summary).toLowerCase() }))

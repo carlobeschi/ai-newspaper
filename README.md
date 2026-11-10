@@ -9,6 +9,7 @@ I giornali dell'AI di Carlo, generati da Claude a partire dalla newsletter *Dail
 | `index.html` | Pagina d'ingresso con i link ai giornali |
 | `quotidiano/` | **Il Quotidiano dell'AI**: `index.html`, `data/issues.json` (edizioni, la più recente per prima), `img/<data>.jpg` (foto di apertura) |
 | `settimanale/` | **Il Settimanale dell'AI**: `index.html`, `data/issues.json` (numeri, il più recente per primo), `img/<data>-<pezzo>.jpg` |
+| `atlas/` | **AI Atlas** (in inglese): mappa navigabile di cosa succede nell'AI in dieci campi. `index.html` è la pagina, `fields/<campo>.json` i dati di ogni campo, `layout.json` posizioni, collegamenti, percorsi e punti di vista. Dopo una modifica: `node atlas/build.js` rigenera `atlas/atlas-data.js`; `node atlas/check-links.js` controlla che fonti e link di approfondimento rispondano ancora |
 | `scripts/foto.py` | Cerca e scarica da Wikimedia Commons una foto con licenza libera per l'apertura |
 | `scripts/feeds.py` | Genera `quotidiano/feed.xml` e `settimanale/feed.xml` (lo lancia la GitHub Action `feeds.yml` a ogni nuova edizione) |
 | `*/img/og.png`, `og.png` | Immagini di anteprima per i link condivisi (WhatsApp, social) |

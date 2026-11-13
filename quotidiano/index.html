@@ -21,6 +21,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<script>
+/* tema scelto dal lettore, applicato prima del disegno della pagina */
+try { const t = JSON.parse(localStorage.getItem("qai.theme") || "null"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (_) {}
+</script>
 <style>
 /* Layout: Manifesto. Ogni edizione è un poster: una notizia domina a tutta pagina nel colore del giorno
    (uno per giorno della settimana), il numero del giorno è un elemento grafico, il resto è un indice
@@ -65,6 +69,9 @@ a:focus-visible, select:focus-visible, button:focus-visible, input:focus-visible
 .credit b { color: var(--ink); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-right: 6px; }
 .credit a { color: var(--ink); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; text-decoration: none; }
 .credit a:hover { text-decoration: underline; }
+.credit-r { display: inline-flex; gap: 14px; align-items: baseline; }
+.credit .theme { font: inherit; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); background: none; border: 1px solid var(--ink); padding: 0 7px; cursor: pointer; }
+.credit .theme:hover { background: var(--ink); color: var(--paper); }
 
 /* barra in alto, nel colore del giorno */
 .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--pb); color: var(--pf); border-bottom: 1px solid color-mix(in srgb, var(--pf) 30%, transparent); }
@@ -72,11 +79,16 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .bar .wrap { display: flex; align-items: center; gap: 8px 22px; min-height: 48px; }
 .brand { font-family: var(--f-disp); font-size: 22px; line-height: 1; text-transform: uppercase; text-decoration: none; white-space: nowrap; letter-spacing: 0.01em; }
 .brand:hover { color: var(--px); }
-.stampbar { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
-nav.sections { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
-nav.sections button { font: inherit; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: inherit; background: none; border: 0; padding: 14px 8px; white-space: nowrap; cursor: pointer; }
+.bar .wrap { flex-wrap: nowrap; }
+nav.sections { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; margin-left: auto; min-width: 0; }
+nav.sections::-webkit-scrollbar { display: none; }
+/* se le sezioni non ci stanno, sfumano verso il bordo: si capisce che si scorre */
+nav.sections.more-r { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent); }
+nav.sections.more-l { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 48px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 48px), transparent); }
+nav.sections.more-l.more-r { -webkit-mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent); mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent); }
+nav.sections button { font: inherit; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: inherit; background: none; border: 0; padding: 15px 9px; white-space: nowrap; cursor: pointer; flex: none; }
 nav.sections button:hover { color: var(--px); }
-@media (max-width: 760px) { .stampbar { display: none; } .brand { font-size: 19px; } }
+@media (max-width: 760px) { .brand { font-size: 19px; } .bar .wrap { gap: 10px; } }
 
 /* archivio e ricerca */
 .strip { border-bottom: 1px solid var(--hair); font-size: 12.5px; }
@@ -91,6 +103,9 @@ nav.sections button:hover { color: var(--px); }
 form.search { display: flex; gap: 8px; align-items: center; }
 form.search label { text-transform: uppercase; letter-spacing: 0.08em; color: var(--soft); }
 form.search input { font: inherit; color: var(--ink); background: var(--paper); border: 0; border-bottom: 2px solid var(--ink); padding: 3px 2px; border-radius: 0; width: 220px; max-width: 52vw; }
+
+[data-sec], .lead { scroll-margin-top: 70px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 /* poster d'apertura */
 .poster { background: var(--pb); color: var(--pf); }
@@ -125,7 +140,7 @@ form.search input { font: inherit; color: var(--ink); background: var(--paper); 
 .bignum .n { font-family: var(--f-disp); font-size: clamp(84px, 12vw, 150px); line-height: 0.82; color: transparent; -webkit-text-stroke: 2px var(--pf); white-space: nowrap; }
 .bignum .n small { font-size: 0.32em; -webkit-text-stroke: 0; color: var(--px); margin-left: 10px; text-transform: uppercase; }
 .bignum p { margin: 0 0 4px; max-width: 60ch; }
-.bignum .k { display: block; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+.bignum .k { display: block; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; font-weight: 600; }
 .bignum a { color: inherit; }
 @media (max-width: 640px) { .bignum .wrap { grid-template-columns: minmax(0, 1fr); } }
 
@@ -135,14 +150,25 @@ form.search input { font: inherit; color: var(--ink); background: var(--paper); 
 .since a { font-weight: 600; }
 .since button { margin-left: auto; font: inherit; font-size: 12.5px; color: var(--soft); background: none; border: 0; cursor: pointer; padding: 0; }
 .days a.unread::after { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin-left: 5px; vertical-align: middle; }
-.read-mark { font-size: 11px; color: var(--soft); letter-spacing: 0.04em; text-transform: none; margin-left: 8px; }
+.read-mark { display: inline-block; white-space: nowrap; font-size: 11px; font-weight: 400; color: var(--soft); letter-spacing: 0.04em; text-transform: none; margin-left: 8px; }
 .poster .read-mark { color: inherit; opacity: 0.8; }
 
 /* indice: il resto dell'edizione */
 .sheet { padding-block: 22px 36px; }
 .idx-h { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); font-weight: 500; margin: 22px 0 8px; display: flex; justify-content: space-between; gap: 12px; }
 .index { list-style: none; margin: 0; padding: 0; counter-reset: n 1; border-bottom: 2px solid var(--ink); }
-.index li { counter-increment: n; display: grid; grid-template-columns: 48px minmax(0, 1fr) 190px; gap: 6px 14px; padding: 14px 0 14px; border-top: 1px solid var(--ink); align-items: baseline; scroll-margin-top: 70px; }
+.index li { counter-increment: n; position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 190px; gap: 6px 14px; padding: 14px 8px 14px 0; border-top: 1px solid var(--ink); align-items: baseline; scroll-margin-top: 70px; transition: background-color .15s; }
+/* tutta la riga porta alla notizia */
+.index h3 a::after { content: ""; position: absolute; inset: 0; }
+.index p a { position: relative; z-index: 1; }
+.index li:hover { background: color-mix(in srgb, var(--sc) 9%, transparent); }
+.index li:hover h3 a { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.index li:focus-within { outline: 2px solid var(--ink); outline-offset: -2px; }
+.index h3 a:focus-visible { outline: none; }
+.index .go { display: inline-block; transition: transform .15s; }
+.index li:hover .go { transform: translateX(4px); }
+.index .read-more { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--ink); margin-top: 8px; display: flex; gap: 4px 14px; align-items: baseline; flex-wrap: wrap; }
+.index .read-more .read-mark { margin-left: 0; text-transform: none; letter-spacing: 0.04em; }
 .index li:first-child { border-top-width: 2px; }
 .index li::before { content: counter(n, decimal-leading-zero); font-size: 12px; color: var(--soft); }
 .index h3 { font-family: var(--f-disp); font-weight: 400; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.02; text-transform: uppercase; margin: 0 0 6px; text-wrap: balance; }
@@ -150,6 +176,7 @@ form.search input { font: inherit; color: var(--ink); background: var(--paper); 
 .index h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .index p { margin: 0; font-size: 14px; color: var(--soft); max-width: 78ch; }
 .index .sec { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; color: var(--sc); display: flex; gap: 8px; justify-content: flex-end; align-items: center; }
+@media (prefers-reduced-motion: reduce) { .index li, .index .go { transition: none; } }
 .index .sec i { width: 10px; height: 10px; background: var(--sc); display: inline-block; flex: none; }
 @media (max-width: 700px) {
   .index li { grid-template-columns: 34px minmax(0, 1fr); }
@@ -201,7 +228,9 @@ form.search input { font: inherit; color: var(--ink); background: var(--paper); 
 /* meta: tempo di lettura, fonti, copia link */
 .meta { font-size: 12.5px; margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; color: var(--soft); }
 .poster .meta, .head-band .meta { color: inherit; }
-.meta a { font-weight: 600; }
+.meta a { font-weight: 500; text-underline-offset: 2px; }
+.meta .src { min-width: 0; overflow-wrap: anywhere; }
+.meta .copy, .meta .listen { white-space: nowrap; flex: none; }
 .meta .copy { font: inherit; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: inherit; background: none; border: 1px solid currentColor; border-radius: 0; padding: 1px 8px; cursor: pointer; }
 .meta .copy:hover, .meta .listen[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .poster .meta .copy:hover, .head-band .meta .copy:hover, .head-band .meta .listen[aria-pressed="true"] { background: var(--pf); color: var(--pb); border-color: var(--pf); }
@@ -282,11 +311,10 @@ footer button { font: inherit; color: var(--ink); background: none; border: 0; p
 </head>
 <body>
 
-<div class="credit"><div class="wrap"><span><b>Chi siamo</b>Un'idea di Carlo, generata da Claude, basata sulla newsletter <em>Daily Brief</em> di PierG (Piergiorgio Grossi).</span><a href="../settimanale/">Il Settimanale dell'AI →</a></div></div>
+<div class="credit"><div class="wrap"><span><b>Chi siamo</b>Un'idea di Carlo, generata da Claude, basata sulla newsletter <em>Daily Brief</em> di PierG (Piergiorgio Grossi).</span><span class="credit-r"><button type="button" class="theme" id="theme" aria-label="Tema della pagina">Tema: auto</button><a href="../settimanale/">Il Settimanale dell'AI →</a></span></div></div>
 
 <header class="bar"><div class="wrap">
   <a class="brand" href="#">Il Quotidiano dell'AI</a>
-  <span class="stampbar" id="stampbar"></span>
   <nav class="sections" aria-label="Sezioni" id="nav"></nav>
 </div></header>
 
@@ -308,6 +336,7 @@ footer button { font: inherit; color: var(--ink); background: none; border: 0; p
     <p>Ogni mattina Claude legge la newsletter <em>Daily Brief</em> di Piergiorgio Grossi (PierG), che raccoglie e riassume in italiano le notizie sull'intelligenza artificiale del giorno prima, e la impagina come un manifesto: una notizia in apertura, il numero del giorno, il resto in un indice. I testi sono quelli della newsletter; ogni notizia rimanda alle sue fonti originali.</p>
     <p>Ogni giorno della settimana ha il suo colore. Le foto d'apertura vengono da Wikimedia Commons, con licenze libere, e sono stampate in bicromia nel colore del giorno: sono immagini di repertorio scelte sul tema della notizia, non foto dell'evento. Autore e licenza sono indicati sotto ogni foto.</p>
     <p>Per ricevere il <em>Daily Brief</em> direttamente nella posta, chiedi a PierG. Per seguire il Quotidiano con un lettore di notizie c'è il <a href="feed.xml">feed RSS</a>; la domenica esce <a href="../settimanale/">Il Settimanale dell'AI</a>.</p>
+    <p>Dalla tastiera: <kbd>/</kbd> per cercare, <kbd>J</kbd> e <kbd>K</kbd> (o le frecce) per passare alla notizia successiva o precedente.</p>
     <p>Il sito ricorda solo nel tuo browser l'ultima edizione che hai visto e le notizie che hai aperto, per segnalarti le novità. Non lo invia a nessuno.</p>
   </section>
   <section>
@@ -476,11 +505,17 @@ function meta(i, date, opts = {}) {
   const parts = [];
   if (opts.date) parts.push(`<span>${esc(cap(short(date)))}</span>`);
   parts.push(`<span>${min} min di lettura</span>`);
-  if (i.source) parts.push(`<span>${i.nsrc > 1 ? i.nsrc + " fonti" : "Fonte"}: ${inline(i.source)}</span>`);
+  if (i.source) parts.push(srcLine(i));
   const wk = weeklyLink(i); if (wk) parts.push(`<span>${wk}</span>`);
   if (opts.listen && "speechSynthesis" in window) parts.push(`<button class="copy listen" type="button" aria-pressed="false" data-listen="${sid(date, i.k)}">Ascolta</button>`);
   parts.push(`<button class="copy" type="button" data-link="${sid(date, i.k)}">Copia link</button>`);
   return `<div class="meta">${parts.join("")}</div>`;
+}
+// fonti: sempre "Fonte:" o "Fonti:", e un link chiamato solo "fonte" dice dove porta
+function srcLine(i) {
+  const n = i.nsrc || 1;
+  const html = inline(i.source).replace(/(<a [^>]*>)\s*fonte\s*(<\/a>)/gi, (_, a, b) => `${a}post originale${b}`);
+  return `<span class="src">${n > 1 ? "Fonti" : "Fonte"}: ${html}</span>`;
 }
 const readMark = (date, i) => READ.has(sid(date, i.k)) ? `<span class="read-mark" title="L'hai già aperta">✓ letta</span>` : "";
 const head = (i, date, tag) => `<${tag}><a href="#${sid(date, i.k)}">${esc(i.title)}</a></${tag}>`;
@@ -540,10 +575,10 @@ function renderEdition(idx) {
   html += bigNum(issue);
   html += `<div class="wrap sheet">${idx === 0 ? sinceBox() : ""}`;
   if (rest.length) html += `<h2 class="idx-h"><span>Il resto dell'edizione</span><span>${rest.length} ${rest.length === 1 ? "notizia" : "notizie"}</span></h2><ol class="index">${rest.map(i =>
-    `<li id="${sid(date, i.k)}" ${scStyle(i)}><div style="min-width:0"><h3><a href="#${sid(date, i.k)}">${esc(i.title)}</a></h3><p>${inline(i.stand || i.text)}${readMark(date, i)}</p></div><span class="sec"><i></i>${esc(sec(i.section).it)}</span></li>`).join("")}</ol>`;
+    `<li id="${sid(date, i.k)}" ${scStyle(i)}><div style="min-width:0"><h3><a href="#${sid(date, i.k)}">${esc(i.title)}</a></h3><p>${inline(i.stand || i.text)}</p><span class="read-more"><span aria-hidden="true">Leggi <span class="go">→</span></span>${readMark(date, i)}</span></div><span class="sec"><i></i>${esc(sec(i.section).it)}</span></li>`).join("")}</ol>`;
   if (side.length) html += `<div class="margins">${side.map(s => {
-    const lis = s.bullets.map(b => `<li>${inline(b)}</li>`).join("") +
-      s.items.map(i => `<li class="item" id="${sid(date, i.k)}">${head(i, date, "h5")}<p>${inline(i.text)}</p>${i.source ? `<div class="meta"><span>${s.name === "What's hot on Twitter" ? "" : "Fonti: "}${inline(i.source)}</span><button class="copy" type="button" data-link="${sid(date, i.k)}">Copia link</button></div>` : ""}</li>`).join("");
+    const lis = s.bullets.map(briefItem).join("") +
+      s.items.map(i => `<li class="item" id="${sid(date, i.k)}">${head(i, date, "h5")}<p>${inline(i.text)}</p>${i.source ? `<div class="meta">${srcLine(i)}<button class="copy" type="button" data-link="${sid(date, i.k)}">Copia link</button></div>` : ""}</li>`).join("");
     return `<section data-sec="${slug(s.name)}"><h4>${esc(sec(s.name).it)}</h4><ul>${lis}</ul></section>`;
   }).join("")}</div>`;
   html += `</div>`;
@@ -554,6 +589,17 @@ function renderEdition(idx) {
 
   $("side").innerHTML = weekBox() + weeklyBox() + topicsBox();
   markTopic(null);
+}
+
+/* ---------- in breve: una voce come le altre rubriche (titolo, testo, fonte) ---------- */
+function briefItem(b) {
+  const m = b.match(/^\[([^\]]+)\]\(([^)\s]+)\)\s*$/);   // la voce è tutta un link
+  if (!m) return `<li><p>${inline(b)}</p></li>`;
+  const text = m[1], url = safeUrl(m[2]);
+  let host = ""; try { host = new URL(url).hostname.replace(/^www\./, ""); } catch (_) {}
+  const c = text.indexOf(": ");
+  const h = c > 0 && c < 90 ? text.slice(0, c) : text, rest = c > 0 && c < 90 ? text.slice(c + 2) : "";
+  return `<li><h5><a href="${esc(url)}" target="_blank" rel="noopener">${esc(h)}</a></h5>${rest ? `<p>${esc(cap(rest))}</p>` : ""}${host ? `<div class="meta"><span class="src">Fonte: <a href="${esc(url)}" target="_blank" rel="noopener">${esc(host)}</a></span></div>` : ""}</li>`;
 }
 
 /* ---------- bentornato: le edizioni uscite dall'ultima visita ---------- */
@@ -581,16 +627,24 @@ function findFact(issue) {
   }
   return null;
 }
+// un'edizione può scegliere il numero a mano: issues[].fact = { "n": "105 miliardi", "text": "frase che si capisce da sola" }
+function manualFact(issue) {
+  const f = issue.fact;
+  if (!f || !f.n || !f.text) return null;
+  const { reading } = layout(issue);
+  const i = (Number.isInteger(f.k) && reading.find(x => x.k === f.k)) || reading.find(x => plain(x.text).includes(String(f.n).split(" ")[0])) || reading[0];
+  return { i, m: String(f.n), s: String(f.text) };
+}
 function bigNum(issue) {
-  const f = findFact(issue);
+  const f = manualFact(issue) || findFact(issue);
   if (!f) return "";
   const mm = f.m.match(/^(\$\s?)?([\d.,]+)\s*(.*)$/);
   const num = mm ? (mm[1] || "") + mm[2] : f.m, unit = mm ? mm[3] : "";
   return `<section class="bignum" aria-label="Il numero del giorno"><div class="wrap"><div class="n">${esc(num)}${unit ? `<small>${esc(unit)}</small>` : ""}</div>
-    <p><span class="k">Il numero del giorno</span>${esc(f.s)} <a href="#${sid(issue.date, f.i.k)}" title="${esc(f.i.title)}">Leggi →</a></p></div></section>`;
+    <p><span class="k">Il numero del giorno · ${esc(f.i.title)}</span>${esc(f.s)} <a href="#${sid(issue.date, f.i.k)}">Leggi →</a></p></div></section>`;
 }
 function factBox(issue) {
-  const f = findFact(issue);
+  const f = manualFact(issue) || findFact(issue);
   if (!f) return "";
   return `<section class="box fact"><h4>Il numero del giorno</h4><div class="num">${esc(f.m)}</div><p>${esc(f.s)}</p>
     <a class="more" href="#${sid(issue.date, f.i.k)}">${esc(f.i.title)} →</a></section>`;
@@ -716,8 +770,7 @@ function setHeader(issue) {
   document.title = "Il Quotidiano dell'AI";
   paint(issue.date);
   const d = new Date(issue.date + "T12:00:00"), p2 = (n) => String(n).padStart(2, "0");
-  $("stampbar").textContent = `N° ${p2(d.getDate())}·${p2(d.getMonth() + 1)}·${String(d.getFullYear()).slice(2)} · ${dayColor(issue.date).it} · ${issue.items.length} notizie`;
-  $("today").textContent = "Edizione di " + cap(fmtDay(issue.date));
+  $("today").textContent = `N° ${p2(d.getDate())}·${p2(d.getMonth() + 1)}·${String(d.getFullYear()).slice(2)} · ` + cap(fmtDay(issue.date));
   $("newsday").textContent = issue.parsed.newsDate ? "· le notizie del " + issue.parsed.newsDate : "";
   const shown = ISSUES.slice(0, 6);
   let html = `<span class="lab">Edizioni</span>` + shown.map((x, i) => {
@@ -725,15 +778,20 @@ function setHeader(issue) {
     return `<a href="${i === 0 ? "#" : "#e-" + x.date}" aria-current="${x.date === issue.date}"${unread ? ` class="unread" title="Uscita dopo la tua ultima visita"` : ""}>${esc(relDay(x.date))}</a>`;
   }).join("");
   if (ISSUES.length > shown.length) {
-    html += `<label for="older" class="label" hidden>Edizioni precedenti</label><select id="older"><option value="">Precedenti…</option>${ISSUES.slice(shown.length).map(x =>
+    html += `<label for="older" class="sr-only">Edizioni precedenti</label><select id="older"><option value="">Precedenti…</option>${ISSUES.slice(shown.length).map(x =>
       `<option value="${x.date}"${x.date === issue.date ? " selected" : ""}>${esc(cap(short(x.date)))}</option>`).join("")}</select>`;
   }
   $("days").innerHTML = html;
   const sel = $("older");
   if (sel) sel.addEventListener("change", () => { if (sel.value) location.hash = "e-" + sel.value; });
 }
+function navFade() {
+  const n = $("nav"); if (!n) return;
+  n.classList.toggle("more-l", n.scrollLeft > 4);
+  n.classList.toggle("more-r", n.scrollLeft + n.clientWidth < n.scrollWidth - 4);
+}
 function markTopic(id) {
-  for (const a of document.querySelectorAll("#topics a")) a.setAttribute("aria-current", String(a.dataset.t === id));
+  requestAnimationFrame(navFade);
 }
 function buildTopicLists() {
   const present = TOPICS.filter(t => ISSUES.some(x => x.items.some(i => i.topics.includes(t.id))));
@@ -773,6 +831,7 @@ function flashTo(id) {
   const el = $(id);
   if (el) { el.classList.remove("target"); void el.offsetWidth; el.classList.add("target"); requestAnimationFrame(() => el.scrollIntoView({ block: "start" })); }
 }
+let PENDING_SEC = null;   // sezione da raggiungere dopo il cambio di vista (dal footer)
 function route() {
   stopSpeech();
   const h = decodeURIComponent(location.hash.slice(1));
@@ -795,17 +854,16 @@ function route() {
   if ((m = h.match(/^e-(\d{4}-\d{2}-\d{2})$/))) { const i = ISSUES.findIndex(x => x.date === m[1]); idx = i >= 0 ? i : 0; }
   renderEdition(idx);
   // tornando da una notizia, riprendi da dove eri
-  if (back && $(back)) flashTo(back); else window.scrollTo(0, 0);
+  if (PENDING_SEC) { const s = PENDING_SEC; PENDING_SEC = null; scrollToSection(s); }
+  else if (back && $(back)) flashTo(back); else window.scrollTo(0, 0);
 }
 
 document.addEventListener("click", (e) => {
   const go = e.target.closest("[data-go]");
   if (go) { scrollToSection(go.dataset.go); return; }
-  const jump = e.target.closest("[data-jump]");
-  if (jump && $(jump.dataset.jump)) { e.preventDefault(); flashTo(jump.dataset.jump); return; }
   const foot = e.target.closest("[data-foot]");
   if (foot) {
-    if (location.hash.match(/^#(t-|n-)/) || $("q").value) { $("q").value = ""; location.hash = "e-" + ISSUES[CUR].date; setTimeout(() => scrollToSection(foot.dataset.foot), 60); }
+    if (location.hash.match(/^#(t-|n-)/) || $("q").value) { $("q").value = ""; location.hash = "e-" + ISSUES[CUR].date; PENDING_SEC = foot.dataset.foot; }
     else scrollToSection(foot.dataset.foot);
     return;
   }
@@ -834,6 +892,37 @@ $("q").addEventListener("input", () => {
   }, 180);
 });
 window.addEventListener("hashchange", () => { $("q").value = ""; route(); });
+$("nav").addEventListener("scroll", navFade, { passive: true });
+
+/* tema: auto → chiaro → scuro */
+const THEMES = { auto: "auto", light: "chiaro", dark: "scuro" };
+function showTheme() { $("theme").textContent = "Tema: " + THEMES[store.get("theme", null) || "auto"]; }
+$("theme").addEventListener("click", () => {
+  const cur = store.get("theme", null) || "auto";
+  const next = cur === "auto" ? "light" : cur === "light" ? "dark" : "auto";
+  store.set("theme", next === "auto" ? null : next);
+  if (next === "auto") delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme = next;
+  showTheme();
+});
+showTheme();
+
+/* tastiera: / per cercare, J/K o frecce per passare tra le notizie */
+document.addEventListener("keydown", (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const t = e.target;
+  if (t && (t.tagName === "INPUT" || t.tagName === "SELECT" || t.tagName === "TEXTAREA" || t.isContentEditable)) {
+    if (e.key === "Escape" && t.id === "q") { t.value = ""; t.blur(); route(); }
+    return;
+  }
+  if (e.key === "/") { e.preventDefault(); $("q").focus(); return; }
+  const next = document.querySelector(".pager .next"), prev = document.querySelector(".pager .prev");
+  if ((e.key === "j" || e.key === "ArrowRight") && next) { location.hash = next.getAttribute("href").slice(1); }
+  else if ((e.key === "k" || e.key === "ArrowLeft") && prev) { location.hash = prev.getAttribute("href").slice(1); }
+});
+
+/* la lettura ad alta voce si ferma quando si lascia la pagina */
+window.addEventListener("pagehide", stopSpeech);
+window.addEventListener("resize", navFade);
 
 // il Settimanale è facoltativo: se non si carica, il Quotidiano funziona lo stesso
 const weeklyLoad = fetch("../settimanale/data/issues.json", { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(d => {

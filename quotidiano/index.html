@@ -159,10 +159,14 @@ form.search input { font: inherit; color: var(--ink); background: var(--paper); 
 }
 
 /* ai margini: in breve, segnali deboli, dai social */
-.margins { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 26px 32px; margin-top: 34px; }
-.margins section { border-top: 6px solid var(--ink); padding-top: 10px; min-width: 0; scroll-margin-top: 70px; }
+/* le tre rubriche scorrono in colonne come un giornale: una rubrica corta lascia spazio alla successiva, senza buchi */
+.margins { columns: 3 280px; column-gap: 32px; column-rule: 1px solid var(--hair); margin-top: 34px; }
+.margins section { border-top: 6px solid var(--ink); padding-top: 10px; margin-bottom: 26px; scroll-margin-top: 70px; break-inside: auto; }
+.margins h4 { break-after: avoid; }
+.margins li { break-inside: avoid; }
 .margins h4 { font-family: var(--f-disp); font-weight: 400; font-size: 30px; line-height: 1; text-transform: uppercase; margin: 0 0 12px; }
-.margins ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.margins ul { list-style: none; margin: 0; padding: 0; }
+.margins li + li { margin-top: 12px; }
 .margins li { font-size: 13.5px; line-height: 1.45; padding-bottom: 12px; border-bottom: 1px solid var(--hair); }
 .margins li:last-child { border-bottom: 0; padding-bottom: 0; }
 .margins h5 { font-size: 14.5px; font-weight: 600; line-height: 1.3; margin: 0 0 4px; }

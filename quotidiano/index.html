@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Il Quotidiano dell'AI</title>
-<meta name="description" content="Le notizie sull'intelligenza artificiale, ogni mattina, impaginate come un quotidiano. Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG.">
+<meta name="description" content="Le notizie sull'intelligenza artificiale, ogni mattina, impaginate come un manifesto. Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="I giornali dell'AI">
 <meta property="og:title" content="Il Quotidiano dell'AI">
@@ -15,303 +15,294 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1739c9">
 <link rel="alternate" type="application/rss+xml" title="Il Quotidiano dell'AI" href="feed.xml">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2312355e'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='22' font-weight='700' fill='%23fff' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231739c9'/%3E%3Ctext x='16' y='26' font-family='Impact,Arial Narrow,sans-serif' font-size='26' fill='%23f4f1e8' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Roboto+Condensed:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
-/* Layout: quotidiano locale — fascia data e archivio, testata, barra sezioni, argomenti; apertura con foto, spalle, altre notizie; spalla destra */
+/* Layout: Manifesto. Ogni edizione è un poster: una notizia domina a tutta pagina nel colore del giorno
+   (uno per giorno della settimana), il numero del giorno è un elemento grafico, il resto è un indice
+   numerato su carta. Anton per i titoli, IBM Plex Mono per tutto il resto. */
 :root {
-  --paper: #fcfcfa;
-  --ink: #17191d;
-  --ink-soft: #4a4e57;
-  --rule: #cfd2d8;
-  --navy: #12355e;
-  --navy-ink: #ffffff;
-  --kicker: #b0172f;
-  --tint: #eef1f5;
-  --link: #12355e;
-  --mark: #fff1b8;
-  /* colori di sezione */
-  --c-eco: #12355e;
-  --c-mod: #b0172f;
-  --c-loc: #1d6b46;
-  --c-imp: #8d5400;
-  --c-alt: #5b4b8a;
-  --c-side: #4a4e57;
-  --f-mast: "Playfair Display", "Times New Roman", Georgia, serif;
-  --f-text: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --f-label: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+  --paper: #f4f1e8;
+  --ink: #16171b;
+  --soft: #5b5d63;
+  --hair: #cfcabd;
+  --mark: #ffd23f;
+  /* colore del giorno: lo imposta lo script in base al giorno della settimana */
+  --pb: #1739c9; --pf: #f4f1e8; --px: #ff6a3d;
+  /* colori di sezione, per le etichette su carta */
+  --c-eco: #1739c9; --c-mod: #c63a22; --c-loc: #1f7a4f; --c-imp: #9a6a00; --c-alt: #6d3fc0; --c-side: #5b5d63;
+  --f-disp: "Anton", Impact, "Arial Narrow", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #121418; --ink: #e7e7e3; --ink-soft: #a9adb6; --rule: #343842;
-    --navy: #1d3f6b; --navy-ink: #f2f4f8; --kicker: #ff7085; --tint: #1b1f26; --link: #9ec0ea; --mark: #5a4a10;
-    --c-eco: #8fb4e6; --c-mod: #ff7f92; --c-loc: #6fcf9a; --c-imp: #f0b35a; --c-alt: #b8a6f0; --c-side: #a9adb6;
+    --paper: #16171b; --ink: #f4f1e8; --soft: #a8a59c; --hair: #3a3b40; --mark: #6b5a10;
+    --c-eco: #93a6ff; --c-mod: #ff8a6d; --c-loc: #5fd39a; --c-imp: #f2c25a; --c-alt: #c3a6ff; --c-side: #a8a59c;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #121418; --ink: #e7e7e3; --ink-soft: #a9adb6; --rule: #343842;
-  --navy: #1d3f6b; --navy-ink: #f2f4f8; --kicker: #ff7085; --tint: #1b1f26; --link: #9ec0ea; --mark: #5a4a10;
-  --c-eco: #8fb4e6; --c-mod: #ff7f92; --c-loc: #6fcf9a; --c-imp: #f0b35a; --c-alt: #b8a6f0; --c-side: #a9adb6;
+  --paper: #16171b; --ink: #f4f1e8; --soft: #a8a59c; --hair: #3a3b40; --mark: #6b5a10;
+  --c-eco: #93a6ff; --c-mod: #ff8a6d; --c-loc: #5fd39a; --c-imp: #f2c25a; --c-alt: #c3a6ff; --c-side: #a8a59c;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-text); font-size: 17px; line-height: 1.5; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-mono); font-size: 15.5px; line-height: 1.55; }
 a { color: inherit; }
-a:focus-visible, select:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--kicker); outline-offset: 2px; }
-.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.label { font-family: var(--f-label); }
+a:focus-visible, select:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.label { font-family: var(--f-mono); }
+.up { text-transform: uppercase; letter-spacing: 0.08em; }
 
-/* banner chi siamo */
-.credit { background: var(--tint); border-bottom: 1px solid var(--rule); font-family: var(--f-label); font-size: 14px; }
-.credit .wrap { padding-block: 9px; text-align: center; }
-.credit b { color: var(--kicker); text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; margin-right: 6px; }
+/* chi siamo */
+.credit { font-size: 12px; color: var(--soft); border-bottom: 1px solid var(--hair); }
+.credit .wrap { padding-block: 7px; display: flex; flex-wrap: wrap; gap: 4px 14px; justify-content: space-between; }
+.credit b { color: var(--ink); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-right: 6px; }
+.credit a { color: var(--ink); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; text-decoration: none; }
+.credit a:hover { text-decoration: underline; }
 
-/* fascia superiore: data, archivio, ricerca */
-.strip { border-bottom: 1px solid var(--rule); font-family: var(--f-label); font-size: 13.5px; color: var(--ink-soft); }
+/* barra in alto, nel colore del giorno */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--pb); color: var(--pf); border-bottom: 1px solid color-mix(in srgb, var(--pf) 30%, transparent); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--pb); }
+.bar .wrap { display: flex; align-items: center; gap: 8px 22px; min-height: 48px; }
+.brand { font-family: var(--f-disp); font-size: 22px; line-height: 1; text-transform: uppercase; text-decoration: none; white-space: nowrap; letter-spacing: 0.01em; }
+.brand:hover { color: var(--px); }
+.stampbar { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+nav.sections { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+nav.sections button { font: inherit; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: inherit; background: none; border: 0; padding: 14px 8px; white-space: nowrap; cursor: pointer; }
+nav.sections button:hover { color: var(--px); }
+@media (max-width: 760px) { .stampbar { display: none; } .brand { font-size: 19px; } }
+
+/* archivio e ricerca */
+.strip { border-bottom: 1px solid var(--hair); font-size: 12.5px; }
 .strip .wrap { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: space-between; align-items: center; padding-block: 8px; }
-.strip strong { color: var(--ink); }
+.strip strong { font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+#newsday { color: var(--soft); }
 .days { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
-.days .lab { margin-right: 4px; }
-.days a, .days select { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); padding: 3px 9px; border-radius: 2px; text-decoration: none; }
-.days a[aria-current="true"] { background: var(--navy); color: var(--navy-ink); border-color: var(--navy); }
-.days a:hover { border-color: var(--ink-soft); }
-form.search { display: flex; gap: 6px; align-items: center; }
-form.search input { font: inherit; font-size: 14px; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); padding: 4px 8px; border-radius: 2px; width: 220px; max-width: 52vw; }
+.days .lab { margin-right: 4px; color: var(--soft); text-transform: uppercase; letter-spacing: 0.08em; }
+.days a, .days select { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--ink); padding: 2px 9px; border-radius: 0; text-decoration: none; }
+.days a[aria-current="true"] { background: var(--ink); color: var(--paper); }
+.days a:hover { background: var(--ink); color: var(--paper); }
+form.search { display: flex; gap: 8px; align-items: center; }
+form.search label { text-transform: uppercase; letter-spacing: 0.08em; color: var(--soft); }
+form.search input { font: inherit; color: var(--ink); background: var(--paper); border: 0; border-bottom: 2px solid var(--ink); padding: 3px 2px; border-radius: 0; width: 220px; max-width: 52vw; }
 
-/* testata */
-.mast { text-align: center; padding-block: 22px 14px; }
-.mast h1 { font-family: var(--f-mast); font-weight: 900; font-size: clamp(38px, 7.5vw, 84px); line-height: 1; margin: 0; letter-spacing: -0.01em; }
-.mast h1 a { text-decoration: none; }
-.mast h1 span { color: var(--navy); }
-:root[data-theme="dark"] .mast h1 span { color: var(--kicker); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .mast h1 span { color: var(--kicker); } }
-.mast p { margin: 10px 0 0; font-family: var(--f-label); text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; color: var(--ink-soft); }
-
-/* barra sezioni */
-nav.sections { background: var(--navy); color: var(--navy-ink); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--navy); }
-nav.sections .wrap { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
-nav.sections button { font-family: var(--f-label); font-weight: 700; text-transform: uppercase; font-size: 13.5px; letter-spacing: 0.06em; color: inherit; background: none; border: 0; padding: 11px 12px; white-space: nowrap; cursor: pointer; display: flex; align-items: center; gap: 7px; }
-nav.sections button i { width: 8px; height: 8px; border-radius: 50%; background: var(--sc); box-shadow: 0 0 0 1.5px var(--navy-ink); }
-nav.sections button:hover { background: rgba(255,255,255,0.12); }
-
-/* argomenti */
-.topics { border-bottom: 1px solid var(--rule); font-family: var(--f-label); font-size: 13.5px; }
-.topics .wrap { display: flex; gap: 6px 14px; align-items: baseline; padding-block: 8px; overflow-x: auto; scrollbar-width: thin; white-space: nowrap; }
-.topics b { text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; color: var(--ink-soft); }
-.topics a { text-decoration: none; color: var(--link); font-weight: 700; }
-.topics a:hover { text-decoration: underline; }
-.topics a[aria-current="true"] { color: var(--kicker); }
-
-/* pagina */
-.page { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 36px; padding-block: 26px 40px; }
-@media (max-width: 900px) { .page { grid-template-columns: minmax(0, 1fr); } }
-.kicker { font-family: var(--f-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12.5px; color: var(--sc, var(--kicker)); margin: 0 0 6px; }
-.meta { font-family: var(--f-label); font-size: 13px; color: var(--ink-soft); margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
-.meta a { color: var(--link); font-weight: 700; text-decoration: none; }
-.meta a:hover { text-decoration: underline; }
-.meta .copy { font: inherit; font-size: 12.5px; color: var(--ink-soft); background: none; border: 1px solid var(--rule); border-radius: 2px; padding: 1px 7px; cursor: pointer; }
-.meta .copy:hover { color: var(--ink); border-color: var(--ink-soft); }
-.meta .url { font-size: 12px; word-break: break-all; user-select: all; color: var(--ink); }
-h2 a, h3 a, h5 a { text-decoration: none; }
-h2 a:hover, h3 a:hover, h5 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-.target { animation: flash 2.4s ease-out; }
-@keyframes flash { from { background: var(--mark); } to { background: transparent; } }
-@media (prefers-reduced-motion: reduce) { .target { animation: none; outline: 2px solid var(--kicker); outline-offset: 6px; } }
-
-/* le cinque cose */
-.five { border-top: 3px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 12px 0 14px; margin-bottom: 24px; }
-.five h2 { font-family: var(--f-label); text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px; margin: 0 0 10px; }
-.five ol { margin: 0; padding: 0; list-style: none; counter-reset: n; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px 22px; }
-.five li { counter-increment: n; display: grid; grid-template-columns: auto 1fr; gap: 8px; font-size: 15.5px; line-height: 1.3; font-weight: 600; }
-.five li::before { content: counter(n); font-family: var(--f-mast); font-weight: 900; font-size: 26px; line-height: 0.9; color: var(--sc, var(--kicker)); }
-.five a { text-decoration: none; }
-.five a:hover { text-decoration: underline; }
-
-/* apertura */
-.lead { border-bottom: 3px double var(--rule); padding-bottom: 22px; margin-bottom: 22px; }
-.lead figure { margin: 0 0 16px; }
-.lead figure img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--tint); }
-.lead figcaption { font-family: var(--f-label); font-size: 13px; color: var(--ink-soft); margin-top: 6px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; }
-.lead figcaption a { color: inherit; }
-.lead h2 { font-family: var(--f-text); font-weight: 700; font-size: clamp(28px, 4.2vw, 44px); line-height: 1.1; margin: 0 0 12px; text-wrap: balance; }
-.stand { font-style: italic; color: var(--ink-soft); margin: 0 0 12px; text-wrap: pretty; }
-.lead .stand { font-size: 21px; line-height: 1.4; max-width: 62ch; }
-.lead .body { font-size: 18.5px; max-width: 68ch; margin: 0; }
-.lead .body::first-letter { font-family: var(--f-mast); font-weight: 900; float: left; font-size: 3.4em; line-height: 0.85; padding: 4px 8px 0 0; color: var(--sc); }
-
-/* spalle */
-.wings { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 26px; padding-bottom: 22px; margin-bottom: 26px; border-bottom: 3px double var(--rule); }
-.wing { border-top: 3px solid var(--sc); padding-top: 10px; min-width: 0; }
-.wing h3 { font-size: 23px; line-height: 1.18; margin: 0 0 8px; text-wrap: balance; }
-.wing .stand { font-size: 16.5px; line-height: 1.4; }
-.wing p.text { margin: 0; font-size: 15.5px; }
-
-/* altre notizie */
-.more-h { font-family: var(--f-label); text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px; margin: 0 0 16px; color: var(--ink-soft); }
-.cols { columns: 2 300px; column-gap: 32px; column-rule: 1px solid var(--rule); }
-.story { break-inside: avoid; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--rule); }
-.story h3 { font-weight: 700; font-size: 20px; line-height: 1.2; margin: 0 0 6px; text-wrap: balance; }
-.story .stand { font-size: 15.5px; margin-bottom: 6px; }
-.story p.text { margin: 0; font-size: 15.5px; }
-.anchor, .story, .wing, .lead, .box li { scroll-margin-top: 60px; }
-
-/* spalla destra */
-aside { display: flex; flex-direction: column; gap: 26px; min-width: 0; }
-.box h4 { font-family: var(--f-label); text-transform: uppercase; letter-spacing: 0.08em; font-size: 14px; margin: 0 0 12px; padding: 6px 10px; background: var(--navy); color: var(--navy-ink); }
-.box ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-.box li { font-size: 15.5px; line-height: 1.4; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
-.box li:last-child { border-bottom: 0; padding-bottom: 0; }
-.box li a { text-decoration: none; }
-.box li a:hover { text-decoration: underline; }
-.box .item h5 { font-size: 17px; font-weight: 700; line-height: 1.25; margin: 0 0 4px; }
-.box .item p { margin: 0; font-size: 15px; }
-.box.signals { background: var(--tint); padding: 0 0 14px; }
-.box.signals ul { padding: 0 12px; }
-.week ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.week li { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: baseline; border-bottom: 1px solid var(--rule); padding-bottom: 10px; }
-.week li:last-child { border-bottom: 0; }
-.week a { font-weight: 700; font-size: 18px; text-decoration: none; color: var(--link); }
-.week a:hover { text-decoration: underline; }
-.week span { font-family: var(--f-label); font-size: 13px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.week p { font-family: var(--f-label); font-size: 13px; color: var(--ink-soft); margin: 10px 0 0; }
-
-/* viste argomento e ricerca */
-.listing h2 { font-family: var(--f-mast); font-weight: 900; font-size: clamp(30px, 4.5vw, 46px); line-height: 1.05; margin: 0 0 6px; }
-.listing .sub { font-family: var(--f-label); color: var(--ink-soft); font-size: 14px; margin: 0 0 22px; }
-.listing .day { font-family: var(--f-label); text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; color: var(--ink-soft); border-bottom: 2px solid var(--ink); padding-bottom: 4px; margin: 26px 0 14px; }
-.listing .day:first-of-type { margin-top: 0; }
-.back { font-family: var(--f-label); font-size: 14px; color: var(--link); font-weight: 700; text-decoration: none; display: inline-block; margin-bottom: 16px; }
-.back:hover { text-decoration: underline; }
-mark { background: var(--mark); color: inherit; padding: 0 1px; }
-
-/* piè di pagina */
-footer { border-top: 3px double var(--rule); font-family: var(--f-label); font-size: 14px; color: var(--ink-soft); }
-footer .wrap { padding-block: 22px 30px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 24px 36px; }
-@media (max-width: 760px) { footer .wrap { grid-template-columns: 1fr; } }
-footer h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin: 0 0 8px; }
-footer p { margin: 0 0 8px; line-height: 1.45; }
-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
-footer a { color: var(--link); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-footer button { font: inherit; color: var(--link); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
-footer button:hover { text-decoration: underline; }
-.colophon { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; font-size: 13px; }
-.empty { padding: 60px 0; text-align: center; color: var(--ink-soft); font-family: var(--f-label); }
-
-/* perché conta: etichetta fissa a fine notizia */
-.why { margin: 8px 0 0; font-size: 15.5px; }
-.lead .why { font-size: 18px; max-width: 68ch; margin-top: 12px; }
-.why b, .single .lbl { font-family: var(--f-label); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.78em; color: var(--sc, var(--kicker)); margin-right: 4px; }
-
-/* bentornato */
-.since { border: 1px solid var(--rule); border-left: 4px solid var(--kicker); background: var(--tint); padding: 10px 14px; margin-bottom: 20px; font-family: var(--f-label); font-size: 14.5px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
-.since b { text-transform: uppercase; letter-spacing: 0.08em; font-size: 12.5px; color: var(--kicker); }
-.since a { color: var(--link); font-weight: 700; text-decoration: none; }
-.since a:hover { text-decoration: underline; }
-.since button { margin-left: auto; font: inherit; font-size: 13px; color: var(--ink-soft); background: none; border: 0; cursor: pointer; padding: 0; }
-.days a.unread::after { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--kicker); margin-left: 5px; vertical-align: middle; }
-.read-mark { font-family: var(--f-label); font-size: 12px; color: var(--ink-soft); font-weight: 400; letter-spacing: 0.04em; text-transform: none; margin-left: 6px; }
+/* poster d'apertura */
+.poster { background: var(--pb); color: var(--pf); }
+.poster-in { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 36px; padding-block: 26px 30px; }
+.stamp { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }
+.p-head { font-family: var(--f-disp); font-weight: 400; text-transform: uppercase; line-height: 0.88; letter-spacing: -0.005em; margin: 0.14em 0 0.22em; text-wrap: balance; overflow-wrap: anywhere; }
+.p-head.xl { font-size: clamp(64px, 11.5vw, 156px); }
+.p-head.l { font-size: clamp(54px, 8.6vw, 120px); }
+.p-head.m { font-size: clamp(44px, 6.4vw, 90px); }
+.p-head a { text-decoration: none; }
+.p-head a:hover { text-decoration: underline; text-decoration-thickness: 4px; text-underline-offset: 8px; }
+.p-head em { font-style: normal; color: var(--px); }
+.p-title { font-weight: 600; font-size: 15px; margin: 0 0 12px; max-width: 64ch; }
+.p-stand { font-size: 17px; line-height: 1.5; font-weight: 500; margin: 0 0 10px; max-width: 58ch; }
+.p-body { font-size: 15px; margin: 0; max-width: 64ch; }
+.poster .why { border-top: 2px solid var(--pf); padding-top: 8px; margin-top: 14px; max-width: 64ch; }
+.poster .why b { color: var(--pf); }
+.p-photo { margin: 0; align-self: start; }
+.p-photo .duo { background: var(--px); }
+.p-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; filter: grayscale(1) contrast(1.15); mix-blend-mode: multiply; }
+.p-photo figcaption { font-size: 10.5px; line-height: 1.45; padding-top: 7px; }
+.p-photo figcaption a { color: inherit; }
+@media (max-width: 860px) {
+  .poster-in { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .p-photo { max-width: 420px; }
+  .p-photo img { aspect-ratio: 4 / 3; }
+}
 
 /* il numero del giorno */
-.box.fact .num { font-family: var(--f-mast); font-weight: 900; font-size: 46px; line-height: 1; color: var(--sc, var(--kicker)); margin: 2px 0 8px; font-variant-numeric: lining-nums; }
-.box.fact p { margin: 0; font-size: 15.5px; line-height: 1.4; }
-.box.fact a.more { display: inline-block; margin-top: 8px; font-family: var(--f-label); font-size: 13.5px; color: var(--link); font-weight: 700; text-decoration: none; }
+.bignum { background: var(--pb); color: var(--pf); border-top: 1px solid color-mix(in srgb, var(--pf) 35%, transparent); }
+.bignum .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 26px; align-items: end; padding-block: 18px 22px; }
+.bignum .n { font-family: var(--f-disp); font-size: clamp(84px, 12vw, 150px); line-height: 0.82; color: transparent; -webkit-text-stroke: 2px var(--pf); white-space: nowrap; }
+.bignum .n small { font-size: 0.32em; -webkit-text-stroke: 0; color: var(--px); margin-left: 10px; text-transform: uppercase; }
+.bignum p { margin: 0 0 4px; max-width: 60ch; }
+.bignum .k { display: block; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+.bignum a { color: inherit; }
+@media (max-width: 640px) { .bignum .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+/* bentornato */
+.since { border: 2px solid var(--ink); padding: 10px 14px; margin: 22px 0 0; font-size: 13.5px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+.since b { text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; background: var(--ink); color: var(--paper); padding: 1px 6px; }
+.since a { font-weight: 600; }
+.since button { margin-left: auto; font: inherit; font-size: 12.5px; color: var(--soft); background: none; border: 0; cursor: pointer; padding: 0; }
+.days a.unread::after { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin-left: 5px; vertical-align: middle; }
+.read-mark { font-size: 11px; color: var(--soft); letter-spacing: 0.04em; text-transform: none; margin-left: 8px; }
+.poster .read-mark { color: inherit; opacity: 0.8; }
+
+/* indice: il resto dell'edizione */
+.sheet { padding-block: 22px 36px; }
+.idx-h { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); font-weight: 500; margin: 22px 0 8px; display: flex; justify-content: space-between; gap: 12px; }
+.index { list-style: none; margin: 0; padding: 0; counter-reset: n 1; border-bottom: 2px solid var(--ink); }
+.index li { counter-increment: n; display: grid; grid-template-columns: 48px minmax(0, 1fr) 190px; gap: 6px 14px; padding: 14px 0 14px; border-top: 1px solid var(--ink); align-items: baseline; scroll-margin-top: 70px; }
+.index li:first-child { border-top-width: 2px; }
+.index li::before { content: counter(n, decimal-leading-zero); font-size: 12px; color: var(--soft); }
+.index h3 { font-family: var(--f-disp); font-weight: 400; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.02; text-transform: uppercase; margin: 0 0 6px; text-wrap: balance; }
+.index h3 a { text-decoration: none; }
+.index h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.index p { margin: 0; font-size: 14px; color: var(--soft); max-width: 78ch; }
+.index .sec { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; color: var(--sc); display: flex; gap: 8px; justify-content: flex-end; align-items: center; }
+.index .sec i { width: 10px; height: 10px; background: var(--sc); display: inline-block; flex: none; }
+@media (max-width: 700px) {
+  .index li { grid-template-columns: 34px minmax(0, 1fr); }
+  .index li::before { grid-row: 1 / span 2; }
+  .index .sec { grid-column: 2; grid-row: 1; justify-content: flex-start; text-align: left; }
+  .index li > div { grid-column: 2; grid-row: 2; }
+}
+
+/* ai margini: in breve, segnali deboli, dai social */
+.margins { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 26px 32px; margin-top: 34px; }
+.margins section { border-top: 6px solid var(--ink); padding-top: 10px; min-width: 0; scroll-margin-top: 70px; }
+.margins h4 { font-family: var(--f-disp); font-weight: 400; font-size: 30px; line-height: 1; text-transform: uppercase; margin: 0 0 12px; }
+.margins ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.margins li { font-size: 13.5px; line-height: 1.45; padding-bottom: 12px; border-bottom: 1px solid var(--hair); }
+.margins li:last-child { border-bottom: 0; padding-bottom: 0; }
+.margins h5 { font-size: 14.5px; font-weight: 600; line-height: 1.3; margin: 0 0 4px; }
+.margins h5 a { text-decoration: none; }
+.margins h5 a:hover { text-decoration: underline; }
+.margins p { margin: 0; color: var(--soft); }
+
+/* fuori pagina: temi, settimanale, numero (nelle altre viste) */
+#side:empty { display: none; }
+.side { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 26px 32px; padding-block: 8px 40px; }
+.box { min-width: 0; border-top: 6px solid var(--ink); padding-top: 10px; }
+.box h4 { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; color: var(--soft); margin: 0 0 10px; }
+.week ol { list-style: none; margin: 0; padding: 0; }
+.week li { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; border-bottom: 1px solid var(--hair); padding: 6px 0; }
+.week a { font-family: var(--f-disp); font-size: 30px; line-height: 1.05; text-transform: uppercase; text-decoration: none; }
+.week a:hover { text-decoration: underline; }
+.week span { font-size: 12px; color: var(--soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.week p { font-size: 12px; color: var(--soft); margin: 10px 0 0; }
+.box.weekly a.card { display: block; text-decoration: none; background: #d2452b; color: #f4f1e8; padding: 16px 18px 18px; }
+.box.weekly a.card:hover { background: #b93a22; }
+.box.weekly .big { font-family: var(--f-disp); font-size: 86px; line-height: 0.85; display: block; }
+.box.weekly .big sup { font-size: 0.38em; vertical-align: top; position: relative; top: 0.12em; }
+.box.weekly .n { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin: 10px 0 4px; }
+.box.weekly h5 { font-family: var(--f-disp); font-weight: 400; font-size: 30px; line-height: 0.95; text-transform: uppercase; margin: 0 0 8px; }
+.box.weekly p { margin: 0; font-size: 13.5px; }
+.box.fact .num { font-family: var(--f-disp); font-size: 72px; line-height: 0.9; color: transparent; -webkit-text-stroke: 1.5px var(--ink); margin: 4px 0 8px; }
+.box.fact p { margin: 0; font-size: 14px; }
+.box.fact a.more { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 600; text-decoration: none; }
 .box.fact a.more:hover { text-decoration: underline; }
+.wk { font-weight: 600; text-decoration: underline; }
 
-/* intanto: le altre notizie in una riga */
-.box.meanwhile ul { gap: 0; }
-.box.meanwhile li { display: grid; grid-template-columns: 8px 1fr; gap: 10px; align-items: baseline; padding: 8px 0; font-size: 15px; line-height: 1.3; }
-.box.meanwhile li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sc); transform: translateY(-1px); }
-.box.meanwhile small { display: block; font-family: var(--f-label); font-size: 12px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
-
-/* dal settimanale */
-.box.weekly a.card { display: block; text-decoration: none; border: 1px solid var(--rule); padding: 12px 14px; }
-.box.weekly a.card:hover { border-color: var(--ink-soft); }
-.box.weekly .n { font-family: var(--f-label); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
-.box.weekly h5 { font-family: var(--f-mast); font-size: 21px; line-height: 1.15; margin: 4px 0 6px; }
-.box.weekly p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
-.wk { color: var(--link); font-weight: 700; text-decoration: none; }
+/* meta: tempo di lettura, fonti, copia link */
+.meta { font-size: 12.5px; margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; color: var(--soft); }
+.poster .meta, .head-band .meta { color: inherit; }
+.meta a { font-weight: 600; }
+.meta .copy { font: inherit; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: inherit; background: none; border: 1px solid currentColor; border-radius: 0; padding: 1px 8px; cursor: pointer; }
+.meta .copy:hover, .meta .listen[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.poster .meta .copy:hover, .head-band .meta .copy:hover, .head-band .meta .listen[aria-pressed="true"] { background: var(--pf); color: var(--pb); border-color: var(--pf); }
+.meta .url { font-size: 12px; word-break: break-all; user-select: all; }
+.why { margin: 8px 0 0; font-size: 14.5px; }
+.why b, .single .lbl { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8em; font-weight: 600; color: var(--sc, var(--ink)); margin-right: 6px; }
+.target { animation: flash 2.4s ease-out; }
+@keyframes flash { from { background: var(--mark); } to { background: transparent; } }
+@media (prefers-reduced-motion: reduce) { .target { animation: none; outline: 2px solid var(--ink); outline-offset: 6px; } }
+mark { background: var(--mark); color: inherit; padding: 0 1px; }
 
 /* pagina della singola notizia */
-.single { max-width: 720px; }
-.single h2 { font-family: var(--f-text); font-weight: 700; font-size: clamp(30px, 4.6vw, 46px); line-height: 1.1; margin: 0 0 14px; text-wrap: balance; }
-.single figure { margin: 0 0 18px; }
-.single figure img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--tint); }
-.single figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; font-family: var(--f-label); font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
-.single figcaption a { color: inherit; }
-.single .part { font-size: 19px; line-height: 1.55; margin: 0 0 14px; }
-.single .part.fact { font-size: 21px; }
-.single .meta { margin: 6px 0 22px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
-.single .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 0; font-family: var(--f-label); font-size: 13.5px; }
-.single .chips a { border: 1px solid var(--rule); padding: 2px 9px; border-radius: 2px; text-decoration: none; color: var(--link); font-weight: 700; }
-.single .chips a:hover { border-color: var(--ink-soft); }
-.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 30px 0 0; padding-top: 16px; border-top: 3px double var(--rule); }
+.head-band { background: var(--pb); color: var(--pf); }
+.head-band .wrap { padding-block: 18px 26px; }
+.head-band h2 { font-family: var(--f-disp); font-weight: 400; text-transform: uppercase; font-size: clamp(40px, 6vw, 84px); line-height: 0.92; margin: 0.18em 0 0.2em; max-width: 18ch; text-wrap: balance; overflow-wrap: anywhere; }
+.back { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; text-decoration: none; display: inline-block; margin-bottom: 14px; }
+.back:hover { text-decoration: underline; }
+.single { max-width: 760px; padding-block: 26px 10px; }
+.single .p-photo { max-width: 760px; margin-bottom: 22px; }
+.single .p-photo img { aspect-ratio: 16 / 9; }
+.single .part { font-size: 17px; line-height: 1.65; margin: 0 0 16px; }
+.single .part.fact { font-size: 19px; font-weight: 500; }
+.single .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 0; font-size: 12.5px; }
+.single .chips a { border: 1px solid var(--ink); padding: 2px 9px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; }
+.single .chips a:hover { background: var(--ink); color: var(--paper); }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 30px 0 0; padding-top: 14px; border-top: 2px solid var(--ink); }
 .pager a { text-decoration: none; display: block; }
 .pager a:hover b { text-decoration: underline; }
-.pager span { display: block; font-family: var(--f-label); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 4px; }
-.pager b { font-size: 17px; line-height: 1.25; }
+.pager span { display: block; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--soft); margin-bottom: 4px; }
+.pager b { font-family: var(--f-disp); font-weight: 400; font-size: 21px; line-height: 1.05; text-transform: uppercase; }
 .pager .next { text-align: right; grid-column: 2; }
 .related { margin-top: 30px; }
-.related h3 { font-family: var(--f-label); text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px; margin: 0 0 12px; color: var(--ink-soft); }
+.related h3 { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); font-weight: 500; margin: 0 0 12px; }
 .related ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-.related li { border-top: 3px solid var(--sc); padding-top: 8px; }
-.related li a { text-decoration: none; font-weight: 700; font-size: 17px; line-height: 1.25; }
+.related li { border-top: 6px solid var(--sc); padding-top: 8px; }
+.related li a { text-decoration: none; font-family: var(--f-disp); font-size: 21px; line-height: 1.05; text-transform: uppercase; }
 .related li a:hover { text-decoration: underline; }
-.related li small { display: block; font-family: var(--f-label); font-size: 12.5px; color: var(--ink-soft); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
-.meta .listen[aria-pressed="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.related li small { display: block; font-size: 11px; color: var(--soft); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* viste argomento e ricerca */
+.listing { padding-block: 22px 30px; }
+.listing h2 { font-family: var(--f-disp); font-weight: 400; text-transform: uppercase; font-size: clamp(48px, 8vw, 110px); line-height: 0.9; margin: 0 0 8px; }
+.listing .sub { color: var(--soft); font-size: 13px; margin: 0 0 22px; }
+.listing .day { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; border-bottom: 2px solid var(--ink); padding-bottom: 4px; margin: 30px 0 14px; }
+.kicker { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sc, var(--soft)); margin: 0 0 6px; font-weight: 600; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 0 32px; }
+.story { padding: 14px 0 16px; border-top: 1px solid var(--ink); scroll-margin-top: 70px; min-width: 0; }
+.story h3 { font-family: var(--f-disp); font-weight: 400; text-transform: uppercase; font-size: 25px; line-height: 1.02; margin: 0 0 8px; text-wrap: balance; }
+.story h3 a { text-decoration: none; }
+.story h3 a:hover { text-decoration: underline; }
+.story .stand { font-weight: 500; font-size: 14.5px; margin: 0 0 6px; }
+.story p.text { margin: 0; font-size: 14px; color: var(--soft); }
+.empty { padding: 60px 0; text-align: center; color: var(--soft); }
+
+/* piè di pagina */
+footer { border-top: 6px solid var(--ink); font-size: 13px; color: var(--soft); }
+footer .wrap { padding-block: 22px 30px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 24px 36px; }
+@media (max-width: 760px) { footer .wrap { grid-template-columns: 1fr; } }
+footer h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); margin: 0 0 8px; font-weight: 600; }
+footer p { margin: 0 0 8px; line-height: 1.55; }
+footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+footer a { color: var(--ink); }
+footer button { font: inherit; color: var(--ink); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; text-decoration: underline; }
+.colophon { grid-column: 1 / -1; border-top: 1px solid var(--hair); padding-top: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; font-size: 12px; }
+.colophon .sw { display: inline-flex; gap: 4px; vertical-align: middle; margin-left: 6px; }
+.colophon .sw i { width: 12px; height: 12px; display: block; }
 
 /* stampa */
 @media print {
-  :root { --paper: #fff; --ink: #000; --ink-soft: #333; --rule: #999; --tint: #fff; --link: #000; }
-  body { font-size: 11pt; }
-  body::before, .credit, .strip, nav.sections, .topics, aside, footer .wrap > section, .meta .copy, .meta .listen, .since, .pager, .back, .related { display: none !important; }
-  .page { display: block; padding: 0; }
-  .mast { padding-block: 0 8px; }
-  .cols { columns: 2; }
+  :root { --paper: #fff; --ink: #000; --soft: #333; --hair: #999; }
+  body { font-size: 10pt; }
+  body::before, .credit, .strip, .bar, #side, footer .wrap > section, .meta .copy, .meta .listen, .since, .pager, .back, .related { display: none !important; }
+  .poster, .bignum, .head-band { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .index li, .story, .margins li { break-inside: avoid; }
   a { text-decoration: none; }
-  .lead figure img, .single figure img { max-height: 9cm; }
-  .story, .wing, .five li { break-inside: avoid; }
 }
 </style>
 </head>
 <body>
 
-<div class="credit"><div class="wrap"><b>Chi siamo</b>Un'idea di Carlo, generata da Claude, basata sulla newsletter <em>Daily Brief</em> di PierG (Piergiorgio Grossi).</div></div>
+<div class="credit"><div class="wrap"><span><b>Chi siamo</b>Un'idea di Carlo, generata da Claude, basata sulla newsletter <em>Daily Brief</em> di PierG (Piergiorgio Grossi).</span><a href="../settimanale/">Il Settimanale dell'AI →</a></div></div>
+
+<header class="bar"><div class="wrap">
+  <a class="brand" href="#">Il Quotidiano dell'AI</a>
+  <span class="stampbar" id="stampbar"></span>
+  <nav class="sections" aria-label="Sezioni" id="nav"></nav>
+</div></header>
 
 <div class="strip"><div class="wrap">
   <span><strong id="today">Edizione del giorno</strong> <span id="newsday"></span></span>
   <div class="days" id="days" aria-label="Edizioni"></div>
   <form class="search" id="search-form" role="search">
-    <label for="q" class="label">Cerca</label>
+    <label for="q">Cerca</label>
     <input id="q" type="search" placeholder="Nell'archivio, es. Nvidia" autocomplete="off">
   </form>
 </div></div>
 
-<header class="mast wrap">
-  <h1><a href="#">Il Quotidiano <span>dell'AI</span></a></h1>
-  <p>Intelligenza artificiale, impresa e tecnologia · ogni mattina</p>
-</header>
-
-<nav class="sections" aria-label="Sezioni"><div class="wrap" id="nav"></div></nav>
-<div class="topics"><div class="wrap" id="topics"></div></div>
-
-<main class="wrap">
-  <div class="page">
-    <div id="main" style="min-width:0"><div class="empty">Caricamento dell'edizione…</div></div>
-    <aside id="side"></aside>
-  </div>
-</main>
+<main id="main"><div class="wrap empty">Caricamento dell'edizione…</div></main>
+<div class="wrap side" id="side"></div>
 
 <footer><div class="wrap">
   <section>
     <h4>Come è fatto</h4>
-    <p>Ogni mattina Claude legge la newsletter <em>Daily Brief</em> di Piergiorgio Grossi (PierG), che raccoglie e riassume in italiano le notizie sull'intelligenza artificiale del giorno prima, e la impagina come un quotidiano. I testi sono quelli della newsletter; ogni notizia rimanda alle sue fonti originali.</p>
-    <p>Le foto d'apertura vengono da Wikimedia Commons, con licenze libere: sono immagini di repertorio scelte sul tema della notizia, non foto dell'evento. Autore e licenza sono indicati sotto ogni foto.</p>
+    <p>Ogni mattina Claude legge la newsletter <em>Daily Brief</em> di Piergiorgio Grossi (PierG), che raccoglie e riassume in italiano le notizie sull'intelligenza artificiale del giorno prima, e la impagina come un manifesto: una notizia in apertura, il numero del giorno, il resto in un indice. I testi sono quelli della newsletter; ogni notizia rimanda alle sue fonti originali.</p>
+    <p>Ogni giorno della settimana ha il suo colore. Le foto d'apertura vengono da Wikimedia Commons, con licenze libere, e sono stampate in bicromia nel colore del giorno: sono immagini di repertorio scelte sul tema della notizia, non foto dell'evento. Autore e licenza sono indicati sotto ogni foto.</p>
     <p>Per ricevere il <em>Daily Brief</em> direttamente nella posta, chiedi a PierG. Per seguire il Quotidiano con un lettore di notizie c'è il <a href="feed.xml">feed RSS</a>; la domenica esce <a href="../settimanale/">Il Settimanale dell'AI</a>.</p>
     <p>Il sito ricorda solo nel tuo browser l'ultima edizione che hai visto e le notizie che hai aperto, per segnalarti le novità. Non lo invia a nessuno.</p>
   </section>
@@ -323,7 +314,7 @@ footer button:hover { text-decoration: underline; }
     <h4>Argomenti</h4>
     <ul id="foot-topics"></ul>
   </section>
-  <div class="colophon"><span>Il Quotidiano dell'AI · un'idea di Carlo, generata da Claude</span><span id="count"></span></div>
+  <div class="colophon"><span>Il Quotidiano dell'AI · un'idea di Carlo, generata da Claude<span class="sw" id="swatches" aria-hidden="true"></span></span><span id="count"></span></div>
 </div></footer>
 
 <script>
@@ -367,6 +358,36 @@ const inline = (s) => esc(s).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, u) => 
 const plain = (s) => s.replace(/\[([^\]]+)\]\([^)\s]+\)/g, "$1");
 const slug = (s) => "s-" + s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const $ = (id) => document.getElementById(id);
+// il colore del giorno: uno per ogni giorno della settimana (0 = domenica)
+const DAY_COLORS = [
+  { it: "domenica",  pb: "#16171b", pf: "#f4f1e8", px: "#ff6a3d" },
+  { it: "lunedì",    pb: "#d2452b", pf: "#f4f1e8", px: "#ffd23f" },
+  { it: "martedì",   pb: "#1f7a4f", pf: "#f4f1e8", px: "#ffd23f" },
+  { it: "mercoledì", pb: "#f2b632", pf: "#16171b", px: "#1739c9" },
+  { it: "giovedì",   pb: "#6d3fc0", pf: "#f4f1e8", px: "#ffd23f" },
+  { it: "venerdì",   pb: "#1739c9", pf: "#f4f1e8", px: "#ff6a3d" },
+  { it: "sabato",    pb: "#0f6b78", pf: "#f4f1e8", px: "#ffd23f" }
+];
+const dayColor = (iso) => DAY_COLORS[new Date(iso + "T12:00:00").getDay()];
+function paint(iso) {
+  const c = dayColor(iso), r = document.documentElement.style;
+  r.setProperty("--pb", c.pb); r.setProperty("--pf", c.pf); r.setProperty("--px", c.px);
+  const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = c.pb;
+}
+// il titolo-manifesto: la parte principale del titolo, prima di "tra", "dopo", una virgola, i due punti...
+// un'edizione può sceglierlo a mano con issues[].poster.title
+function posterTitle(t) {
+  let s = t.trim();
+  const cut = s.search(/:\s|\s[—–-]\s|,\s|\s(?:tra|dopo|mentre|per|con|contro|grazie a|ma|e il|e la)\s/);
+  if (cut > 0) { const left = s.slice(0, cut).trim(); if (left.split(/\s+/).length >= 3) s = left; }
+  return s;
+}
+const sizeCls = (s) => s.length <= 28 ? "xl" : s.length <= 50 ? "l" : "m";
+function posterHtml(s) {
+  const t = /[.!?%»"]$/.test(s) ? s : s + ".";
+  const w = esc(t).split(" "), last = w.pop();
+  return (w.length ? w.join(" ") + " " : "") + `<em>${last}</em>`;
+}
 const store = {
   get(k, d) { try { const v = localStorage.getItem("qai." + k); return v == null ? d : JSON.parse(v); } catch (_) { return d; } },
   set(k, v) { try { localStorage.setItem("qai." + k, JSON.stringify(v)); } catch (_) {} }
@@ -474,8 +495,8 @@ function hl(html, q) {
 }
 function photoFig(ph) {
   if (!ph || !ph.file) return "";
-  return `<figure><img src="${esc(ph.file)}" alt="${esc(ph.alt || "")}" width="1280" height="720" loading="eager">
-      <figcaption><span>${esc(ph.caption || "")}</span><span>Foto: <a href="${esc(safeUrl(ph.page || ""))}" target="_blank" rel="noopener">${esc(ph.author || "")} / ${esc(ph.source || "Wikimedia Commons")}</a>${ph.license ? ` · ${licUrl(ph.license) ? `<a href="${licUrl(ph.license)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)}` : ""}</span></figcaption></figure>`;
+  return `<figure class="p-photo"><div class="duo"><img src="${esc(ph.file)}" alt="${esc(ph.alt || "")}" width="1280" height="720" loading="eager"></div>
+      <figcaption>${esc(ph.caption || "")} Foto: <a href="${esc(safeUrl(ph.page || ""))}" target="_blank" rel="noopener">${esc(ph.author || "")} / ${esc(ph.source || "Wikimedia Commons")}</a>${ph.license ? ` · ${licUrl(ph.license) ? `<a href="${licUrl(ph.license)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)}` : ""}</figcaption></figure>`;
 }
 
 /* ---------- ordine di un'edizione ---------- */
@@ -491,44 +512,43 @@ function layout(issue) {
   return { news, side, all, ordered, sideItems, reading: [...ordered, ...sideItems] };
 }
 
-/* ---------- vista edizione ---------- */
+/* ---------- vista edizione: il poster, il numero, l'indice ---------- */
 function renderEdition(idx) {
   CUR = idx;
   const issue = ISSUES[idx], date = issue.date;
   setHeader(issue);
-  const { news, side, all, ordered, sideItems } = layout(issue);
+  const { news, side, ordered } = layout(issue);
 
   $("nav").innerHTML = [...news, ...side].map(s =>
-    `<button type="button" data-go="${slug(s.name)}" style="--sc: var(${sec(s.name).c})"><i></i>${esc(sec(s.name).it)}</button>`).join("");
+    `<button type="button" data-go="${slug(s.name)}">${esc(sec(s.name).it)}</button>`).join("");
 
   const lead = ordered[0];
-  const wings = ordered.slice(1, 4);
-  const rest = all.filter(i => i !== lead && !wings.includes(i));
-  const five = [...ordered, ...sideItems].slice(0, 5);
-
-  let html = idx === 0 ? sinceBox() : "";
-  if (five.length >= 3) html += `<section class="five"><h2>Le ${five.length} cose da sapere${idx === 0 ? " oggi" : ""}</h2><ol>${five.map(i =>
-    `<li ${scStyle(i)}><a href="#${sid(date, i.k)}" data-jump="${sid(date, i.k)}">${esc(i.title)}</a></li>`).join("")}</ol></section>`;
-
+  const rest = ordered.slice(1);
+  let html = "";
   if (lead) {
-    html += `<article class="lead" id="${sid(date, lead.k)}" ${scStyle(lead)}>${photoFig(issue.photo)}${kicker(lead, " · Apertura", date)}${head(lead, date, "h2")}
-      ${lead.stand ? `<p class="stand">${inline(lead.stand)}</p>` : ""}<p class="body">${inline(lead.detail)}</p>${whyP(lead)}${meta(lead, date)}</article>`;
+    const pt = (issue.poster && issue.poster.title) || posterTitle(lead.title);
+    html += `<section class="poster"><div class="wrap poster-in"><article class="lead" id="${sid(date, lead.k)}" ${scStyle(lead)} style="min-width:0">
+      <p class="stamp">${esc(sec(lead.section).it)} · Apertura${readMark(date, lead)}</p>
+      <h2 class="p-head ${sizeCls(pt)}"><a href="#${sid(date, lead.k)}" title="${esc(lead.title)}">${posterHtml(pt)}</a></h2>
+      ${lead.stand ? `<p class="p-stand">${inline(lead.stand)}</p>` : ""}<p class="p-body">${inline(lead.detail)}</p>${whyP(lead)}${meta(lead, date)}</article>
+      ${photoFig(issue.photo)}</div></section>`;
   }
-  if (wings.length) html += `<div class="wings">${wings.map(i => storyCard(i, date, "wing")).join("")}</div>`;
-  if (rest.length) html += `<h2 class="more-h">Le altre notizie</h2><div class="cols">${rest.map(i => storyCard(i, date)).join("")}</div>`;
+  html += bigNum(issue);
+  html += `<div class="wrap sheet">${idx === 0 ? sinceBox() : ""}`;
+  if (rest.length) html += `<h2 class="idx-h"><span>Il resto dell'edizione</span><span>${rest.length} ${rest.length === 1 ? "notizia" : "notizie"}</span></h2><ol class="index">${rest.map(i =>
+    `<li id="${sid(date, i.k)}" ${scStyle(i)}><div style="min-width:0"><h3><a href="#${sid(date, i.k)}">${esc(i.title)}</a></h3><p>${inline(i.stand || i.text)}${readMark(date, i)}</p></div><span class="sec"><i></i>${esc(sec(i.section).it)}</span></li>`).join("")}</ol>`;
+  if (side.length) html += `<div class="margins">${side.map(s => {
+    const lis = s.bullets.map(b => `<li>${inline(b)}</li>`).join("") +
+      s.items.map(i => `<li class="item" id="${sid(date, i.k)}">${head(i, date, "h5")}<p>${inline(i.text)}</p>${i.source ? `<div class="meta"><span>${s.name === "What's hot on Twitter" ? "" : "Fonti: "}${inline(i.source)}</span><button class="copy" type="button" data-link="${sid(date, i.k)}">Copia link</button></div>` : ""}</li>`).join("");
+    return `<section data-sec="${slug(s.name)}"><h4>${esc(sec(s.name).it)}</h4><ul>${lis}</ul></section>`;
+  }).join("")}</div>`;
+  html += `</div>`;
   $("main").innerHTML = html;
 
   // ancore delle sezioni: la prima notizia di ciascuna
   news.forEach(s => { const el = $(sid(date, s.items[0].k)); if (el) el.dataset.sec = slug(s.name); });
 
-  const inFive = new Set(five);
-  const meanwhile = [...rest, ...sideItems].filter(i => !inFive.has(i)).slice(0, 8);
-  $("side").innerHTML = factBox(issue) + meanwhileBox(meanwhile, date) + weekBox() + weeklyBox() + side.map(s => {
-    const cls = s.name === "Weak signals" ? "box signals" : "box";
-    const lis = s.bullets.map(b => `<li>${inline(b)}</li>`).join("") +
-      s.items.map(i => `<li class="item" id="${sid(date, i.k)}">${head(i, date, "h5")}<p>${inline(i.text)}</p>${i.source ? `<div class="meta"><span>${s.name === "What's hot on Twitter" ? "" : "Fonti: "}${inline(i.source)}</span><button class="copy" type="button" data-link="${sid(date, i.k)}">Copia link</button></div>` : ""}</li>`).join("");
-    return `<section class="${cls}" data-sec="${slug(s.name)}"><h4>${esc(sec(s.name).it)}</h4><ul>${lis}</ul></section>`;
-  }).join("");
+  $("side").innerHTML = weekBox() + weeklyBox() + topicsBox();
   markTopic(null);
 }
 
@@ -542,32 +562,52 @@ function sinceBox() {
 }
 
 /* ---------- il numero del giorno ---------- */
-function factBox(issue) {
+function findFact(issue) {
   const { reading } = layout(issue);
+  // la frase "Perché conta" dell'apertura è già nel poster: il numero viene da un'altra frase
+  const shown = new Set([reading[0] && reading[0].why, reading[0] && reading[0].stand].filter(Boolean).map(x => plain(x).trim()));
   for (const i of reading) {
     const sents = plain(i.text).split(/(?<=[.!?])\s+(?=[A-ZÀ-Ý"'«“])/);
     for (const s of sents) {
+      if (shown.has(s.trim())) continue;
       const m = s.match(NUM);
       if (!m || /^\d{4}$/.test(m[0].trim())) continue;
-      return `<section class="box fact" ${scStyle(i)}><h4>Il numero del giorno</h4><div class="num">${esc(m[0].trim())}</div><p>${esc(s)}</p>
-        <a class="more" href="#${sid(issue.date, i.k)}">${esc(i.title)} →</a></section>`;
+      return { i, m: m[0].trim(), s };
     }
   }
-  return "";
+  return null;
+}
+function bigNum(issue) {
+  const f = findFact(issue);
+  if (!f) return "";
+  const mm = f.m.match(/^(\$\s?)?([\d.,]+)\s*(.*)$/);
+  const num = mm ? (mm[1] || "") + mm[2] : f.m, unit = mm ? mm[3] : "";
+  return `<section class="bignum" aria-label="Il numero del giorno"><div class="wrap"><div class="n">${esc(num)}${unit ? `<small>${esc(unit)}</small>` : ""}</div>
+    <p><span class="k">Il numero del giorno</span>${esc(f.s)} <a href="#${sid(issue.date, f.i.k)}" title="${esc(f.i.title)}">Leggi →</a></p></div></section>`;
+}
+function factBox(issue) {
+  const f = findFact(issue);
+  if (!f) return "";
+  return `<section class="box fact"><h4>Il numero del giorno</h4><div class="num">${esc(f.m)}</div><p>${esc(f.s)}</p>
+    <a class="more" href="#${sid(issue.date, f.i.k)}">${esc(f.i.title)} →</a></section>`;
 }
 
-/* ---------- intanto: le altre notizie in una riga ---------- */
-function meanwhileBox(items, date) {
-  if (items.length < 2) return "";
-  return `<section class="box meanwhile"><h4>Intanto</h4><ul>${items.map(i =>
-    `<li ${scStyle(i)}><a href="#${sid(date, i.k)}">${esc(i.title)}<small>${esc(sec(i.section).it)}</small></a></li>`).join("")}</ul></section>`;
+/* ---------- argomenti ---------- */
+let TOPICS_PRESENT = [];
+function topicsBox() {
+  if (!TOPICS_PRESENT.length) return "";
+  return `<section class="box week"><h4>Argomenti</h4><p style="margin:0;display:flex;flex-wrap:wrap;gap:6px 14px">${TOPICS_PRESENT.map(t =>
+    `<a href="#t-${t.id}" style="font-family:var(--f-mono);font-size:13px;text-transform:none;text-decoration:underline">${esc(t.it)}</a>`).join("")}</p></section>`;
 }
 
 /* ---------- dal settimanale ---------- */
 function weeklyBox() {
   if (!WEEKLY) return "";
   const w = WEEKLY, c = w.cover || {};
+  const fig = c.figure || (w.numbers || [])[0];
+  const of = fig && fig.of ? (String(fig.of).match(/\d[\d.,]*/) || [""])[0] : "";
   return `<section class="box weekly"><h4>Dal Settimanale</h4><a class="card" href="../settimanale/#n-${esc(w.date)}">
+    ${fig ? `<span class="big">${esc(fig.n)}${of ? `<sup>/${esc(of)}</sup>` : ""}</span>` : ""}
     <span class="n">N. ${esc(w.n)} · ${esc(w.range || "")}</span><h5>${esc(c.title || "Il Settimanale dell'AI")}</h5><p>${esc(c.standfirst || "")}</p></a></section>`;
 }
 
@@ -619,11 +659,11 @@ function renderArticle(idx, k) {
     : `<p class="part">${inline(i.text)}</p>`;
   const chips = i.topics.length ? `<div class="chips">${i.topics.map(t => `<a href="#t-${t}">${esc(TOPICS.find(x => x.id === t).it)}</a>`).join("")}</div>` : "";
 
-  $("main").innerHTML = `<article class="single" id="${sid(date, k)}" ${scStyle(i)}>
+  $("main").innerHTML = `<section class="head-band"><div class="wrap">
     <a class="back" href="${idx === 0 ? "#" : "#e-" + date}" data-back>← Torna all'edizione di ${esc(cap(fmtDay(date)))}</a>
-    ${isLead ? `<div class="lead-photo">${photoFig(issue.photo)}</div>` : ""}
-    ${kicker(i, isLead ? " · Apertura" : "")}<h2>${esc(i.title)}</h2>${meta(i, date, { listen: true })}
-    ${parts}${chips}${pager}${relHtml}</article>`;
+    <p class="stamp">${esc(sec(i.section).it)}${isLead ? " · Apertura" : ""}</p><h2>${esc(i.title)}</h2>${meta(i, date, { listen: true })}</div></section>
+    <div class="wrap"><article class="single" id="${sid(date, k)}" ${scStyle(i)}>${isLead ? photoFig(issue.photo) : ""}
+    ${parts}${chips}${pager}${relHtml}</article></div>`;
   $("side").innerHTML = factBox(issue) + weekBox() + weeklyBox();
   $("nav").innerHTML = "";
   markTopic(null);
@@ -642,9 +682,9 @@ function renderTopic(id) {
     n += hits.length;
     html += `<h3 class="day">${esc(cap(fmtDay(x.date)))}</h3><div class="cols">${hits.map(i => storyCard(i, x.date)).join("")}</div>`;
   }
-  $("main").innerHTML = `<section class="listing"><a class="back" href="#">← Torna all'edizione di oggi</a><p class="kicker">Argomento</p><h2>${esc(t.it)}</h2>
+  $("main").innerHTML = `<section class="listing wrap"><a class="back" href="#">← Torna all'edizione di oggi</a><p class="kicker">Argomento</p><h2>${esc(t.it)}</h2>
     <p class="sub">${n} ${n === 1 ? "notizia" : "notizie"} in ${ISSUES.length} edizioni in archivio</p>${html || `<p class="empty">Nessuna notizia su questo argomento.</p>`}</section>`;
-  $("side").innerHTML = weekBox() + weeklyBox();
+  $("side").innerHTML = weekBox() + weeklyBox() + topicsBox();
   $("nav").innerHTML = "";
   markTopic(id);
 }
@@ -660,7 +700,7 @@ function renderSearch(q) {
     n += hits.length;
     html += `<h3 class="day">${esc(cap(fmtDay(x.date)))}</h3><div class="cols">${hits.map(i => storyCard(i, x.date, "story", { q })).join("")}</div>`;
   }
-  $("main").innerHTML = `<section class="listing"><a class="back" href="#" data-clear>← Torna all'edizione di oggi</a><p class="kicker">Ricerca</p><h2>«${esc(q)}»</h2>
+  $("main").innerHTML = `<section class="listing wrap"><a class="back" href="#" data-clear>← Torna all'edizione di oggi</a><p class="kicker">Ricerca</p><h2>«${esc(q)}»</h2>
     <p class="sub">${n ? `${n} ${n === 1 ? "notizia trovata" : "notizie trovate"} in ${ISSUES.length} edizioni` : "Nessuna notizia trovata. Prova con un nome di azienda o una parola più corta."}</p>${html}</section>`;
   $("side").innerHTML = weekBox() + weeklyBox();
   $("nav").innerHTML = "";
@@ -670,6 +710,9 @@ function renderSearch(q) {
 /* ---------- testata, archivio, argomenti ---------- */
 function setHeader(issue) {
   document.title = "Il Quotidiano dell'AI";
+  paint(issue.date);
+  const d = new Date(issue.date + "T12:00:00"), p2 = (n) => String(n).padStart(2, "0");
+  $("stampbar").textContent = `N° ${p2(d.getDate())}·${p2(d.getMonth() + 1)}·${String(d.getFullYear()).slice(2)} · ${dayColor(issue.date).it} · ${issue.items.length} notizie`;
   $("today").textContent = "Edizione di " + cap(fmtDay(issue.date));
   $("newsday").textContent = issue.parsed.newsDate ? "· le notizie del " + issue.parsed.newsDate : "";
   const shown = ISSUES.slice(0, 6);
@@ -690,7 +733,7 @@ function markTopic(id) {
 }
 function buildTopicLists() {
   const present = TOPICS.filter(t => ISSUES.some(x => x.items.some(i => i.topics.includes(t.id))));
-  $("topics").innerHTML = `<b>Argomenti</b>` + present.map(t => `<a href="#t-${t.id}" data-t="${t.id}">${esc(t.it)}</a>`).join("");
+  TOPICS_PRESENT = present;
   $("foot-topics").innerHTML = present.map(t => `<li><a href="#t-${t.id}">${esc(t.it)}</a></li>`).join("");
   const names = Object.keys(SECTIONS);
   $("foot-sections").innerHTML = names.map(n => `<li><button type="button" data-foot="${slug(n)}">${esc(SECTIONS[n].it)}</button></li>`).join("");
@@ -804,6 +847,7 @@ fetch("data/issues.json", { cache: "no-store" }).then(r => r.json()).then(async 
   ISSUES = (data.issues || []).sort((a, b) => b.date.localeCompare(a.date));
   if (!ISSUES.length) { $("main").innerHTML = `<div class="empty">Nessuna edizione disponibile.</div>`; return; }
   for (const x of ISSUES) { x.parsed = parse(x.markdown); x.items = x.parsed.sections.flatMap(s => s.items); }
+  $("swatches").innerHTML = DAY_COLORS.slice(1).concat(DAY_COLORS[0]).map(c => `<i style="background:${c.pb}" title="${c.it}"></i>`).join("");
   $("count").textContent = ISSUES.length + (ISSUES.length === 1 ? " edizione in archivio" : " edizioni in archivio");
   await Promise.race([weeklyLoad, new Promise(r => setTimeout(r, 1500))]);
   buildTopicLists();

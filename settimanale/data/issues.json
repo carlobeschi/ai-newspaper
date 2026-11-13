@@ -67,7 +67,12 @@
       "label": "TechCrunch — Crusoe vende a Google il Wyoming",
       "url": "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/"
      }
-    ]
+    ],
+    "figure": {
+     "n": "1",
+     "of": "su oltre 40",
+     "label": "referendum locali sui data center approvati dagli elettori USA"
+    }
    },
    "brief": [
     {
@@ -190,7 +195,11 @@
        "label": "TechCrunch — Il modello vocale Woof",
        "url": "https://techcrunch.com/2026/11/06/underdog-shows-off-a-32mb-speech-model-in-new-demo/"
       }
-     ]
+     ],
+     "figure": {
+      "n": "1,5%",
+      "label": "crescita della spesa aziendale in token tra agosto e settembre (era +42% a luglio)"
+     }
     },
     {
      "id": "ipo",
@@ -252,7 +261,11 @@
        "label": "Forrester — La bolla AI non scoppia ancora",
        "url": "https://www.forrester.com/blogs/the-ai-bubble-isnt-bursting-yet-heres-what-to-watch-using-our-model/"
       }
-     ]
+     ],
+     "figure": {
+      "n": "58%",
+      "label": "dei ricavi di Anthropic assorbiti dal costo del calcolo"
+     }
     },
     {
      "id": "cyber",
@@ -309,7 +322,11 @@
        "label": "WIRED — Le app che nascondono deepfake",
        "url": "https://www.wired.com/story/hundreds-of-mundane-ai-apps-are-hiding-abusive-deepfake-features/"
       }
-     ]
+     ],
+     "figure": {
+      "n": "948",
+      "label": "vulnerabilità del kernel Linux trovate e corrette da ChatGPT Cyber"
+     }
     }
    ],
    "opinion": {

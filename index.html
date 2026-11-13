@@ -16,33 +16,42 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="Il Quotidiano dell'AI" href="quotidiano/feed.xml">
 <link rel="alternate" type="application/rss+xml" title="Il Settimanale dell'AI" href="settimanale/feed.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:wght@400;600&display=swap">
+<meta name="theme-color" content="#16171b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
-:root{--paper:#fcfcfa;--ink:#17191d;--soft:#4a4e57;--rule:#d9d6cf;--accent:#b3122e}
-@media (prefers-color-scheme:dark){:root{--paper:#16171a;--ink:#ecebe7;--soft:#a9abb2;--rule:#33353b;--accent:#ff5a72}}
+/* Manifesto: due poster, uno per giornale, nel loro colore */
+:root{--paper:#f4f1e8;--ink:#16171b;--soft:#5b5d63;--disp:"Anton",Impact,"Arial Narrow",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--paper:#16171b;--ink:#f4f1e8;--soft:#a8a59c;color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 "Source Serif 4",Georgia,serif}
-main{max-width:760px;margin:0 auto;padding:48px 16px}
-h1{font:900 clamp(2rem,6vw,3.2rem)/1.05 "Playfair Display",Georgia,serif;margin:0 0 8px;text-align:center}
-.sub{text-align:center;color:var(--soft);margin:0 0 32px;border-bottom:3px double var(--rule);padding-bottom:20px}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-a.card{display:block;border:1px solid var(--rule);padding:20px;color:inherit;text-decoration:none}
-a.card:hover{border-color:var(--accent)}
-a.card h2{font:700 1.6rem/1.1 "Playfair Display",Georgia,serif;margin:0 0 6px}
-a.card p{margin:0;color:var(--soft)}
-.soon{opacity:.6;pointer-events:none}
-footer{margin-top:40px;font-size:.85rem;color:var(--soft);text-align:center}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 var(--mono)}
+main{max-width:1240px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 18px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:6px solid var(--ink);padding-bottom:10px;margin-bottom:20px}
+h1{font:400 clamp(56px,11vw,150px)/.86 var(--disp);text-transform:uppercase;margin:0 0 22px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+a.card{display:flex;flex-direction:column;min-height:340px;padding:22px;text-decoration:none;color:#f4f1e8}
+a.card.q{background:#1739c9}
+a.card.s{background:#d2452b}
+a.card small{font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+a.card h2{font:400 clamp(44px,5.6vw,76px)/.9 var(--disp);text-transform:uppercase;margin:auto 0 12px}
+a.card h2 em{font-style:normal;color:#ffd23f}
+a.card.q h2 em{color:#ff6a3d}
+a.card p{margin:0;max-width:40ch}
+a.card:hover h2{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+footer{margin-top:22px;font-size:12.5px;color:var(--soft);display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+footer a{color:var(--ink)}
 </style>
 </head>
 <body>
 <main>
+<div class="top"><span>Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG</span><span>Ogni mattina · ogni domenica</span></div>
 <h1>I giornali dell'AI</h1>
-<p class="sub">Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG</p>
 <div class="grid">
-<a class="card" href="quotidiano/"><h2>Il Quotidiano dell'AI</h2><p>Le notizie sull'intelligenza artificiale, ogni mattina.</p></a>
-<a class="card" id="weekly" href="settimanale/"><h2>Il Settimanale dell'AI</h2><p>Il riassunto ragionato della settimana.</p></a>
+<a class="card q" href="quotidiano/"><small>Ogni mattina · un colore per ogni giorno</small><h2>Il Quotidiano <em>dell'AI</em></h2><p>Le notizie sull'intelligenza artificiale del giorno prima, impaginate come un manifesto.</p></a>
+<a class="card s" id="weekly" href="settimanale/"><small>Ogni domenica</small><h2>Il Settimanale <em>dell'AI</em></h2><p>Il riassunto ragionato della settimana, in capitoli.</p></a>
 </div>
-<footer>Feed RSS: <a href="quotidiano/feed.xml">Quotidiano</a> · <a href="settimanale/feed.xml">Settimanale</a> · Sorgente su <a href="https://github.com/carlobeschi/ai-newspaper">GitHub</a></footer>
+<footer><span>Feed RSS: <a href="quotidiano/feed.xml">Quotidiano</a> · <a href="settimanale/feed.xml">Settimanale</a></span><span>Sorgente su <a href="https://github.com/carlobeschi/ai-newspaper">GitHub</a></span></footer>
 </main>
 </body>
 </html>

@@ -21,6 +21,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<script>
+/* tema scelto dal lettore (lo stesso del Quotidiano), applicato prima del disegno della pagina */
+try { const t = JSON.parse(localStorage.getItem("qai.theme") || "null"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (_) {}
+</script>
 <style>
 /* Layout: Manifesto, edizione della domenica. Copertina tipografica con la cifra della settimana su rosso,
    indice a capitoli con la loro cifra, articoli con titoli Anton e foto in bicromia nel colore della sezione,
@@ -55,6 +59,9 @@ h1,h2,h3{text-wrap:balance}
 .about{border-bottom:1px solid var(--hair);padding-block:7px;display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:space-between;align-items:baseline;color:var(--muted);font-size:12px}
 .about a{color:var(--ink);text-decoration:none;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 .about a:hover{text-decoration:underline}
+.about-r{display:inline-flex;gap:14px;align-items:baseline}
+.about .theme{font:inherit;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);background:none;border:1px solid var(--ink);padding:0 7px;cursor:pointer}
+.about .theme:hover{background:var(--ink);color:var(--paper)}
 .mast{background:var(--ink);color:var(--paper)}
 .mast .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;align-items:center;min-height:52px;padding-block:6px}
 .mast h1{margin:0;font-family:var(--f-disp);font-weight:400;font-size:24px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
@@ -224,7 +231,7 @@ footer a{color:var(--ink)}
 <div class="wrap">
   <div class="about">
     <span>Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG</span>
-    <a href="../quotidiano/">Il Quotidiano dell'AI →</a>
+    <span class="about-r"><button type="button" class="theme" id="theme" aria-label="Tema della pagina">Tema: auto</button><a href="../quotidiano/">Il Quotidiano dell'AI →</a></span>
   </div>
 </div>
 <header class="mast"><div class="wrap">
@@ -444,6 +451,16 @@ footer a{color:var(--ink)}
       speechSynthesis.speak(u);
     });
   }
+
+  /* tema: auto → chiaro → scuro, condiviso con il Quotidiano */
+  const themeBtn=document.getElementById('theme'), TH={auto:'auto',light:'chiaro',dark:'scuro'};
+  const getT=()=>{try{return JSON.parse(localStorage.getItem('qai.theme')||'null')||'auto'}catch(_){return 'auto'}};
+  const showT=()=>{themeBtn.textContent='Tema: '+TH[getT()]};
+  themeBtn.addEventListener('click',()=>{const c=getT(),n=c==='auto'?'light':c==='light'?'dark':'auto';
+    try{if(n==='auto')localStorage.removeItem('qai.theme');else localStorage.setItem('qai.theme',JSON.stringify(n))}catch(_){}
+    if(n==='auto')delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=n;showT()});
+  showT();
+  window.addEventListener('pagehide',stopSpeech);
 
   const toast=document.getElementById('toast'); let tt;
   function say(t){toast.textContent=t;toast.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toast.hidden=true,2200)}

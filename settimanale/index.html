@@ -17,7 +17,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#d2452b">
 <link rel="alternate" type="application/rss+xml" title="Il Settimanale dell'AI" href="feed.xml">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23d2452b'/%3E%3Ctext x='16' y='26' font-family='Impact,Arial Narrow,sans-serif' font-size='26' fill='%23f4f1e8' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icone/s-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/icone/s-16.png">
+<link rel="apple-touch-icon" href="../assets/icone/s-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap">
@@ -64,7 +66,8 @@ h1,h2,h3{text-wrap:balance}
 .about .theme:hover{background:var(--ink);color:var(--paper)}
 .mast{background:var(--ink);color:var(--paper)}
 .mast .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;align-items:center;min-height:52px;padding-block:6px}
-.mast h1{margin:0;font-family:var(--f-disp);font-weight:400;font-size:24px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.mast h1{margin:0;font-family:var(--f-disp);font-weight:400;font-size:24px;line-height:1;text-transform:uppercase;letter-spacing:.01em;display:flex;align-items:center;gap:12px}
+.mast .emblem{display:block;width:44px;height:44px;flex:none}
 .mast .meta{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;margin-left:auto}
 .mast .meta b{font-weight:600}
 .mast select{font:inherit;font-size:12px;background:var(--ink);color:var(--paper);border:1px solid var(--paper);border-radius:0;padding:2px 6px;margin-left:6px}
@@ -176,7 +179,9 @@ h1,h2,h3{text-wrap:balance}
 .daily a:hover{text-decoration:underline}
 .daily .label{color:var(--red);display:block;margin-bottom:3px;font-size:11px}
 
-footer{border-top:6px solid var(--rule);padding-block:26px 48px;color:var(--muted);font-size:13px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px}
+footer{border-top:6px solid var(--rule);padding-block:26px 48px;color:var(--muted);font-size:13px;display:grid;grid-template-columns:minmax(0,260px) minmax(0,1.2fr) minmax(0,1fr);gap:32px}
+footer .ill{display:block;margin:0}
+footer .ill img{display:block;width:100%;height:auto;aspect-ratio:1}
 footer h4{margin:0 0 8px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;font-size:12px;color:var(--ink)}
 footer p{margin:0 0 .7em}
 footer ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
@@ -203,6 +208,7 @@ footer a{color:var(--ink)}
   .side-toc{display:none}
   .soc{grid-template-columns:minmax(0,1fr)}
   footer{grid-template-columns:minmax(0,1fr)}
+  footer .ill{max-width:260px}
 }
 @media (max-width:640px){
   body{font-size:15px}
@@ -231,11 +237,11 @@ footer a{color:var(--ink)}
 <div class="wrap">
   <div class="about">
     <span>Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG</span>
-    <span class="about-r"><button type="button" class="theme" id="theme" aria-label="Tema della pagina">Tema: auto</button><a href="../quotidiano/">Il Quotidiano dell'AI →</a></span>
+    <span class="about-r"><a href="../chi-siamo/">Chi siamo</a><button type="button" class="theme" id="theme" aria-label="Tema della pagina">Tema: auto</button><a href="../quotidiano/">Il Quotidiano dell'AI →</a></span>
   </div>
 </div>
 <header class="mast"><div class="wrap">
-  <h1>Il Settimanale dell'AI</h1>
+  <h1><img class="emblem" src="../assets/emblema-128.webp" width="44" height="44" alt="" onerror="this.remove()">Il Settimanale dell'AI</h1>
   <div class="meta label" id="meta"><span>Caricamento del numero…</span></div>
 </div></header>
 <main id="app"></main>
@@ -380,10 +386,11 @@ footer a{color:var(--ink)}
       ${dailyBand(e)}
 
       <footer>
+        <a class="ill" href="../chi-siamo/"><img src="../assets/illustrazione-640.webp" width="640" height="640" loading="lazy" alt="Illustrazione: una macchina da stampa costruttivista con un grande disco rosso" onerror="this.parentNode.remove()"></a>
         <div>
           <h4>Chi siamo</h4>
           <p>Il Settimanale dell'AI è un'idea di Carlo, generata da Claude e basata sulla newsletter Daily Brief di PierG. Ogni numero rilegge le newsletter della settimana, sceglie i temi che tornano più spesso e li racconta in approfondimenti. Il commento è un'analisi di Claude e lo dichiara, e sotto ha sempre un'altra lettura che ne mette alla prova la tesi.</p>
-          <p>I fatti vengono dalle newsletter e dalle fonti citate in fondo a ogni pezzo. Le notizie di ogni giorno sono su <a href="../quotidiano/">Il Quotidiano dell'AI</a>. Per ricevere il Daily Brief, chiedi a PierG. Per seguire il Settimanale con un lettore di notizie c'è il <a href="feed.xml">feed RSS</a>; per leggerlo su carta, stampa la pagina.</p>
+          <p>I fatti vengono dalle newsletter e dalle fonti citate in fondo a ogni pezzo. Le notizie di ogni giorno sono su <a href="../quotidiano/">Il Quotidiano dell'AI</a>. Per ricevere il Daily Brief, chiedi a PierG. Per seguire il Settimanale con un lettore di notizie c'è il <a href="feed.xml">feed RSS</a>; per leggerlo su carta, stampa la pagina. <a href="../chi-siamo/">Tutto su come è fatto</a>.</p>
         </div>
         <div>
           <h4>Foto di questo numero</h4>

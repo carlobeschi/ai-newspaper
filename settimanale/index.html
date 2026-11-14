@@ -17,7 +17,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#d2452b">
 <link rel="alternate" type="application/rss+xml" title="Il Settimanale dell'AI" href="feed.xml">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23d2452b'/%3E%3Ctext x='16' y='26' font-family='Impact,Arial Narrow,sans-serif' font-size='26' fill='%23f4f1e8' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icone/s-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/icone/s-16.png">
+<link rel="apple-touch-icon" href="../assets/icone/s-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap">
@@ -49,6 +51,10 @@ try { const t = JSON.parse(localStorage.getItem("qai.theme") || "null"); if (t =
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-mono);font-size:15.5px;line-height:1.6}
+/* carta: texture leggera solo nel tema chiaro */
+:root:not([data-theme="dark"]) body{background-image:url(../assets/carta.webp);background-size:512px 512px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background-image:none}}
+@media print{body{background-image:none!important}}
 a{color:inherit}
 :focus-visible{outline:2px solid currentColor;outline-offset:3px}
 .wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -59,12 +65,14 @@ h1,h2,h3{text-wrap:balance}
 .about{border-bottom:1px solid var(--hair);padding-block:7px;display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:space-between;align-items:baseline;color:var(--muted);font-size:12px}
 .about a{color:var(--ink);text-decoration:none;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 .about a:hover{text-decoration:underline}
-.about-r{display:inline-flex;gap:14px;align-items:baseline}
+.about-r{display:inline-flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+.about a,.about .theme{white-space:nowrap}
 .about .theme{font:inherit;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);background:none;border:1px solid var(--ink);padding:0 7px;cursor:pointer}
 .about .theme:hover{background:var(--ink);color:var(--paper)}
 .mast{background:var(--ink);color:var(--paper)}
 .mast .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;align-items:center;min-height:52px;padding-block:6px}
-.mast h1{margin:0;font-family:var(--f-disp);font-weight:400;font-size:24px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.mast h1{margin:0;font-family:var(--f-disp);font-weight:400;font-size:24px;line-height:1;text-transform:uppercase;letter-spacing:.01em;display:flex;align-items:center;gap:12px}
+.mast .emblem{display:block;width:44px;height:44px;flex:none}
 .mast .meta{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;margin-left:auto}
 .mast .meta b{font-weight:600}
 .mast select{font:inherit;font-size:12px;background:var(--ink);color:var(--paper);border:1px solid var(--paper);border-radius:0;padding:2px 6px;margin-left:6px}
@@ -85,6 +93,27 @@ h1,h2,h3{text-wrap:balance}
 .btn:hover{background:var(--ink);color:var(--cream)}
 .cover-cta .label{opacity:.9}
 @media (max-width:860px){.cover .wrap{grid-template-columns:minmax(0,1fr)}}
+/* copertina illustrata (cover.art): titolo sullo spazio vuoto dell'illustrazione */
+.hero{position:relative;background:#f4f1e8;color:#16171b}
+.hero>img{display:block;width:100%;height:auto;max-height:86vh;object-fit:cover;object-position:50% 30%}
+.hero .ovl{position:absolute;inset:0}
+.hero .ovl .wrap{height:100%;display:grid;grid-template-columns:minmax(0,36%) minmax(0,1fr) minmax(0,26%);align-items:start;padding-block:clamp(22px,3.6vw,52px)}
+.hero .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 8px}
+.hero h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(44px,5.6vw,92px);line-height:.9;text-transform:uppercase;margin:0}
+.hero h2 a{text-decoration:none;color:inherit}
+.hero h2 a:hover{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+.hero .fig{grid-column:3;text-align:right;color:#d2452b}
+.hero .fig .big{font-family:var(--f-disp);font-size:clamp(100px,13vw,210px);line-height:.8;letter-spacing:-.02em;display:block}
+.hero .fig .big sup{font-size:.36em;vertical-align:top;position:relative;top:.12em;letter-spacing:0}
+.hero .fig p{font-size:12.5px;line-height:1.4;color:#16171b;margin:10px 0 0 auto;max-width:28ch}
+.cover.after .wrap{align-items:start;padding-block:22px 28px}
+.cover.after .credit{font-size:12px;opacity:.85;margin:10px 0 0}
+@media (max-width:860px){
+  .hero .ovl{position:static;background:var(--red);color:var(--cream)}
+  .hero .ovl .wrap{grid-template-columns:minmax(0,1fr);gap:18px;padding-block:22px 6px}
+  .hero .fig{grid-column:auto;text-align:left;color:var(--cream)}
+  .hero .fig p{color:var(--cream);margin-left:0}
+}
 
 /* indice a capitoli */
 .chapters{list-style:none;margin:0;padding:0}
@@ -131,6 +160,7 @@ h1,h2,h3{text-wrap:balance}
 .share{font:inherit;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;background:none;border:1px solid currentColor;color:var(--ink);border-radius:0;padding:2px 9px;cursor:pointer}
 .share:hover,.share[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .art figure{margin:26px 0 0}
+.art figure.ill img{display:block;width:100%;height:auto;aspect-ratio:auto;filter:none;mix-blend-mode:normal}
 .art figure .duo{background:var(--sc,var(--red))}
 .art figure img{display:block;width:100%;aspect-ratio:21/9;object-fit:cover;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply}
 .art figcaption{font-size:11px;color:var(--muted);margin-top:6px}
@@ -176,7 +206,9 @@ h1,h2,h3{text-wrap:balance}
 .daily a:hover{text-decoration:underline}
 .daily .label{color:var(--red);display:block;margin-bottom:3px;font-size:11px}
 
-footer{border-top:6px solid var(--rule);padding-block:26px 48px;color:var(--muted);font-size:13px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px}
+footer{border-top:6px solid var(--rule);padding-block:26px 48px;color:var(--muted);font-size:13px;display:grid;grid-template-columns:minmax(0,260px) minmax(0,1.2fr) minmax(0,1fr);gap:32px}
+footer .ill{display:block;margin:0}
+footer .ill img{display:block;width:100%;height:auto;aspect-ratio:1}
 footer h4{margin:0 0 8px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;font-size:12px;color:var(--ink)}
 footer p{margin:0 0 .7em}
 footer ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
@@ -203,6 +235,7 @@ footer a{color:var(--ink)}
   .side-toc{display:none}
   .soc{grid-template-columns:minmax(0,1fr)}
   footer{grid-template-columns:minmax(0,1fr)}
+  footer .ill{max-width:260px}
 }
 @media (max-width:640px){
   body{font-size:15px}
@@ -226,16 +259,18 @@ footer a{color:var(--ink)}
 <body>
 <!-- Dati facoltativi per lo stile Manifesto (data/issues.json):
      cover.figure = {"n":"1","of":"su oltre 40","label":"..."}: la cifra gigante della copertina (altrimenti numbers[0]);
-     features[].figure = {"n":"1,5%","label":"..."}: la cifra di ogni capitolo nell'indice (altrimenti i minuti di lettura). -->
+     features[].figure = {"n":"1,5%","label":"..."}: la cifra di ogni capitolo nell'indice (altrimenti i minuti di lettura);
+     cover.art = {"file":"img/<data>-copertina.webp","small":"...-900.webp","width":1456,"height":816,"alt":"...","credit":"Illustrazione generata con Midjourney"}:
+       copertina illustrata a tutta pagina con il titolo sopra lo spazio vuoto (al posto di cover.photo). -->
 <div class="progress" id="progress" hidden><div class="bar" id="bar"></div><span class="ptxt" id="ptxt"></span></div>
 <div class="wrap">
   <div class="about">
     <span>Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG</span>
-    <span class="about-r"><button type="button" class="theme" id="theme" aria-label="Tema della pagina">Tema: auto</button><a href="../quotidiano/">Il Quotidiano dell'AI →</a></span>
+    <span class="about-r"><a href="../chi-siamo/">Chi siamo</a><button type="button" class="theme" id="theme" aria-label="Tema della pagina">Tema: auto</button><a href="../quotidiano/">Il Quotidiano dell'AI →</a></span>
   </div>
 </div>
 <header class="mast"><div class="wrap">
-  <h1>Il Settimanale dell'AI</h1>
+  <h1><img class="emblem" src="../assets/emblema-128.webp" width="44" height="44" alt="" onerror="this.remove()">Il Settimanale dell'AI</h1>
   <div class="meta label" id="meta"><span>Caricamento del numero…</span></div>
 </div></header>
 <main id="app"></main>
@@ -283,7 +318,8 @@ footer a{color:var(--ink)}
     if(!c||!c.body||!c.body.length) return '';
     return `<aside class="counter" aria-label="Un'altra lettura"><h3>Un'altra lettura${c.title?': '+esc(c.title):''}</h3>${c.body.map(p=>`<p>${esc(p)}</p>`).join('')}<p class="note">L'obiezione più forte alla tesi del commento, scritta anche questa da Claude per mettere alla prova il ragionamento.</p></aside>`;
   }
-  function photo(p){
+  function photo(p,art){
+    if(art) return `<figure class="ill"><img src="${esc(art.small||art.file)}" width="${esc(art.width||1456)}" height="${esc(art.height||816)}" alt="${esc(art.alt||'')}" loading="lazy"><figcaption>${esc(art.credit||'')}.</figcaption></figure>`;
     if(!p) return '';
     return `<figure><div class="duo"><img src="${esc(p.file)}" alt="${esc(p.alt)}" loading="lazy"></div><figcaption>${esc(p.caption||'')} Foto: ${esc(p.author)}, ${esc(p.license)}, <a href="${esc(p.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>.</figcaption></figure>`;
   }
@@ -298,7 +334,7 @@ footer a{color:var(--ink)}
         <p class="stand">${esc(a.standfirst)}</p>
         <div class="byline"><span>${esc(by)}</span><span>${mins(a)} min di lettura</span>${listen}<button class="share" type="button" data-id="${id}">Copia il link</button></div>
       </div>
-      ${photo(a.photo)}
+      ${photo(a.photo,a.art)}
       <div class="art-body">
         <div class="text">${body(a.body,id)}${opts.op?counter(a.counter):''}</div>
         <aside class="side">${a.pull?`<blockquote class="pull">${esc(a.pull)}</blockquote>`:''}${sources(a.sources)}${sideToc(a.body,id)}</aside>
@@ -329,8 +365,32 @@ footer a{color:var(--ink)}
     const fig=c.figure||(e.numbers||[])[0];
     const figOf=fig&&fig.of?(String(fig.of).match(/\d[\d.,]*/)||[''])[0]:'';
     const chapters=[...e.features.map((a,i)=>({a,no:`Capitolo ${i+1} · ${a.section}`})),{a:e.opinion,no:'Il commento'}];
+    const art=c.art;
+    const coverHTML=art?`
+      <section class="hero" aria-label="Copertina">
+        <img src="${esc(art.file)}"${art.small?` srcset="${esc(art.small)} 900w, ${esc(art.file)} ${esc(art.width||1456)}w" sizes="100vw"`:''} width="${esc(art.width||1456)}" height="${esc(art.height||816)}" alt="${esc(art.alt||'')}">
+        <div class="ovl"><div class="wrap">
+          <div>
+            <p class="k">Storia di copertina · ${esc(c.tag)}</p>
+            <h2><a href="#a-${e.date}-${c.id}">${esc(c.title)}</a></h2>
+          </div>
+          ${fig?`<div class="fig"><span class="big" aria-label="${esc(fig.n+(fig.of?' '+fig.of:''))}">${esc(fig.n)}${figOf?`<sup>/${esc(figOf)}</sup>`:''}</span><p>${esc(fig.label||'')}</p></div>`:''}
+        </div></div>
+      </section>
+      <section class="cover after">
+        <div class="wrap">
+          <div>
+            <p class="k">Numero ${esc(e.n)} · ${esc(e.range)}</p>
+            <p class="stand">${esc(c.standfirst)}</p>
+          </div>
+          <div>
+            <div class="cover-cta" style="margin-top:0"><a class="btn" href="#a-${e.date}-${c.id}">Leggi il numero</a><span class="label">Circa ${total} minuti · ${all.length} articoli, ${e.brief.length} brevi</span></div>
+            ${art.credit?`<p class="credit">${esc(art.credit)}.</p>`:''}
+          </div>
+        </div>
+      </section>`:null;
     app.innerHTML=`
-      <section class="cover">
+      ${coverHTML||`<section class="cover">
         <div class="wrap">
           <div>
             <p class="k">Numero ${esc(e.n)} · ${esc(e.range)}</p>
@@ -343,7 +403,7 @@ footer a{color:var(--ink)}
             <div class="cover-cta"><a class="btn" href="#a-${e.date}-${c.id}">Leggi il numero</a><span class="label">Circa ${total} minuti · ${all.length} articoli, ${e.brief.length} brevi</span></div>
           </div>
         </div>
-      </section>
+      </section>`}
 
       <div class="wrap">
       <section class="band" aria-label="In questo numero">
@@ -380,10 +440,11 @@ footer a{color:var(--ink)}
       ${dailyBand(e)}
 
       <footer>
+        <a class="ill" href="../chi-siamo/"><img src="../assets/illustrazione-640.webp" width="640" height="640" loading="lazy" alt="Illustrazione: una macchina da stampa costruttivista con un grande disco rosso" onerror="this.parentNode.remove()"></a>
         <div>
           <h4>Chi siamo</h4>
           <p>Il Settimanale dell'AI è un'idea di Carlo, generata da Claude e basata sulla newsletter Daily Brief di PierG. Ogni numero rilegge le newsletter della settimana, sceglie i temi che tornano più spesso e li racconta in approfondimenti. Il commento è un'analisi di Claude e lo dichiara, e sotto ha sempre un'altra lettura che ne mette alla prova la tesi.</p>
-          <p>I fatti vengono dalle newsletter e dalle fonti citate in fondo a ogni pezzo. Le notizie di ogni giorno sono su <a href="../quotidiano/">Il Quotidiano dell'AI</a>. Per ricevere il Daily Brief, chiedi a PierG. Per seguire il Settimanale con un lettore di notizie c'è il <a href="feed.xml">feed RSS</a>; per leggerlo su carta, stampa la pagina.</p>
+          <p>I fatti vengono dalle newsletter e dalle fonti citate in fondo a ogni pezzo. Le notizie di ogni giorno sono su <a href="../quotidiano/">Il Quotidiano dell'AI</a>. Per ricevere il Daily Brief, chiedi a PierG. Per seguire il Settimanale con un lettore di notizie c'è il <a href="feed.xml">feed RSS</a>; per leggerlo su carta, stampa la pagina. <a href="../chi-siamo/">Tutto su come è fatto</a>.</p>
         </div>
         <div>
           <h4>Foto di questo numero</h4>

@@ -17,7 +17,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1739c9">
 <link rel="alternate" type="application/rss+xml" title="Il Quotidiano dell'AI" href="feed.xml">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231739c9'/%3E%3Ctext x='16' y='26' font-family='Impact,Arial Narrow,sans-serif' font-size='26' fill='%23f4f1e8' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icone/q-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/icone/q-16.png">
+<link rel="apple-touch-icon" href="../assets/icone/q-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap">
@@ -57,6 +59,10 @@ try { const t = JSON.parse(localStorage.getItem("qai.theme") || "null"); if (t =
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-mono); font-size: 15.5px; line-height: 1.55; }
+/* carta: texture leggera solo nel tema chiaro */
+:root:not([data-theme="dark"]) body{background-image:url(../assets/carta.webp);background-size:512px 512px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background-image:none}}
+@media print{body{background-image:none!important}}
 a { color: inherit; }
 a:focus-visible, select:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 .wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -69,6 +75,7 @@ a:focus-visible, select:focus-visible, button:focus-visible, input:focus-visible
 .credit b { color: var(--ink); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-right: 6px; }
 .credit a { color: var(--ink); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; text-decoration: none; }
 .credit a:hover { text-decoration: underline; }
+.credit a.who { margin-right: 6px; }
 .credit-r { display: inline-flex; gap: 14px; align-items: baseline; }
 .credit .theme { font: inherit; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); background: none; border: 1px solid var(--ink); padding: 0 7px; cursor: pointer; }
 .credit .theme:hover { background: var(--ink); color: var(--paper); }
@@ -77,7 +84,8 @@ a:focus-visible, select:focus-visible, button:focus-visible, input:focus-visible
 .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--pb); color: var(--pf); border-bottom: 1px solid color-mix(in srgb, var(--pf) 30%, transparent); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--pb); }
 .bar .wrap { display: flex; align-items: center; gap: 8px 22px; min-height: 48px; }
-.brand { font-family: var(--f-disp); font-size: 22px; line-height: 1; text-transform: uppercase; text-decoration: none; white-space: nowrap; letter-spacing: 0.01em; }
+.brand { font-family: var(--f-disp); font-size: 22px; line-height: 1; text-transform: uppercase; text-decoration: none; white-space: nowrap; letter-spacing: 0.01em; display: inline-flex; align-items: center; gap: 10px; }
+.emblem { display: block; width: 40px; height: 40px; flex: none; }
 .brand:hover { color: var(--px); }
 .bar .wrap { flex-wrap: nowrap; }
 nav.sections { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; margin-left: auto; min-width: 0; }
@@ -191,7 +199,8 @@ form.search input { font: inherit; color: var(--ink); background: var(--paper); 
 .margins section { border-top: 6px solid var(--ink); padding-top: 10px; margin-bottom: 26px; scroll-margin-top: 70px; break-inside: auto; }
 .margins h4 { break-after: avoid; }
 .margins li { break-inside: avoid; }
-.margins h4 { font-family: var(--f-disp); font-weight: 400; font-size: 30px; line-height: 1; text-transform: uppercase; margin: 0 0 12px; }
+.margins h4 { font-family: var(--f-disp); font-weight: 400; font-size: 30px; line-height: 1; text-transform: uppercase; margin: 0 0 12px; display: flex; align-items: center; gap: 10px; }
+.margins h4 img { display: block; width: 36px; height: 36px; flex: none; }
 .margins ul { list-style: none; margin: 0; padding: 0; }
 .margins li + li { margin-top: 12px; }
 .margins li { font-size: 13.5px; line-height: 1.45; padding-bottom: 12px; border-bottom: 1px solid var(--hair); }
@@ -311,10 +320,10 @@ footer button { font: inherit; color: var(--ink); background: none; border: 0; p
 </head>
 <body>
 
-<div class="credit"><div class="wrap"><span><b>Chi siamo</b>Un'idea di Carlo, generata da Claude, basata sulla newsletter <em>Daily Brief</em> di PierG (Piergiorgio Grossi).</span><span class="credit-r"><button type="button" class="theme" id="theme" aria-label="Tema della pagina">Tema: auto</button><a href="../settimanale/">Il Settimanale dell'AI →</a></span></div></div>
+<div class="credit"><div class="wrap"><span><a class="who" href="../chi-siamo/">Chi siamo</a>Un'idea di Carlo, generata da Claude, basata sulla newsletter <em>Daily Brief</em> di PierG (Piergiorgio Grossi).</span><span class="credit-r"><button type="button" class="theme" id="theme" aria-label="Tema della pagina">Tema: auto</button><a href="../settimanale/">Il Settimanale dell'AI →</a></span></div></div>
 
 <header class="bar"><div class="wrap">
-  <a class="brand" href="#">Il Quotidiano dell'AI</a>
+  <a class="brand" href="#"><img class="emblem" src="../assets/emblema-128.webp" width="40" height="40" alt="" onerror="this.remove()">Il Quotidiano dell'AI</a>
   <nav class="sections" aria-label="Sezioni" id="nav"></nav>
 </div></header>
 
@@ -363,6 +372,8 @@ const SECTIONS = {
   "What's hot on Twitter":          { it: "Dai social",          c: "--c-side" }
 };
 const SIDE = ["In breve", "Weak signals", "What's hot on Twitter"];
+// illustrazione accanto al titolo di ogni rubrica (per ora la stessa per tutte e tre)
+const SIDE_ICON = { "In breve": "rubrica-cerchi.webp", "Weak signals": "rubrica-cerchi.webp", "What's hot on Twitter": "rubrica-cerchi.webp" };
 const TOPICS = [
   { id: "openai",     it: "OpenAI",               re: /OpenAI|ChatGPT|\bGPT-?\d|Altman|Codex/ },
   { id: "anthropic",  it: "Anthropic",            re: /Anthropic|\bClaude\b/ },
@@ -533,7 +544,9 @@ function hl(html, q) {
   return html.replace(re, "<mark>$1</mark>");
 }
 function photoFig(ph) {
-  if (!ph || !ph.file) return "";
+  // senza foto: immagine di riserva (corridoio di server), stampata in bicromia come le altre
+  if (!ph || !ph.file) return `<figure class="p-photo"><div class="duo"><img src="../assets/riserva.webp" alt="" width="900" height="678" loading="eager"></div>
+      <figcaption>Immagine di riserva, generata con Midjourney: questa notizia non ha una foto.</figcaption></figure>`;
   return `<figure class="p-photo"><div class="duo"><img src="${esc(ph.file)}" alt="${esc(ph.alt || "")}" width="1280" height="720" loading="eager"></div>
       <figcaption>${esc(ph.caption || "")} Foto: <a href="${esc(safeUrl(ph.page || ""))}" target="_blank" rel="noopener">${esc(ph.author || "")} / ${esc(ph.source || "Wikimedia Commons")}</a>${ph.license ? ` · ${licUrl(ph.license) ? `<a href="${licUrl(ph.license)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)}` : ""}</figcaption></figure>`;
 }
@@ -579,7 +592,8 @@ function renderEdition(idx) {
   if (side.length) html += `<div class="margins">${side.map(s => {
     const lis = s.bullets.map(briefItem).join("") +
       s.items.map(i => `<li class="item" id="${sid(date, i.k)}">${head(i, date, "h5")}<p>${inline(i.text)}</p>${i.source ? `<div class="meta">${srcLine(i)}<button class="copy" type="button" data-link="${sid(date, i.k)}">Copia link</button></div>` : ""}</li>`).join("");
-    return `<section data-sec="${slug(s.name)}"><h4>${esc(sec(s.name).it)}</h4><ul>${lis}</ul></section>`;
+    const icon = SIDE_ICON[s.name] ? `<img src="../assets/${SIDE_ICON[s.name]}" width="36" height="36" alt="" onerror="this.remove()">` : "";
+    return `<section data-sec="${slug(s.name)}"><h4>${icon}${esc(sec(s.name).it)}</h4><ul>${lis}</ul></section>`;
   }).join("")}</div>`;
   html += `</div>`;
   $("main").innerHTML = html;

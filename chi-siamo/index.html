@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chi siamo · I giornali dell'AI</title>
+<meta name="description" content="Il Quotidiano e Il Settimanale dell'AI: un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG. Come sono fatti.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chi siamo · I giornali dell'AI">
+<meta property="og:description" content="Un'idea di Carlo, generata da Claude, basata sulla newsletter Daily Brief di PierG.">
+<meta property="og:url" content="https://carlobeschi.github.io/ai-newspaper/chi-siamo/">
+<meta property="og:image" content="https://carlobeschi.github.io/ai-newspaper/assets/illustrazione-1024.webp">
+<meta property="og:locale" content="it_IT">
+<meta name="theme-color" content="#16171b">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icone/q-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/icone/q-16.png">
+<link rel="apple-touch-icon" href="../assets/icone/q-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<script>
+try { const t = JSON.parse(localStorage.getItem("qai.theme") || "null"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (_) {}
+</script>
+<style>
+/* Manifesto: la stessa grammatica della pagina d'ingresso */
+:root{--paper:#f4f1e8;--ink:#16171b;--soft:#5b5d63;--hair:#cfcabd;--red:#d2452b;--blue:#1739c9;--disp:"Anton",Impact,"Arial Narrow",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#16171b;--ink:#f4f1e8;--soft:#a8a59c;--hair:#3a3b40;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#16171b;--ink:#f4f1e8;--soft:#a8a59c;--hair:#3a3b40;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 var(--mono)}
+/* carta: texture leggera solo nel tema chiaro */
+:root:not([data-theme="dark"]) body{background-image:url(../assets/carta.webp);background-size:512px 512px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background-image:none}}
+@media print{body{background-image:none!important}}
+a{color:inherit}
+main{max-width:1240px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 18px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:6px solid var(--ink);padding-bottom:10px;margin-bottom:20px}
+.top a{text-decoration:none;font-weight:600}
+.top a:hover{text-decoration:underline}
+h1{font:400 clamp(64px,13vw,180px)/.84 var(--disp);text-transform:uppercase;margin:0 0 24px;letter-spacing:-.01em}
+.lead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 44px;align-items:start}
+.lead figure{margin:0;position:sticky;top:20px}
+.lead figure img{display:block;width:100%;height:auto;aspect-ratio:1}
+.lead figcaption{font-size:12px;color:var(--soft);margin-top:8px}
+.kicker{font:400 clamp(30px,3.6vw,46px)/1 var(--disp);text-transform:uppercase;margin:0 0 18px}
+.kicker em{font-style:normal;color:var(--red)}
+p{margin:0 0 .9em;max-width:62ch}
+h2{font:400 clamp(26px,2.8vw,34px)/1 var(--disp);text-transform:uppercase;margin:32px 0 10px;padding-top:12px;border-top:2px solid var(--ink)}
+h2:first-of-type{margin-top:0}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));margin-top:36px}
+a.card{display:flex;flex-direction:column;min-height:200px;padding:20px;text-decoration:none;color:#f4f1e8}
+a.card.q{background:var(--blue)}
+a.card.s{background:var(--red)}
+a.card small{font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+a.card b{font:400 clamp(36px,4.4vw,56px)/.9 var(--disp);text-transform:uppercase;margin:auto 0 0}
+a.card b em{font-style:normal;color:#ffd23f}
+a.card.q b em{color:#ff6a3d}
+a.card:hover b{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+footer{margin-top:22px;font-size:12.5px;color:var(--soft);display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;border-top:1px solid var(--hair);padding-top:12px}
+footer a{color:var(--ink)}
+@media (max-width:820px){.lead{grid-template-columns:minmax(0,1fr)}.lead figure{max-width:520px;position:static}}
+</style>
+</head>
+<body>
+<main>
+<div class="top"><a href="../">← I giornali dell'AI</a><span><a href="../quotidiano/">Quotidiano</a> · <a href="../settimanale/">Settimanale</a></span></div>
+<h1>Chi siamo</h1>
+
+<div class="lead">
+  <figure>
+    <img src="../assets/illustrazione-1024.webp" width="1024" height="1024" alt="Illustrazione: una macchina da stampa costruttivista con un grande disco rosso">
+    <figcaption>Illustrazione generata con Midjourney.</figcaption>
+  </figure>
+  <div>
+    <p class="kicker">Un'idea di Carlo, <em>generata da Claude</em>, basata sulla newsletter di PierG.</p>
+
+    <h2>L'idea</h2>
+    <p>Ogni giorno escono più notizie sull'intelligenza artificiale di quante se ne riescano a leggere. Piergiorgio Grossi (PierG) le raccoglie e le riassume in italiano nella sua newsletter <em>Daily Brief</em>. Questi due giornali la rimettono in pagina, perché si possa leggere come un quotidiano e, la domenica, come un settimanale.</p>
+
+    <h2>Il Quotidiano</h2>
+    <p>Ogni mattina Claude legge il <em>Daily Brief</em> del giorno e lo impagina come un manifesto: una notizia in apertura, il numero del giorno, il resto in un indice, e ai margini le rubriche In breve, Segnali deboli e Dai social. Ogni giorno della settimana ha il suo colore. I testi sono quelli della newsletter e ogni notizia rimanda alle sue fonti originali.</p>
+
+    <h2>Il Settimanale</h2>
+    <p>La domenica Claude rilegge le newsletter della settimana, sceglie i temi che sono tornati più spesso e li racconta in una copertina e in tre approfondimenti, con la settimana in breve, i numeri e cosa tenere d'occhio. Il commento è un'analisi di Claude e lo dichiara, e sotto ha sempre un'altra lettura che ne mette alla prova la tesi.</p>
+
+    <h2>Le immagini</h2>
+    <p>Le foto delle notizie vengono da Wikimedia Commons, con licenze libere, e sono stampate in bicromia: sono immagini di repertorio scelte sul tema, non foto dell'evento. Autore e licenza sono indicati sotto ogni foto. L'emblema della testata, le icone e questa illustrazione sono stati generati con Midjourney.</p>
+
+    <h2>Per seguirli</h2>
+    <p>Ci sono i feed RSS del <a href="../quotidiano/feed.xml">Quotidiano</a> e del <a href="../settimanale/feed.xml">Settimanale</a>. Per ricevere il <em>Daily Brief</em> nella posta, chiedi a PierG. Il sito ricorda solo nel tuo browser l'ultima edizione che hai visto e le notizie che hai aperto, e non lo invia a nessuno.</p>
+  </div>
+</div>
+
+<div class="grid">
+  <a class="card q" href="../quotidiano/"><small>Ogni mattina</small><b>Il Quotidiano <em>dell'AI</em></b></a>
+  <a class="card s" href="../settimanale/"><small>Ogni domenica</small><b>Il Settimanale <em>dell'AI</em></b></a>
+</div>
+
+<footer><span>Sorgente su <a href="https://github.com/carlobeschi/ai-newspaper">GitHub</a>, licenza GPL-3.0</span><span><a href="../">I giornali dell'AI</a></span></footer>
+</main>
+</body>
+</html>

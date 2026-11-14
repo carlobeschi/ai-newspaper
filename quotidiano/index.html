@@ -195,7 +195,8 @@ form.search input { font: inherit; color: var(--ink); background: var(--paper); 
 .margins section { border-top: 6px solid var(--ink); padding-top: 10px; margin-bottom: 26px; scroll-margin-top: 70px; break-inside: auto; }
 .margins h4 { break-after: avoid; }
 .margins li { break-inside: avoid; }
-.margins h4 { font-family: var(--f-disp); font-weight: 400; font-size: 30px; line-height: 1; text-transform: uppercase; margin: 0 0 12px; }
+.margins h4 { font-family: var(--f-disp); font-weight: 400; font-size: 30px; line-height: 1; text-transform: uppercase; margin: 0 0 12px; display: flex; align-items: center; gap: 10px; }
+.margins h4 img { display: block; width: 36px; height: 36px; flex: none; }
 .margins ul { list-style: none; margin: 0; padding: 0; }
 .margins li + li { margin-top: 12px; }
 .margins li { font-size: 13.5px; line-height: 1.45; padding-bottom: 12px; border-bottom: 1px solid var(--hair); }
@@ -367,6 +368,8 @@ const SECTIONS = {
   "What's hot on Twitter":          { it: "Dai social",          c: "--c-side" }
 };
 const SIDE = ["In breve", "Weak signals", "What's hot on Twitter"];
+// illustrazione accanto al titolo di ogni rubrica (per ora la stessa per tutte e tre)
+const SIDE_ICON = { "In breve": "rubrica-cerchi.webp", "Weak signals": "rubrica-cerchi.webp", "What's hot on Twitter": "rubrica-cerchi.webp" };
 const TOPICS = [
   { id: "openai",     it: "OpenAI",               re: /OpenAI|ChatGPT|\bGPT-?\d|Altman|Codex/ },
   { id: "anthropic",  it: "Anthropic",            re: /Anthropic|\bClaude\b/ },
@@ -583,7 +586,8 @@ function renderEdition(idx) {
   if (side.length) html += `<div class="margins">${side.map(s => {
     const lis = s.bullets.map(briefItem).join("") +
       s.items.map(i => `<li class="item" id="${sid(date, i.k)}">${head(i, date, "h5")}<p>${inline(i.text)}</p>${i.source ? `<div class="meta">${srcLine(i)}<button class="copy" type="button" data-link="${sid(date, i.k)}">Copia link</button></div>` : ""}</li>`).join("");
-    return `<section data-sec="${slug(s.name)}"><h4>${esc(sec(s.name).it)}</h4><ul>${lis}</ul></section>`;
+    const icon = SIDE_ICON[s.name] ? `<img src="../assets/${SIDE_ICON[s.name]}" width="36" height="36" alt="" onerror="this.remove()">` : "";
+    return `<section data-sec="${slug(s.name)}"><h4>${icon}${esc(sec(s.name).it)}</h4><ul>${lis}</ul></section>`;
   }).join("")}</div>`;
   html += `</div>`;
   $("main").innerHTML = html;

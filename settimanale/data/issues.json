@@ -12,13 +12,13 @@
     "tag": "Politica e infrastrutture",
     "title": "L'America vota contro i data center",
     "standfirst": "Ai midterm gli elettori hanno bocciato quasi tutti i referendum sui nuovi poli di calcolo e il Texas ha cambiato colore. Il giorno dopo il Nasdaq ha perso migliaia di miliardi. La corsa all'infrastruttura dell'AI ha scoperto di avere un problema di consenso.",
-    "photo": {
-     "file": "img/2026-11-08-copertina.jpg",
-     "author": "Lambtron",
-     "license": "CC BY-SA 4.0",
-     "page": "https://commons.wikimedia.org/wiki/File:Google_data_center.jpg",
-     "alt": "Il data center di Google a The Dalles, in Oregon",
-     "caption": "Immagine di repertorio: il data center di Google a The Dalles, in Oregon."
+    "art": {
+     "file": "img/2026-11-08-copertina.webp",
+     "small": "img/2026-11-08-copertina-900.webp",
+     "width": 1456,
+     "height": 816,
+     "alt": "Illustrazione: una mano lascia cadere una scheda rossa in un'urna enorme a forma di data center senza finestre, sopra un quartiere di case",
+     "credit": "Illustrazione generata con Midjourney"
     },
     "pull": "Su oltre quaranta referendum locali sui data center, gli elettori americani ne hanno approvato uno solo.",
     "body": [

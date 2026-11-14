@@ -59,6 +59,10 @@ try { const t = JSON.parse(localStorage.getItem("qai.theme") || "null"); if (t =
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-mono); font-size: 15.5px; line-height: 1.55; }
+/* carta: texture leggera solo nel tema chiaro */
+:root:not([data-theme="dark"]) body{background-image:url(../assets/carta.webp);background-size:512px 512px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background-image:none}}
+@media print{body{background-image:none!important}}
 a { color: inherit; }
 a:focus-visible, select:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 .wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -540,7 +544,9 @@ function hl(html, q) {
   return html.replace(re, "<mark>$1</mark>");
 }
 function photoFig(ph) {
-  if (!ph || !ph.file) return "";
+  // senza foto: immagine di riserva (corridoio di server), stampata in bicromia come le altre
+  if (!ph || !ph.file) return `<figure class="p-photo"><div class="duo"><img src="../assets/riserva.webp" alt="" width="900" height="678" loading="eager"></div>
+      <figcaption>Immagine di riserva, generata con Midjourney: questa notizia non ha una foto.</figcaption></figure>`;
   return `<figure class="p-photo"><div class="duo"><img src="${esc(ph.file)}" alt="${esc(ph.alt || "")}" width="1280" height="720" loading="eager"></div>
       <figcaption>${esc(ph.caption || "")} Foto: <a href="${esc(safeUrl(ph.page || ""))}" target="_blank" rel="noopener">${esc(ph.author || "")} / ${esc(ph.source || "Wikimedia Commons")}</a>${ph.license ? ` · ${licUrl(ph.license) ? `<a href="${licUrl(ph.license)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)}` : ""}</figcaption></figure>`;
 }

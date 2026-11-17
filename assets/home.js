@@ -20,7 +20,6 @@
   const label = (iso) => { const d = day(iso); return `${T.days[d.getUTCDay()]} ${d.getUTCDate()} ${T.months[d.getUTCMonth()]}`; };
   const plain = (s) => s.replace(/\[([^\]]+)\]\([^)\s]+\)/g, '$1').replace(/\*\*/g, '');
   const get = (u) => fetch(u, { cache: 'no-store' }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
-  const at = (path, dir) => new URL(path, new URL(dir, location.href)).href;
 
   get(ROOT + 'quotidiano/data/issues.json').then((d) => {
     const e = (d.issues || [])[0]; if (!e) return;
@@ -29,26 +28,13 @@
     const m = (e.markdown || '').match(/^\*\*(.+)\*\*\s*$/m);
     $('daily-k').textContent = label(e.date);
     if (m) { $('daily-hl').textContent = plain(m[1]); $('daily-lead').textContent = T.lead; card.classList.add('live'); }
-    const p = e.photo;
-    if (p && p.file) {
-      const img = $('daily-img');
-      img.alt = ''; img.className = p.illustration ? '' : 'duo';
-      img.onload = () => card.classList.add('has-img');
-      img.src = at(p.file, ROOT + 'quotidiano/');
-    }
   }).catch(() => {});
 
   const wdir = ROOT + (EN ? 'en/settimanale/' : 'settimanale/');
   get(wdir + 'data/issues.json').then((d) => {
     const e = (d.issues || []).slice().sort((a, b) => b.date.localeCompare(a.date))[0]; if (!e) return;
-    const c = e.cover || {}; const pic = c.art ? (c.art.small || c.art.file) : (c.photo && c.photo.file);
+    const c = e.cover || {};
     $('weekly-k').textContent = `${T.issue} ${e.n} · ${e.range}`;
     if (c.title) { $('weekly-hl').textContent = c.title; $('weekly-lead').textContent = T.cover; $('weekly').classList.add('live'); }
-    if (pic) {
-      const img = $('weekly-img');
-      img.className = c.art ? '' : 'duo';
-      img.onload = () => $('weekly').classList.add('has-img');
-      img.src = at(pic, wdir);
-    }
   }).catch(() => {});
 })();

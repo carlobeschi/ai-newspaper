@@ -46,6 +46,11 @@ a.card h2{font:400 clamp(44px,5.6vw,76px)/.9 var(--disp);text-transform:uppercas
 a.card h2 em{font-style:normal;color:#ffd23f}
 a.card.q h2 em{color:#ff6a3d}
 a.card p{margin:0;max-width:40ch}
+.wk{display:flex;flex-direction:column}
+.wk a.card{flex:1}
+a.en{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 22px;background:#16171b;color:#f4f1e8;text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+a.en b{font:400 22px/1 var(--disp);letter-spacing:.02em;color:#ffd23f}
+a.en:hover b{text-decoration:underline}
 a.card:hover h2{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
 footer{margin-top:22px;font-size:12.5px;color:var(--soft);display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
 footer a{color:var(--ink)}
@@ -57,7 +62,7 @@ footer a{color:var(--ink)}
 <h1><img src="assets/emblema-512.webp" width="512" height="512" alt="" onerror="this.remove()">I giornali dell'AI</h1>
 <div class="grid">
 <a class="card q" href="quotidiano/"><small>Ogni mattina · un colore per ogni giorno</small><h2>Il Quotidiano <em>dell'AI</em></h2><p>Le notizie sull'intelligenza artificiale del giorno prima, impaginate come un manifesto.</p></a>
-<a class="card s" id="weekly" href="settimanale/"><small>Ogni domenica</small><h2>Il Settimanale <em>dell'AI</em></h2><p>Il riassunto ragionato della settimana, in capitoli.</p></a>
+<div class="wk"><a class="card s" id="weekly" href="settimanale/"><small>Ogni domenica</small><h2>Il Settimanale <em>dell'AI</em></h2><p>Il riassunto ragionato della settimana, in capitoli.</p></a><a class="en" href="en/settimanale/" hreflang="en"><span lang="en">Also in English</span><b lang="en">AI Weekly →</b></a></div>
 </div>
 <footer><span><a href="chi-siamo/">Chi siamo</a> · Feed RSS: <a href="quotidiano/feed.xml">Quotidiano</a> · <a href="settimanale/feed.xml">Settimanale</a></span><span>Sorgente su <a href="https://github.com/carlobeschi/ai-newspaper">GitHub</a></span></footer>
 </main>

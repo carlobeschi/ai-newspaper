@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI Weekly</title>
+<meta name="description" content="The week in artificial intelligence, explained, every Sunday. English edition of Il Settimanale dell'AI.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The AI papers">
+<meta property="og:title" content="AI Weekly">
+<meta property="og:description" content="The week in artificial intelligence, explained, every Sunday.">
+<meta property="og:url" content="https://carlobeschi.github.io/ai-newspaper/en/settimanale/">
+<link rel="alternate" hreflang="it" href="https://carlobeschi.github.io/ai-newspaper/settimanale/">
+<link rel="alternate" hreflang="en" href="https://carlobeschi.github.io/ai-newspaper/en/settimanale/">
+<meta property="og:image" content="https://carlobeschi.github.io/ai-newspaper/settimanale/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#d2452b">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icone/s-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/icone/s-16.png">
+<link rel="apple-touch-icon" href="../../assets/icone/s-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<script>
+/* tema scelto dal lettore (lo stesso del Quotidiano), applicato prima del disegno della pagina */
+try { const t = JSON.parse(localStorage.getItem("qai.theme") || "null"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (_) {}
+</script>
+<style>
+/* Layout: Manifesto, edizione della domenica. Copertina tipografica con la cifra della settimana su rosso,
+   indice a capitoli con la loro cifra, articoli con titoli Anton e foto in bicromia nel colore della sezione,
+   commento su fondo inchiostro. Anton per i titoli, IBM Plex Mono per il testo. */
+:root{
+  --paper:#f4f1e8; --paper-2:#e9e5d8; --ink:#16171b; --muted:#5b5d63; --rule:#16171b; --hair:#cfcabd;
+  --red:#d2452b; --cream:#f4f1e8; --yellow:#ffd23f;
+  --c-cover:#d2452b; --c-econ:#9a6a00; --c-fin:#1739c9; --c-sec:#c63a22; --c-op:#ffd23f; --c-soc:#1f7a4f;
+  --f-disp:"Anton",Impact,"Arial Narrow",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --accent:var(--red);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#16171b; --paper-2:#202126; --ink:#f4f1e8; --muted:#a8a59c; --rule:#f4f1e8; --hair:#3a3b40;
+  --c-econ:#f2c25a; --c-fin:#93a6ff; --c-sec:#ff8a6d; --c-op:#ffd23f; --c-soc:#5fd39a;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#16171b; --paper-2:#202126; --ink:#f4f1e8; --muted:#a8a59c; --rule:#f4f1e8; --hair:#3a3b40;
+  --c-econ:#f2c25a; --c-fin:#93a6ff; --c-sec:#ff8a6d; --c-op:#ffd23f; --c-soc:#5fd39a;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-mono);font-size:15.5px;line-height:1.6}
+/* carta: texture leggera solo nel tema chiaro */
+:root:not([data-theme="dark"]) body{background-image:url(../../assets/carta.webp);background-size:512px 512px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background-image:none}}
+@media print{body{background-image:none!important}}
+a{color:inherit}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.label{font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.08em;font-size:12px;font-weight:500}
+h1,h2,h3{text-wrap:balance}
+
+/* banda superiore e testata */
+.about{border-bottom:1px solid var(--hair);padding-block:7px;display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:space-between;align-items:baseline;color:var(--muted);font-size:12px}
+.about a{color:var(--ink);text-decoration:none;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.about a:hover{text-decoration:underline}
+.about-r{display:inline-flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+.about a,.about .theme{white-space:nowrap}
+.about .theme{font:inherit;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);background:none;border:1px solid var(--ink);padding:0 7px;cursor:pointer}
+.about .theme:hover{background:var(--ink);color:var(--paper)}
+.mast{background:var(--ink);color:var(--paper)}
+.mast .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;align-items:center;min-height:52px;padding-block:6px}
+.mast h1{margin:0;font-family:var(--f-disp);font-weight:400;font-size:24px;line-height:1;text-transform:uppercase;letter-spacing:.01em;display:flex;align-items:center;gap:12px}
+.mast .emblem{display:block;width:44px;height:44px;flex:none}
+.mast .meta{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;margin-left:auto}
+.mast .meta b{font-weight:600}
+.mast select{font:inherit;font-size:12px;background:var(--ink);color:var(--paper);border:1px solid var(--paper);border-radius:0;padding:2px 6px;margin-left:6px}
+
+/* copertina */
+.cover{background:var(--red);color:var(--cream)}
+.cover .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 40px;align-items:end;padding-block:28px 34px}
+.cover .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px}
+.cover .big{font-family:var(--f-disp);font-size:clamp(130px,19vw,260px);line-height:.8;letter-spacing:-.02em;display:block}
+.cover .big sup{font-size:.36em;vertical-align:top;position:relative;top:.12em;letter-spacing:0}
+.cover .big-l{font-size:13px;max-width:36ch;margin:12px 0 0}
+.cover h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(46px,5.6vw,80px);line-height:.92;text-transform:uppercase;margin:6px 0 14px}
+.cover h2 a{text-decoration:none}
+.cover h2 a:hover{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+.cover .stand{font-size:15px;line-height:1.55;margin:0;max-width:56ch}
+.cover-cta{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:20px}
+.btn{display:inline-block;font-family:var(--f-mono);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:12.5px;background:var(--cream);color:var(--red);text-decoration:none;padding:9px 16px}
+.btn:hover{background:var(--ink);color:var(--cream)}
+.cover-cta .label{opacity:.9}
+@media (max-width:860px){.cover .wrap{grid-template-columns:minmax(0,1fr)}}
+/* copertina illustrata (cover.art): titolo sullo spazio vuoto dell'illustrazione */
+.hero{position:relative;background:#f4f1e8;color:#16171b}
+.hero>img{display:block;width:100%;height:auto;max-height:86vh;object-fit:cover;object-position:50% 30%}
+.hero .ovl{position:absolute;inset:0}
+.hero .ovl .wrap{height:100%;display:grid;grid-template-columns:minmax(0,36%) minmax(0,1fr) minmax(0,26%);align-items:start;padding-block:clamp(22px,3.6vw,52px)}
+.hero .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 8px}
+.hero h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(44px,5.6vw,92px);line-height:.9;text-transform:uppercase;margin:0}
+.hero h2 a{text-decoration:none;color:inherit}
+.hero h2 a:hover{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+.hero .fig{grid-column:3;text-align:right;color:var(--fig,#d2452b)}
+.hero .fig .big{font-family:var(--f-disp);font-size:clamp(100px,13vw,210px);line-height:.8;letter-spacing:-.02em;display:block}
+.hero .fig .big sup{font-size:.36em;vertical-align:top;position:relative;top:.12em;letter-spacing:0}
+.hero .fig p{font-size:12.5px;line-height:1.4;color:#16171b;margin:10px 0 0 auto;max-width:28ch}
+.cover.after .wrap{align-items:start;padding-block:22px 28px}
+.cover.after .credit{font-size:12px;opacity:.85;margin:10px 0 0}
+@media (max-width:860px){
+  .hero .ovl{position:static;background:var(--red);color:var(--cream)}
+  .hero .ovl .wrap{grid-template-columns:minmax(0,1fr);gap:18px;padding-block:22px 6px}
+  .hero .fig{grid-column:auto;text-align:left;color:var(--cream)}
+  .hero .fig p{color:var(--cream);margin-left:0}
+}
+
+/* indice a capitoli */
+.chapters{list-style:none;margin:0;padding:0}
+.chapters li a{display:grid;grid-template-columns:170px minmax(0,1fr) 230px;gap:8px 20px;align-items:center;padding:16px 0;border-bottom:2px solid var(--rule);text-decoration:none}
+.chapters li:first-child a{border-top:0}
+.chapters .no{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--sc)}
+.chapters .t{font-family:var(--f-disp);font-size:clamp(28px,3.4vw,44px);line-height:.95;text-transform:uppercase}
+.chapters a:hover .t{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:5px}
+.chapters .st{font-family:var(--f-disp);font-size:clamp(40px,4.6vw,60px);line-height:.9;text-align:right;color:var(--sc)}
+.chapters .st small{display:block;font-family:var(--f-mono);font-size:11px;line-height:1.35;color:var(--ink);letter-spacing:0;margin-top:4px}
+@media (max-width:760px){.chapters li a{grid-template-columns:minmax(0,1fr)}.chapters .st{text-align:left}}
+
+/* sezioni */
+.band{padding-block:34px}
+.band-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:6px solid var(--rule);padding-top:10px;margin-bottom:18px}
+.band-h h2{margin:0;font-family:var(--f-disp);font-weight:400;text-transform:uppercase;font-size:clamp(34px,4.4vw,56px);line-height:.95}
+.band-h span{color:var(--muted)}
+
+.brief{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;margin:0;padding:0;list-style:none}
+.brief li{display:grid;grid-template-columns:4.4rem minmax(0,1fr);gap:14px;padding-block:14px;border-bottom:1px solid var(--hair)}
+.brief .day{font-family:var(--f-disp);text-transform:uppercase;color:var(--red);font-size:22px;line-height:1}
+.brief h3{margin:0 0 4px;font-weight:600;font-size:15px;line-height:1.35}
+.brief p{margin:0;font-size:13.5px;line-height:1.55;color:var(--muted)}
+.brief a{text-underline-offset:3px}
+.brief .who{font-weight:600;color:var(--ink);white-space:nowrap}
+.brief .who a{text-decoration:none}
+.brief .who a:hover{text-decoration:underline}
+
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px;margin:0;padding:0;list-style:none}
+.nums li{padding:16px 0 20px;border-bottom:1px solid var(--hair)}
+.nums .n{font-family:var(--f-disp);font-size:clamp(56px,7vw,92px);line-height:.88;color:transparent;-webkit-text-stroke:1.5px var(--ink);font-variant-numeric:lining-nums}
+.nums .n small{font-family:var(--f-mono);-webkit-text-stroke:0;color:var(--muted);font-size:12px;letter-spacing:.06em;margin-left:8px;text-transform:uppercase}
+.nums p{margin:10px 0 0;font-size:13.5px;line-height:1.5;max-width:34ch}
+
+/* articoli */
+.art{padding-block:46px;border-top:6px solid var(--rule);scroll-margin-top:44px}
+.art-head{max-width:1000px}
+.kick{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.kick .sec{color:var(--sc,var(--red));font-weight:600}
+.kick .tag{color:var(--muted)}
+.art h2{font-family:var(--f-disp);font-weight:400;text-transform:uppercase;font-size:clamp(48px,7vw,104px);line-height:.9;margin:10px 0 16px}
+.art .stand{font-size:17px;line-height:1.55;font-weight:500;margin:0 0 14px;max-width:62ch}
+.byline{color:var(--muted);font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+.share{font:inherit;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;background:none;border:1px solid currentColor;color:var(--ink);border-radius:0;padding:2px 9px;cursor:pointer}
+.share:hover,.share[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.art figure{margin:26px 0 0}
+.art figure.ill img{display:block;width:100%;height:auto;aspect-ratio:auto;filter:none;mix-blend-mode:normal}
+.art figure .duo{background:var(--sc,var(--red))}
+.art figure img{display:block;width:100%;aspect-ratio:21/9;object-fit:cover;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply}
+.art figcaption{font-size:11px;color:var(--muted);margin-top:6px}
+.art-body{display:grid;grid-template-columns:minmax(0,66ch) minmax(0,1fr);gap:48px;margin-top:28px}
+.text{min-width:0}
+.text p{margin:0 0 1.05em}
+.text > p:first-of-type::first-letter{font-family:var(--f-disp);float:left;font-size:4.6em;line-height:.8;padding:.06em .12em 0 0;color:var(--sc,var(--red))}
+.text h3{font-family:var(--f-disp);font-weight:400;text-transform:uppercase;font-size:28px;line-height:1;margin:1.4em 0 .5em;color:var(--sc,var(--red));scroll-margin-top:56px}
+.side{min-width:0;display:grid;align-content:start;gap:28px}
+.pull{margin:0;padding-top:12px;border-top:6px solid var(--sc,var(--red));font-family:var(--f-disp);text-transform:uppercase;font-size:34px;line-height:1}
+.src h4{margin:0 0 8px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;font-size:12px;color:var(--muted)}
+.src ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:13px;line-height:1.4}
+.src a{text-underline-offset:3px}
+.src .q{font-weight:600;white-space:nowrap}
+
+/* il commento: fondo inchiostro */
+.art.op{background:var(--ink);color:var(--paper);border-top:0;--sc:var(--yellow)}
+.art.op .inner{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.art.op .kick .tag,.art.op .byline,.art.op figcaption,.art.op .src h4{color:inherit;opacity:.75}
+.art.op .share{color:var(--paper)}
+.art.op .share:hover,.art.op .share[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.counter{margin:1.6em 0 0;border:2px solid currentColor;padding:16px 20px}
+.counter h3{margin:0 0 .5em!important}
+.counter p{margin:0 0 .8em}
+.counter p:last-child{margin:0}
+.counter .note{font-size:12.5px;opacity:.75}
+
+.soc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.soc article{min-width:0;border-top:2px solid var(--rule);padding-top:12px;scroll-margin-top:44px}
+.soc .label{color:var(--c-soc)}
+.soc h3{font-family:var(--f-disp);font-weight:400;text-transform:uppercase;font-size:30px;line-height:.98;margin:8px 0 10px}
+.soc p{margin:0 0 .8em;font-size:14px}
+.soc .src{margin-top:10px}
+
+.watch{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:0 28px}
+.watch li{padding-block:12px;border-bottom:1px solid var(--hair)}
+.watch .when{font-family:var(--f-disp);text-transform:uppercase;color:var(--red);font-size:22px;line-height:1}
+.watch p{margin:6px 0 0;font-size:14px;line-height:1.5}
+
+.daily{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:0 28px;margin:0;padding:0;list-style:none}
+.daily li{padding-block:12px;border-bottom:1px solid var(--hair)}
+.daily a{text-decoration:none;font-weight:600;line-height:1.35;display:block;font-size:14px}
+.daily a:hover{text-decoration:underline}
+.daily .label{color:var(--red);display:block;margin-bottom:3px;font-size:11px}
+
+footer{border-top:6px solid var(--rule);padding-block:26px 48px;color:var(--muted);font-size:13px;display:grid;grid-template-columns:minmax(0,260px) minmax(0,1.2fr) minmax(0,1fr);gap:32px}
+footer .ill{display:block;margin:0}
+footer .ill img{display:block;width:100%;height:auto;aspect-ratio:1}
+footer h4{margin:0 0 8px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;font-size:12px;color:var(--ink)}
+footer p{margin:0 0 .7em}
+footer ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+footer a{color:var(--ink)}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:8px 14px;font-size:13px;letter-spacing:.04em}
+
+/* indice dell'articolo e barra di avanzamento */
+.side-toc{position:sticky;top:56px}
+.side-toc h4{margin:0 0 8px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;font-size:12px;opacity:.75}
+.side-toc ol{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:13px;line-height:1.4}
+.side-toc a{text-decoration:none;border-left:3px solid var(--hair);padding-left:10px;display:block;opacity:.75}
+.side-toc a:hover,.side-toc a[aria-current="true"]{opacity:1;border-left-color:var(--sc,var(--red))}
+.progress{position:fixed;top:0;left:0;right:0;z-index:20;background:var(--ink);color:var(--paper);font-size:12.5px;letter-spacing:.02em;padding:8px max(16px,env(safe-area-inset-left,0px)) 9px;padding-top:calc(8px + env(safe-area-inset-top,0px))}
+.progress .bar{position:absolute;left:0;bottom:0;height:4px;background:var(--sc,var(--red));width:0}
+.art.op ~ * .progress,.progress[style*="--c-op"] .bar{background:var(--yellow)}
+.progress .ptxt{display:block;max-width:1240px;margin:0 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.progress .ptxt b{font-weight:600}
+
+@media (max-width:900px){
+  .art-body{grid-template-columns:minmax(0,1fr);gap:8px}
+  .side{order:-1;margin-bottom:12px}
+  .side .src{order:2}
+  .side-toc{display:none}
+  .soc{grid-template-columns:minmax(0,1fr)}
+  footer{grid-template-columns:minmax(0,1fr)}
+  footer .ill{max-width:260px}
+}
+@media (max-width:640px){
+  body{font-size:15px}
+  .brief{grid-template-columns:minmax(0,1fr)}
+  .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .art figure img{aspect-ratio:3/2}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media print{
+  :root{--paper:#fff;--paper-2:#fff;--ink:#000;--muted:#333;--rule:#000;--hair:#999}
+  body{font-size:10pt}
+  .about,.progress,.share,.cover-cta .btn,#pick,.side-toc,.toast,.daily-band,.q{display:none!important}
+  .cover,.art.op,.art figure .duo{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .art{break-before:page;padding-block:0 18px}
+  .art figure img{max-height:8cm}
+  .brief li,.nums li,.watch li,.soc article,.counter{break-inside:avoid}
+  a{text-decoration:none}
+}
+</style>
+</head>
+<body>
+<!-- Dati facoltativi per lo stile Manifesto (data/issues.json):
+     cover.figure = {"n":"1","of":"su oltre 40","label":"..."}: la cifra gigante della copertina (altrimenti numbers[0]);
+     features[].figure = {"n":"1,5%","label":"..."}: la cifra di ogni capitolo nell'indice (altrimenti i minuti di lettura);
+     cover.art = {"file":"img/<data>-copertina.webp","small":"...-900.webp","width":1456,"height":816,"alt":"...","credit":"Illustrazione generata con Midjourney","figColor":"#16171b" (facoltativo: colore della cifra gigante se l'illustrazione è rossa a destra)}:
+       copertina illustrata a tutta pagina con il titolo sopra lo spazio vuoto (al posto di cover.photo). -->
+<div class="progress" id="progress" hidden><div class="bar" id="bar"></div><span class="ptxt" id="ptxt"></span></div>
+<div class="wrap">
+  <div class="about">
+    <span>English edition · an idea by Carlo, written by Claude, based on PierG's Daily Brief</span>
+    <span class="about-r"><a href="../../settimanale/" hreflang="it" lang="it" onclick="this.href=this.href.split('#')[0]+location.hash">Italiano</a><button type="button" class="theme" id="theme" aria-label="Page theme">Theme: auto</button><a href="../../quotidiano/">Il Quotidiano dell'AI (IT) →</a></span>
+  </div>
+</div>
+<header class="mast"><div class="wrap">
+  <h1><img class="emblem" src="../../assets/emblema-128.webp" width="44" height="44" alt="" onerror="this.remove()">AI Weekly</h1>
+  <div class="meta label" id="meta"><span>Loading the issue…</span></div>
+</div></header>
+<main id="app"></main>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+  const app=document.getElementById('app'), meta=document.getElementById('meta');
+  let DATA=[];
+  const DAILY={};   // url di una fonte → data dell'edizione del Quotidiano che la cita
+  const BASE=location.href.split('#')[0];
+  const SC={"Cover":"--c-cover","Business":"--c-econ","Finance":"--c-fin","Security":"--c-sec","Comment":"--c-op","Society":"--c-soc"};
+  const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const sc=sec=>`--sc:var(${SC[sec]||'--accent'})`;
+  const MESI=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const GIORNI=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const fmt=iso=>{const d=new Date(iso+'T12:00:00Z');return `${GIORNI[d.getUTCDay()]} ${d.getUTCDate()} ${MESI[d.getUTCMonth()]} ${d.getUTCFullYear()}`};
+  const shortDay=iso=>{const d=new Date(iso+'T12:00:00Z');return `${d.getUTCDate()} ${MESI[d.getUTCMonth()].slice(0,3)}`};
+  const words=a=>a.join(' ').split(/\s+/).length;
+  const mins=a=>Math.max(1,Math.round(words(a.body)/220));
+  const OUTLETS={'techcrunch.com':'TechCrunch','technologyreview.com':'MIT Technology Review','wired.com':'Wired','theverge.com':'The Verge','bloomberg.com':'Bloomberg','reuters.com':'Reuters','ft.com':'Financial Times','nytimes.com':'The New York Times','wsj.com':'Wall Street Journal','cnbc.com':'CNBC','arstechnica.com':'Ars Technica','theinformation.com':'The Information','axios.com':'Axios','semafor.com':'Semafor','forrester.com':'Forrester','x.com':'X','twitter.com':'X','github.com':'GitHub','arxiv.org':'arXiv','substack.com':'Substack','newsletter.pragmaticengineer.com':'The Pragmatic Engineer','theguardian.com':'The Guardian','economist.com':'The Economist','businessinsider.com':'Business Insider','404media.co':'404 Media','venturebeat.com':'VentureBeat','zdnet.com':'ZDNet','engadget.com':'Engadget','fortune.com':'Fortune','openai.com':'OpenAI','anthropic.com':'Anthropic','blog.google':'Google'};
+  function outlet(u){
+    try{const h=new URL(u).hostname.replace(/^www\./,'');
+      if(OUTLETS[h]) return OUTLETS[h];
+      const k=Object.keys(OUTLETS).find(d=>h.endsWith('.'+d)); if(k) return OUTLETS[k];
+      return h;}catch(_){return ''}
+  }
+  const dailyLink=u=>DAILY[u]?`<a class="q" href="../quotidiano/#u-${encodeURIComponent(u)}" title="La notizia sul Quotidiano del ${esc(fmt(DAILY[u]))}">nel Quotidiano →</a>`:'';
+
+  function sources(list){
+    if(!list||!list.length) return '';
+    return `<div class="src"><h4>Further reading</h4><ul>${list.map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>${DAILY[s.url]?' · '+dailyLink(s.url):''}</li>`).join('')}</ul></div>`;
+  }
+  const cid=(id,i)=>`${id}-h${i}`;
+  function body(paras,id){
+    let h=0;
+    return paras.map(p=>p.startsWith('## ')?`<h3 id="${cid(id,h++)}">${esc(p.slice(3))}</h3>`:`<p>${esc(p)}</p>`).join('');
+  }
+  function sideToc(paras,id){
+    const hs=paras.filter(p=>p.startsWith('## '));
+    if(hs.length<2) return '';
+    return `<nav class="side-toc" aria-label="In this article"><h4>In this article</h4><ol>${hs.map((p,i)=>`<li><a href="#${cid(id,i)}" data-toc="${id}">${esc(p.slice(3))}</a></li>`).join('')}</ol></nav>`;
+  }
+  function counter(c){
+    if(!c||!c.body||!c.body.length) return '';
+    return `<aside class="counter" aria-label="Another reading"><h3>Another reading${c.title?': '+esc(c.title):''}</h3>${c.body.map(p=>`<p>${esc(p)}</p>`).join('')}<p class="note">The strongest objection to the comment's argument, also written by Claude, to put the reasoning to the test.</p></aside>`;
+  }
+  function photo(p,art){
+    if(art) return `<figure class="ill"><img src="${esc(art.small||art.file)}" width="${esc(art.width||1456)}" height="${esc(art.height||816)}" alt="${esc(art.alt||'')}" loading="lazy"><figcaption>${esc(art.credit||'')}.</figcaption></figure>`;
+    if(!p) return '';
+    return `<figure><div class="duo"><img src="${esc(p.file)}" alt="${esc(p.alt)}" loading="lazy"></div><figcaption>${esc(p.caption||'')} Photo: ${esc(p.author)}, ${esc(p.license)}, <a href="${esc(p.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>.</figcaption></figure>`;
+  }
+  function article(e,a,opts={}){
+    const id=`a-${e.date}-${a.id}`;
+    const by=opts.byline||'From the newsroom, based on the week\'s newsletters';
+    const listen='speechSynthesis' in window?`<button class="share" type="button" data-listen="${id}" aria-pressed="false">Listen</button>`:'';
+    const inner=`
+      <div class="art-head">
+        <div class="kick label"><span class="sec">${esc(a.section)}</span><span class="tag">${esc(a.tag)}</span></div>
+        <h2>${esc(a.title)}</h2>
+        <p class="stand">${esc(a.standfirst)}</p>
+        <div class="byline"><span>${esc(by)}</span><span>${mins(a)} min read</span>${listen}<button class="share" type="button" data-id="${id}">Copy link</button></div>
+      </div>
+      ${photo(a.photo,a.art)}
+      <div class="art-body">
+        <div class="text">${body(a.body,id)}${opts.op?counter(a.counter):''}</div>
+        <aside class="side">${a.pull?`<blockquote class="pull">${esc(a.pull)}</blockquote>`:''}${sources(a.sources)}${sideToc(a.body,id)}</aside>
+      </div>`;
+    return `<article class="art${opts.op?' op':''}" id="${id}" data-title="${esc(a.title)}" data-min="${mins(a)}" style="${sc(a.section)}">${opts.op?`<div class="inner">${inner}</div>`:inner}</article>`;
+  }
+
+  function dailyBand(e){
+    // le notizie del Quotidiano da cui nasce il numero: quelle citate nelle brevi e negli articoli
+    const seen=new Set(), out=[];
+    const add=(u,t,when)=>{if(DAILY[u]&&!seen.has(u)){seen.add(u);out.push({u,t,when:DAILY[u]})}};
+    for(const b of e.brief) add(b.url,b.title);
+    for(const a of [e.cover,...e.features,e.opinion,...e.society]) for(const s of a.sources||[]) add(s.url,s.label.replace(/^[^—]+—\s*/,''));
+    if(!out.length) return '';
+    out.sort((a,b)=>a.when.localeCompare(b.when));
+    return `<section class="band daily-band">
+        <div class="band-h"><h2>Giorno per giorno</h2><span class="label">Le notizie da cui nasce questo numero, sul Quotidiano</span></div>
+        <ul class="daily">${out.slice(0,12).map(x=>`<li><a href="../quotidiano/#u-${encodeURIComponent(x.u)}"><span class="label">${esc(fmt(x.when))}</span>${esc(x.t)}</a></li>`).join('')}</ul>
+      </section>`;
+  }
+
+  function render(e, scrollTo){
+    const all=[e.cover,...e.features,e.opinion];
+    const total=all.reduce((n,a)=>n+mins(a),0)+Math.max(1,Math.round(words([...e.brief.map(b=>b.title+' '+b.text),...e.society.flatMap(s=>s.body)])/220));
+    meta.innerHTML=`<span><b>Issue ${e.n}</b></span><span>${esc(fmt(e.date))}</span><span>Week of ${esc(e.range)}</span>`+
+      (DATA.length>1?`<label for="pick" class="label">Archive <select id="pick">${DATA.map(x=>`<option value="${x.date}"${x.date===e.date?' selected':''}>No. ${x.n} · ${esc(x.range)}</option>`).join('')}</select></label>`:'');
+    const c=e.cover;
+    const fig=c.figure||(e.numbers||[])[0];
+    const figOf=fig&&fig.of?(String(fig.of).match(/\d[\d.,]*/)||[''])[0]:'';
+    const chapters=[...e.features.map((a,i)=>({a,no:`Chapter ${i+1} · ${a.section}`})),{a:e.opinion,no:'Comment'}];
+    const art=c.art;
+    const coverHTML=art?`
+      <section class="hero" aria-label="Cover">
+        <img src="${esc(art.file)}"${art.small?` srcset="${esc(art.small)} 900w, ${esc(art.file)} ${esc(art.width||1456)}w" sizes="100vw"`:''} width="${esc(art.width||1456)}" height="${esc(art.height||816)}" alt="${esc(art.alt||'')}">
+        <div class="ovl"><div class="wrap">
+          <div>
+            <p class="k">Cover story · ${esc(c.tag)}</p>
+            <h2><a href="#a-${e.date}-${c.id}">${esc(c.title)}</a></h2>
+          </div>
+          ${fig?`<div class="fig"${art.figColor?` style="--fig:${esc(art.figColor)}"`:''}><span class="big" aria-label="${esc(fig.n+(fig.of?' '+fig.of:''))}">${esc(fig.n)}${figOf?`<sup>/${esc(figOf)}</sup>`:''}</span><p>${esc(fig.label||'')}</p></div>`:''}
+        </div></div>
+      </section>
+      <section class="cover after">
+        <div class="wrap">
+          <div>
+            <p class="k">Issue ${esc(e.n)} · ${esc(e.range)}</p>
+            <p class="stand">${esc(c.standfirst)}</p>
+          </div>
+          <div>
+            <div class="cover-cta" style="margin-top:0"><a class="btn" href="#a-${e.date}-${c.id}">Read the issue</a><span class="label">About ${total} minutes · ${all.length} articles, ${e.brief.length} briefs</span></div>
+            ${art.credit?`<p class="credit">${esc(art.credit)}.</p>`:''}
+          </div>
+        </div>
+      </section>`:null;
+    app.innerHTML=`
+      ${coverHTML||`<section class="cover">
+        <div class="wrap">
+          <div>
+            <p class="k">Issue ${esc(e.n)} · ${esc(e.range)}</p>
+            ${fig?`<span class="big" aria-label="${esc(fig.n+(fig.of?' '+fig.of:''))}">${esc(fig.n)}${figOf?`<sup>/${esc(figOf)}</sup>`:''}</span><p class="big-l">${esc(fig.label||'')}</p>`:''}
+          </div>
+          <div>
+            <p class="k">Cover story · ${esc(c.tag)}</p>
+            <h2><a href="#a-${e.date}-${c.id}">${esc(c.title)}</a></h2>
+            <p class="stand">${esc(c.standfirst)}</p>
+            <div class="cover-cta"><a class="btn" href="#a-${e.date}-${c.id}">Read the issue</a><span class="label">About ${total} minutes · ${all.length} articles, ${e.brief.length} briefs</span></div>
+          </div>
+        </div>
+      </section>`}
+
+      <div class="wrap">
+      <section class="band" aria-label="In this issue">
+        <div class="band-h"><h2>In this issue</h2><span class="label">${chapters.length} chapters, then Society and the week in brief</span></div>
+        <ol class="chapters">${chapters.map(({a,no})=>`<li><a href="#a-${e.date}-${a.id}" style="${a===e.opinion?'--sc:var(--ink)':sc(a.section)}"><span class="no">${esc(no)}</span><span class="t">${esc(a.title)}</span><span class="st">${a.figure?`${esc(a.figure.n)}<small>${esc(a.figure.label||'')}</small>`:`${mins(a)}′<small>read · ${esc(a.tag||'')}</small>`}</span></a></li>`).join('')}</ol>
+      </section>
+
+      <section class="band" id="a-${e.date}-breve">
+        <div class="band-h"><h2>The week in brief</h2><span class="label">${esc(e.range)}</span></div>
+        <ul class="brief">${e.brief.map(b=>{const o=b.source||(b.url?outlet(b.url):'');return `<li><span class="day">${esc(b.day)}</span><div><h3>${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a>`:esc(b.title)}</h3><p>${esc(b.text)}${o?` <span class="who">— ${b.url?`<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(o)}</a>`:esc(o)}</span>`:''}${DAILY[b.url]?` · ${dailyLink(b.url)}`:''}</p></div></li>`}).join('')}</ul>
+      </section>
+
+      <section class="band">
+        <div class="band-h"><h2>The week in numbers</h2></div>
+        <ul class="nums">${e.numbers.map(x=>`<li><div class="n">${esc(x.n)}${x.of?`<small>${esc(x.of)}</small>`:''}</div><p>${esc(x.label)}</p></li>`).join('')}</ul>
+      </section>
+
+      ${article(e,c)}
+      ${e.features.map(a=>article(e,a)).join('')}
+      </div>
+      ${article(e,e.opinion,{op:true,byline:e.opinion.byline})}
+      <div class="wrap">
+
+      <section class="band" id="a-${e.date}-societa">
+        <div class="band-h"><h2>Society</h2><span class="label">AI beyond the office</span></div>
+        <div class="soc">${e.society.map(s=>`<article id="a-${e.date}-${s.id}"><span class="label">${esc(s.tag)}</span><h3>${esc(s.title)}</h3>${s.body.map(p=>`<p>${esc(p)}</p>`).join('')}${sources(s.sources)}</article>`).join('')}</div>
+      </section>
+
+      <section class="band">
+        <div class="band-h"><h2>Watch list</h2><span class="label">The week ahead</span></div>
+        <ul class="watch">${e.watch.map(w=>`<li><span class="when">${esc(w.when)}</span><p>${esc(w.text)}</p></li>`).join('')}</ul>
+      </section>
+
+      ${dailyBand(e)}
+
+      <footer>
+        <a class="ill" href="../../chi-siamo/"><img src="../../assets/illustrazione-640.webp" width="640" height="640" loading="lazy" alt="Illustration: a constructivist printing press with a large red disc" onerror="this.parentNode.remove()"></a>
+        <div>
+          <h4>About</h4>
+          <p>AI Weekly is an idea by Carlo, written by Claude and based on PierG's Daily Brief newsletter. Each issue rereads the week's newsletters, picks the themes that come up most often and tells them in longer pieces. The comment is Claude's own analysis and says so, and it is always followed by another reading that tests its argument.</p>
+          <p>This is the English edition of <a href="../../settimanale/">Il Settimanale dell'AI</a>. The text is our own: it is written from the Italian edition and, where the original English source can be read, checked against it. Facts come from the newsletters and the sources listed under each piece. The daily news is in Italian on <a href="../../quotidiano/">Il Quotidiano dell'AI</a>.</p>
+        </div>
+        <div>
+          <h4>Photos in this issue</h4>
+          <ul>${all.filter(a=>a.photo).map(a=>`<li>${esc(a.title)}: ${esc(a.photo.author)}, ${esc(a.photo.license)}, <a href="${esc(a.photo.page)}" target="_blank" rel="noopener">Wikimedia Commons</a></li>`).join('')}</ul>
+        </div>
+      </footer>
+      </div>`;
+    const pick=document.getElementById('pick');
+    if(pick) pick.addEventListener('change',()=>{location.hash='n-'+pick.value});
+    if(scrollTo){const el=document.getElementById(scrollTo); if(el) el.scrollIntoView();}
+    else window.scrollTo(0,0);
+    onScroll();
+  }
+
+  function route(){
+    stopSpeech();
+    const h=decodeURIComponent(location.hash.slice(1));
+    let m=h.match(/^(?:n|a)-(\d{4}-\d{2}-\d{2})/);
+    const e=(m&&DATA.find(x=>x.date===m[1]))||DATA[0];
+    if(!e) return;
+    const target=h.startsWith('a-')?h:null;
+    if(app.dataset.cur===e.date && target){const el=document.getElementById(target); if(el) el.scrollIntoView(); return;}
+    app.dataset.cur=e.date; render(e,target);
+  }
+
+  /* barra di avanzamento: titolo dell'articolo e minuti che mancano */
+  const prog=document.getElementById('progress'), bar=document.getElementById('bar'), ptxt=document.getElementById('ptxt');
+  let ticking=false;
+  function onScroll(){
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(()=>{
+      ticking=false;
+      const y=window.innerHeight*0.3;
+      const art=[...document.querySelectorAll('.art')].find(a=>{const r=a.getBoundingClientRect();return r.top<y&&r.bottom>y});
+      if(!art){prog.hidden=true;return}
+      const r=art.getBoundingClientRect();
+      const f=Math.min(1,Math.max(0,(y-r.top)/r.height));
+      const left=Math.max(0,Math.ceil(+art.dataset.min*(1-f)));
+      prog.hidden=false; prog.style.cssText=art.getAttribute('style')||'';
+      bar.style.width=(f*100).toFixed(1)+'%';
+      ptxt.innerHTML=`<b>${esc(art.dataset.title)}</b> · ${left?`${left} min left`:'last lines'}`;
+      // capitolo in corso nell'indice laterale
+      const hs=[...art.querySelectorAll('.text h3')];
+      let cur=null; for(const h of hs){ if(h.getBoundingClientRect().top<y) cur=h.id; }
+      for(const a of art.querySelectorAll('.side-toc a')) a.setAttribute('aria-current',String(a.getAttribute('href')==='#'+cur));
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  /* ascolta */
+  function stopSpeech(){
+    if('speechSynthesis' in window) speechSynthesis.cancel();
+    for(const b of document.querySelectorAll('[data-listen]')){b.setAttribute('aria-pressed','false');b.textContent='Listen'}
+  }
+  function listen(btn){
+    if(btn.getAttribute('aria-pressed')==='true'){stopSpeech();return}
+    stopSpeech();
+    const art=document.getElementById(btn.dataset.listen); if(!art) return;
+    const parts=[art.dataset.title, art.querySelector('.stand')?.textContent||'', ...[...art.querySelectorAll('.text > p, .text > h3')].map(n=>n.textContent)];
+    const voice=speechSynthesis.getVoices().find(v=>/^en/i.test(v.lang));
+    btn.setAttribute('aria-pressed','true'); btn.textContent='Stop reading';
+    parts.filter(Boolean).forEach((t,i,arr)=>{
+      const u=new SpeechSynthesisUtterance(t); u.lang='en-GB'; if(voice) u.voice=voice;
+      if(i===arr.length-1) u.onend=()=>{btn.setAttribute('aria-pressed','false');btn.textContent='Listen'};
+      speechSynthesis.speak(u);
+    });
+  }
+
+  /* tema: auto → chiaro → scuro, condiviso con il Quotidiano */
+  const themeBtn=document.getElementById('theme'), TH={auto:'auto',light:'light',dark:'dark'};
+  const getT=()=>{try{return JSON.parse(localStorage.getItem('qai.theme')||'null')||'auto'}catch(_){return 'auto'}};
+  const showT=()=>{themeBtn.textContent='Theme: '+TH[getT()]};
+  themeBtn.addEventListener('click',()=>{const c=getT(),n=c==='auto'?'light':c==='light'?'dark':'auto';
+    try{if(n==='auto')localStorage.removeItem('qai.theme');else localStorage.setItem('qai.theme',JSON.stringify(n))}catch(_){}
+    if(n==='auto')delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=n;showT()});
+  showT();
+  window.addEventListener('pagehide',stopSpeech);
+
+  const toast=document.getElementById('toast'); let tt;
+  function say(t){toast.textContent=t;toast.hidden=false;clearTimeout(tt);tt=setTimeout(()=>toast.hidden=true,2200)}
+  document.addEventListener('click',ev=>{
+    const l=ev.target.closest('[data-listen]'); if(l){listen(l);return}
+    const t=ev.target.closest('[data-toc]');
+    if(t){ev.preventDefault();const el=document.getElementById(t.getAttribute('href').slice(1)); if(el) el.scrollIntoView(); return}
+    const b=ev.target.closest('.share[data-id]'); if(!b) return;
+    const link=BASE+'#'+b.dataset.id;
+    try{navigator.clipboard.writeText(link).then(()=>say('Link copied'),()=>say(link))}catch(_){say(link)}
+  });
+
+  // il Quotidiano è facoltativo: se non si carica, il Settimanale funziona lo stesso
+  const dailyLoad=Promise.resolve(null).then(r=>r.ok?r.json():null).then(d=>{
+    for(const x of ((d&&d.issues)||[]).slice().sort((a,b)=>a.date.localeCompare(b.date)))
+      for(const m of (x.markdown||'').matchAll(/\]\((https?:\/\/[^)\s]+)\)/g)) if(!DAILY[m[1]]) DAILY[m[1]]=x.date;
+  }).catch(()=>{});
+
+  fetch('data/issues.json',{cache:'no-store'}).then(r=>r.json()).then(async d=>{
+    DATA=(d.issues||[]).sort((a,b)=>b.date.localeCompare(a.date));
+    await Promise.race([dailyLoad,new Promise(r=>setTimeout(r,1500))]);
+    route(); window.addEventListener('hashchange',route);
+  }).catch(()=>{meta.innerHTML='<span>Could not load the issue. Please reload the page.</span>'});
+})();
+</script>
+</body>
+</html>

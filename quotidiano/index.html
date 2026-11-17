@@ -134,6 +134,9 @@ form.search input { font: inherit; color: var(--ink); background: var(--paper); 
 .p-photo { margin: 0; align-self: start; }
 .p-photo .duo { background: var(--px); }
 .p-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; filter: grayscale(1) contrast(1.15); mix-blend-mode: multiply; }
+/* illustrazione (photo.illustration): già in bicromia, niente filtro */
+.p-photo.ill .duo { background: none; }
+.p-photo.ill img { filter: none; mix-blend-mode: normal; }
 .p-photo figcaption { font-size: 10.5px; line-height: 1.45; padding-top: 7px; }
 .p-photo figcaption a { color: inherit; }
 @media (max-width: 860px) {
@@ -547,7 +550,10 @@ function photoFig(ph) {
   // senza foto: immagine di riserva (corridoio di server), stampata in bicromia come le altre
   if (!ph || !ph.file) return `<figure class="p-photo"><div class="duo"><img src="../assets/riserva.webp" alt="" width="900" height="678" loading="eager"></div>
       <figcaption>Immagine di riserva, generata con Midjourney: questa notizia non ha una foto.</figcaption></figure>`;
-  return `<figure class="p-photo"><div class="duo"><img src="${esc(ph.file)}" alt="${esc(ph.alt || "")}" width="1280" height="720" loading="eager"></div>
+  const pos = ph.focus && /^[\d.]+% [\d.]+%$/.test(ph.focus) ? ` style="object-position: ${ph.focus}"` : "";
+  if (ph.illustration) return `<figure class="p-photo ill"><div class="duo"><img src="${esc(ph.file)}" alt="${esc(ph.alt || "")}" width="1280" height="802" loading="eager"${pos}></div>
+      <figcaption>${esc(ph.caption || "")} ${esc(ph.credit || "Illustrazione generata con Midjourney.")}</figcaption></figure>`;
+  return `<figure class="p-photo"><div class="duo"><img src="${esc(ph.file)}" alt="${esc(ph.alt || "")}" width="1280" height="720" loading="eager"${pos}></div>
       <figcaption>${esc(ph.caption || "")} Foto: <a href="${esc(safeUrl(ph.page || ""))}" target="_blank" rel="noopener">${esc(ph.author || "")} / ${esc(ph.source || "Wikimedia Commons")}</a>${ph.license ? ` · ${licUrl(ph.license) ? `<a href="${licUrl(ph.license)}" target="_blank" rel="noopener">${esc(ph.license)}</a>` : esc(ph.license)}` : ""}</figcaption></figure>`;
 }
 

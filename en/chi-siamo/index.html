@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About · The AI papers</title>
+<meta name="description" content="Il Quotidiano dell'AI and AI Weekly: an idea by Carlo, written by Claude, based on PierG's Daily Brief newsletter. How they are made.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About · The AI papers">
+<meta property="og:description" content="An idea by Carlo, written by Claude, based on PierG's Daily Brief newsletter.">
+<meta property="og:url" content="https://carlobeschi.github.io/ai-newspaper/en/chi-siamo/">
+<meta property="og:image" content="https://carlobeschi.github.io/ai-newspaper/assets/illustrazione-1024.webp">
+<meta property="og:locale" content="en_GB">
+<link rel="alternate" hreflang="it" href="https://carlobeschi.github.io/ai-newspaper/chi-siamo/">
+<link rel="alternate" hreflang="en" href="https://carlobeschi.github.io/ai-newspaper/en/chi-siamo/">
+<meta name="theme-color" content="#16171b">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icone/q-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/icone/q-16.png">
+<link rel="apple-touch-icon" href="../../assets/icone/q-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<script>
+try { const t = JSON.parse(localStorage.getItem("qai.theme") || "null"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (_) {}
+</script>
+<style>
+/* Manifesto: la stessa grammatica della pagina d'ingresso */
+:root{--paper:#f4f1e8;--ink:#16171b;--soft:#5b5d63;--hair:#cfcabd;--red:#d2452b;--blue:#1739c9;--disp:"Anton",Impact,"Arial Narrow",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#16171b;--ink:#f4f1e8;--soft:#a8a59c;--hair:#3a3b40;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#16171b;--ink:#f4f1e8;--soft:#a8a59c;--hair:#3a3b40;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 var(--mono)}
+/* carta: texture leggera solo nel tema chiaro */
+:root:not([data-theme="dark"]) body{background-image:url(../../assets/carta.webp);background-size:512px 512px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background-image:none}}
+@media print{body{background-image:none!important}}
+a{color:inherit}
+main{max-width:1240px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 18px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:6px solid var(--ink);padding-bottom:10px;margin-bottom:20px}
+.top a{text-decoration:none;font-weight:600}
+.top a:hover{text-decoration:underline}
+h1{font:400 clamp(64px,13vw,180px)/.84 var(--disp);text-transform:uppercase;margin:0 0 24px;letter-spacing:-.01em}
+.lead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 44px;align-items:start}
+.lead figure{margin:0;position:sticky;top:20px}
+.lead figure img{display:block;width:100%;height:auto;aspect-ratio:1}
+.lead figcaption{font-size:12px;color:var(--soft);margin-top:8px}
+.kicker{font:400 clamp(30px,3.6vw,46px)/1 var(--disp);text-transform:uppercase;margin:0 0 18px}
+.kicker em{font-style:normal;color:var(--red)}
+p{margin:0 0 .9em;max-width:62ch}
+h2{font:400 clamp(26px,2.8vw,34px)/1 var(--disp);text-transform:uppercase;margin:32px 0 10px;padding-top:12px;border-top:2px solid var(--ink)}
+h2:first-of-type{margin-top:0}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));margin-top:36px}
+a.card{display:flex;flex-direction:column;min-height:200px;padding:20px;text-decoration:none;color:#f4f1e8}
+a.card.q{background:var(--blue)}
+a.card.s{background:var(--red)}
+a.card small{font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+a.card b{font:400 clamp(36px,4.4vw,56px)/.9 var(--disp);text-transform:uppercase;margin:auto 0 0}
+a.card b em{font-style:normal;color:#ffd23f}
+a.card.q b em{color:#ff6a3d}
+a.card:hover b{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+footer{margin-top:22px;font-size:12.5px;color:var(--soft);display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;border-top:1px solid var(--hair);padding-top:12px}
+footer a{color:var(--ink)}
+@media (max-width:820px){.lead{grid-template-columns:minmax(0,1fr)}.lead figure{max-width:520px;position:static}}
+</style>
+</head>
+<body>
+<main>
+<div class="top"><a href="../">← The AI papers</a><span><a href="../../quotidiano/" hreflang="it">Daily (IT)</a> · <a href="../settimanale/">AI Weekly</a> · <a href="../../chi-siamo/" hreflang="it" lang="it">Italiano</a></span></div>
+<h1>About</h1>
+
+<div class="lead">
+  <figure>
+    <img src="../../assets/illustrazione-1024.webp" width="1024" height="1024" alt="Illustration: a constructivist printing press with a large red disc">
+    <figcaption>Illustration generated with Midjourney.</figcaption>
+  </figure>
+  <div>
+    <p class="kicker">An idea by Carlo, <em>written by Claude</em>, based on PierG's newsletter.</p>
+
+    <h2>The idea</h2>
+    <p>Every day there is more news about artificial intelligence than anyone can read. Piergiorgio Grossi (PierG) gathers it and sums it up in Italian in his newsletter, the <em>Daily Brief</em>. These two papers lay it out again, so it can be read like a daily paper and, on Sundays, like a weekly magazine.</p>
+
+    <h2>The daily</h2>
+    <p>Every morning Claude reads that day's <em>Daily Brief</em> and lays it out like a poster: one lead story, the number of the day, the rest in an index, and in the margins the short columns In brief, Weak signals and From social media. Each day of the week has its own colour. Every story links to its original sources. For now the daily is published in Italian only, as <em>Il Quotidiano dell'AI</em>.</p>
+
+    <h2>AI Weekly</h2>
+    <p>On Sundays Claude rereads the week's newsletters, picks the themes that came up most often and tells them in a cover story and three longer pieces, with the week in brief, the numbers and what to watch. The comment is Claude's own analysis and says so, and it is always followed by another reading that tests its argument. It comes out in Italian as <em>Il Settimanale dell'AI</em> and in English as <em>AI Weekly</em>.</p>
+
+    <h2>English editions</h2>
+    <p>The English text is not a machine translation of the Italian. Claude writes it from the Italian edition and, where the original English source can be read, checks names, figures and dates against it. Sources are linked, never copied.</p>
+
+    <h2>The images</h2>
+    <p>News photos come from Wikimedia Commons, under free licences, and are printed in two colours: they are stock images chosen for the subject, not photos of the event. Author and licence are given under each photo. The masthead emblem, the icons, the covers and this illustration were generated with Midjourney.</p>
+
+    <h2>Following along</h2>
+    <p>There are RSS feeds, in Italian, for the <a href="../../quotidiano/feed.xml">daily</a> and the <a href="../../settimanale/feed.xml">weekly</a>. To get the <em>Daily Brief</em> by email, ask PierG. The site only remembers, in your own browser, the last edition you saw and the stories you opened, and sends it to no one.</p>
+  </div>
+</div>
+
+<div class="grid">
+  <a class="card q" href="../../quotidiano/" hreflang="it"><small>Every morning · in Italian</small><b lang="it">Il Quotidiano <em>dell'AI</em></b></a>
+  <a class="card s" href="../settimanale/"><small>Every Sunday</small><b>AI <em>Weekly</em></b></a>
+</div>
+
+<footer><span>Source on <a href="https://github.com/carlobeschi/ai-newspaper">GitHub</a>, GPL-3.0 licence</span><span><a href="../">The AI papers</a></span></footer>
+</main>
+</body>
+</html>

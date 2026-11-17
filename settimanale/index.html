@@ -102,7 +102,7 @@ h1,h2,h3{text-wrap:balance}
 .hero h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(44px,5.6vw,92px);line-height:.9;text-transform:uppercase;margin:0}
 .hero h2 a{text-decoration:none;color:inherit}
 .hero h2 a:hover{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
-.hero .fig{grid-column:3;text-align:right;color:#d2452b}
+.hero .fig{grid-column:3;text-align:right;color:var(--fig,#d2452b)}
 .hero .fig .big{font-family:var(--f-disp);font-size:clamp(100px,13vw,210px);line-height:.8;letter-spacing:-.02em;display:block}
 .hero .fig .big sup{font-size:.36em;vertical-align:top;position:relative;top:.12em;letter-spacing:0}
 .hero .fig p{font-size:12.5px;line-height:1.4;color:#16171b;margin:10px 0 0 auto;max-width:28ch}
@@ -260,7 +260,7 @@ footer a{color:var(--ink)}
 <!-- Dati facoltativi per lo stile Manifesto (data/issues.json):
      cover.figure = {"n":"1","of":"su oltre 40","label":"..."}: la cifra gigante della copertina (altrimenti numbers[0]);
      features[].figure = {"n":"1,5%","label":"..."}: la cifra di ogni capitolo nell'indice (altrimenti i minuti di lettura);
-     cover.art = {"file":"img/<data>-copertina.webp","small":"...-900.webp","width":1456,"height":816,"alt":"...","credit":"Illustrazione generata con Midjourney"}:
+     cover.art = {"file":"img/<data>-copertina.webp","small":"...-900.webp","width":1456,"height":816,"alt":"...","credit":"Illustrazione generata con Midjourney","figColor":"#16171b" (facoltativo: colore della cifra gigante se l'illustrazione è rossa a destra)}:
        copertina illustrata a tutta pagina con il titolo sopra lo spazio vuoto (al posto di cover.photo). -->
 <div class="progress" id="progress" hidden><div class="bar" id="bar"></div><span class="ptxt" id="ptxt"></span></div>
 <div class="wrap">
@@ -374,7 +374,7 @@ footer a{color:var(--ink)}
             <p class="k">Storia di copertina · ${esc(c.tag)}</p>
             <h2><a href="#a-${e.date}-${c.id}">${esc(c.title)}</a></h2>
           </div>
-          ${fig?`<div class="fig"><span class="big" aria-label="${esc(fig.n+(fig.of?' '+fig.of:''))}">${esc(fig.n)}${figOf?`<sup>/${esc(figOf)}</sup>`:''}</span><p>${esc(fig.label||'')}</p></div>`:''}
+          ${fig?`<div class="fig"${art.figColor?` style="--fig:${esc(art.figColor)}"`:''}><span class="big" aria-label="${esc(fig.n+(fig.of?' '+fig.of:''))}">${esc(fig.n)}${figOf?`<sup>/${esc(figOf)}</sup>`:''}</span><p>${esc(fig.label||'')}</p></div>`:''}
         </div></div>
       </section>
       <section class="cover after">

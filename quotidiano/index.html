@@ -137,12 +137,20 @@ form.search input { font: inherit; color: var(--ink); background: var(--paper); 
 /* illustrazione (photo.illustration): già in bicromia, niente filtro */
 .p-photo.ill .duo { background: none; }
 .p-photo.ill img { filter: none; mix-blend-mode: normal; }
+/* apertura illustrata: l'immagine occupa circa un terzo del poster, alta quanto il testo */
+.poster-in.has-ill { grid-template-columns: minmax(0, 1fr) minmax(0, 38%); align-items: stretch; }
+.poster-in.has-ill .p-photo { align-self: stretch; display: flex; flex-direction: column; }
+.poster-in.has-ill .p-photo .duo { flex: 1 1 auto; min-height: 0; }
+.poster-in.has-ill .p-photo img { height: 100%; min-height: 420px; aspect-ratio: 4 / 5; }
 .p-photo figcaption { font-size: 10.5px; line-height: 1.45; padding-top: 7px; }
 .p-photo figcaption a { color: inherit; }
 @media (max-width: 860px) {
   .poster-in { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .p-photo { max-width: 420px; }
   .p-photo img { aspect-ratio: 4 / 3; }
+  .poster-in.has-ill { grid-template-columns: minmax(0, 1fr); }
+  .poster-in.has-ill .p-photo { max-width: 520px; }
+  .poster-in.has-ill .p-photo img { height: auto; min-height: 0; aspect-ratio: 4 / 5; }
 }
 
 /* il numero del giorno */
@@ -585,7 +593,7 @@ function renderEdition(idx) {
   let html = "";
   if (lead) {
     const pt = (issue.poster && issue.poster.title) || posterTitle(lead.title);
-    html += `<section class="poster"><div class="wrap poster-in"><article class="lead" id="${sid(date, lead.k)}" ${scStyle(lead)} style="min-width:0">
+    html += `<section class="poster"><div class="wrap poster-in${issue.photo && issue.photo.illustration && issue.photo.file ? " has-ill" : ""}"><article class="lead" id="${sid(date, lead.k)}" ${scStyle(lead)} style="min-width:0">
       <p class="stamp">${esc(sec(lead.section).it)} · Apertura${readMark(date, lead)}</p>
       <h2 class="p-head ${sizeCls(pt)}"><a href="#${sid(date, lead.k)}" title="${esc(lead.title)}">${posterHtml(pt)}</a></h2>
       ${lead.stand ? `<p class="p-stand">${inline(lead.stand)}</p>` : ""}<p class="p-body">${inline(lead.detail)}</p>${whyP(lead)}${meta(lead, date)}</article>

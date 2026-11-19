@@ -6,7 +6,7 @@
   const T = EN
     ? { months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
         days: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-        lead: 'Today’s lead story, in Italian', cover: 'Cover story', issue: 'No.' }
+        lead: 'Today’s lead story', cover: 'Cover story', issue: 'No.' }
     : { months: ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'],
         days: ['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'],
         lead: 'Oggi in apertura', cover: 'In copertina', issue: 'N.' };
@@ -21,7 +21,7 @@
   const plain = (s) => s.replace(/\[([^\]]+)\]\([^)\s]+\)/g, '$1').replace(/\*\*/g, '');
   const get = (u) => fetch(u, { cache: 'no-store' }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
 
-  get(ROOT + 'quotidiano/data/issues.json').then((d) => {
+  get(ROOT + (EN ? 'en/' : '') + 'quotidiano/data/issues.json').then((d) => {
     const e = (d.issues || [])[0]; if (!e) return;
     const card = $('daily'); const [pb, pf, px] = COLORS[day(e.date).getUTCDay()];
     card.style.setProperty('--bg', pb); card.style.setProperty('--fg', pf); card.style.setProperty('--hi', px);

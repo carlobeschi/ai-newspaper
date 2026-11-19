@@ -507,6 +507,7 @@ function licUrl(l) {
   const m = (l || "").match(/^(CC BY(?:-SA)?)\s*([\d.]+)/i);
   if (m) return `https://creativecommons.org/licenses/${LIC[m[1].toUpperCase()]}/${m[2]}/deed.it`;
   if (/^CC0/i.test(l)) return "https://creativecommons.org/publicdomain/zero/1.0/deed.it";
+  if (/^(Licenza Pexels|Pexels License)/i.test(l)) return "https://www.pexels.com/license/";
   return "";
 }
 

@@ -12,6 +12,15 @@
     "tag": "Agenti e accessi",
     "title": "Le porte si chiudono agli agenti",
     "standfirst": "United vieta i bot che prenotano i voli. Le banche lasciano ai clienti le perdite causate dagli agenti. Apple e Signal alzano barriere sul computer e sul telefono. In una settimana gli assistenti autonomi hanno scoperto che per entrare serve un'identità, e qualcuno che ne risponda.",
+    "art": {
+     "file": "img/2026-11-22-copertina.webp",
+     "small": "img/2026-11-22-copertina-900.webp",
+     "width": 1456,
+     "height": 816,
+     "alt": "Illustrazione: una grande porta nera socchiusa in un muro rosso fatto di palazzi, con piccole folle in silhouette in attesa ai due lati e una figura sola sulla soglia illuminata",
+     "credit": "Illustrazione generata con Midjourney",
+     "figColor": "#16171b"
+    },
     "pull": "Il CEO di United, Scott Kirby, ha ammesso di voler impedire a terzi di fare da intermediari tra la compagnia e i suoi clienti.",
     "figure": {
      "n": "14",

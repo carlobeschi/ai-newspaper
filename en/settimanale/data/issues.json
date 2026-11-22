@@ -12,6 +12,15 @@
     "tag": "Agents and access",
     "title": "The doors close on AI agents",
     "standfirst": "United bans bots that book flights. Banks leave customers to carry the losses caused by agents. Apple and Signal raise barriers on the computer and the phone. In one week autonomous assistants learned that getting in requires an identity, and someone who answers for it.",
+    "art": {
+     "file": "../../settimanale/img/2026-11-22-copertina.webp",
+     "small": "../../settimanale/img/2026-11-22-copertina-900.webp",
+     "width": 1456,
+     "height": 816,
+     "alt": "Illustration: a large black door standing ajar in a red wall of buildings, with small silhouetted crowds waiting on either side and a lone figure on the lit threshold",
+     "credit": "Illustration generated with Midjourney",
+     "figColor": "#16171b"
+    },
     "pull": "United's CEO, Scott Kirby, admitted he wants to stop third parties from standing between the airline and its customers.",
     "figure": {
      "n": "14",
